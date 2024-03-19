@@ -1,8 +1,8 @@
 
 import './App.css'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
-import Home from './Components/Home/Home'
-import List from './Components/List/List'
+import Home from './Pages/Home/Home'
+import List from './Pages/List/List'
 
 function App() {
 
@@ -25,9 +25,9 @@ function App() {
   ])
 
   return (
-    <>
-    <h1>Hello</h1>
-    </>
+    <RouterProvider router={router}>
+
+    </RouterProvider>
   )
 }
 
