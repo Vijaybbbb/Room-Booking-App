@@ -20,9 +20,10 @@ body{
 }
 .logo{
        font-weight: 500;
+       margin-left: 20px;
 }
 .navButton{
-       margin-left: 20px;
+       margin-right: 20px;
        border: none;
        padding: 5px 10px;
        cursor: pointer;
