@@ -12,6 +12,7 @@ const Home = () => {
       <div className="homeContainer">
         <Featured/>
       </div>
+      
     </div>
   )
 }

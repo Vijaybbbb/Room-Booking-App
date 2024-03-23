@@ -1,11 +1,40 @@
 import React from 'react'
 import './Featured.css'
-
+import img1 from '../../assets/img8.webp'
 
 const Featured = () => {
   return (
     <div>
-      <h1 style={{color:'black'}}>lkewnfle</h1>
+      <div className="featured">
+       <div className="featuredItem">
+              <img src={img1} alt="" className="featuredImg" />
+              <div className="featuredTitles">
+                <h1>ooty</h1>
+                <h2>533 Propertie</h2>
+              </div>
+       </div>
+       <div className="featuredItem">
+              <img src={img1} alt="" className="featuredImg" />
+              <div className="featuredTitles">
+                <h1>ooty</h1>
+                <h2>533 Propertie</h2>
+              </div>
+       </div>
+       <div className="featuredItem">
+              <img src={img1} alt="" className="featuredImg" />
+              <div className="featuredTitles">
+                <h1>ooty</h1>
+                <h2>533 Propertie</h2>
+              </div>
+       </div>
+       <div className="featuredItem">
+              <img src={img1} alt="" className="featuredImg" />
+              <div className="featuredTitles">
+                <h1>ooty</h1>
+                <h2>533 Propertie</h2>
+              </div>
+       </div>
+      </div>
     </div>
   )
 }
