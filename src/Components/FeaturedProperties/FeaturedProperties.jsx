@@ -6,7 +6,7 @@ const FeaturedProperties = () => {
   return (
     <div className="fp">
        <div className="fpItem">
-          <img src={img} alt="" />
+          <img className='fpImg' src={img} alt="" />
           <span className="fpName">aptrrts Hotel</span>
           <span className="fpCity">Madrid</span>
           <span className="fpPrice">Startting form $200</span>
@@ -16,7 +16,7 @@ const FeaturedProperties = () => {
            </div>
        </div>
        <div className="fpItem">
-          <img src={img} alt="" />
+          <img className='fpImg' src={img} alt="" />
           <span className="fpName">aptrrts Hotel</span>
           <span className="fpCity">Madrid</span>
           <span className="fpPrice">Startting form $200</span>
@@ -26,7 +26,7 @@ const FeaturedProperties = () => {
            </div>
        </div>
        <div className="fpItem">
-          <img src={img} alt="" />
+          <img  className='fpImg' src={img} alt="" />
           <span className="fpName">aptrrts Hotel</span>
           <span className="fpCity">Madrid</span>
           <span className="fpPrice">Startting form $200</span>
@@ -36,7 +36,7 @@ const FeaturedProperties = () => {
            </div>
        </div>
        <div className="fpItem">
-          <img src={img} alt="" />
+          <img  className='fpImg'  src={img} alt="" />
           <span className="fpName">aptrrts Hotel</span>
           <span className="fpCity">Madrid</span>
           <span className="fpPrice">Startting form $200</span>
