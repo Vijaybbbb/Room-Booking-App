@@ -20,9 +20,7 @@ function App() {
       path:"/hotels/:id",
       element:<SingleHotel/>
     },
-    {
-      
-    }
+   
   ])
 
   return (
