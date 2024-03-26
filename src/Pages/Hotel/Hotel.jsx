@@ -1,13 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Hotels.css'
 import Navbar from '../../Components/Navbar/Navbar'
 import Header from '../../Components/Header/Header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft, faArrowRight, faCircleXmark, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import src from '../../assets/room.webp'
 import MailList from '../../Components/MailList/MailList'
 import Footer from '../../Components/Footer/Footer'
 const Hotel = () => {
+
+const [slideNumber,setSlideNumber] = useState(0)
+const [open,setOpen] = useState(false)
+
+const handleOpen  = (index) =>{
+  setSlideNumber(index)
+  setOpen(true)
+}
+
+const handleMove=(direction)=>{
+    let newSlideNumber;
+    if(direction == 'l'){
+      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1
+    }
+    else{
+      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1
+
+    }
+    setSlideNumber(newSlideNumber)
+}
 
   const photos = [
     {
@@ -36,6 +56,18 @@ const Hotel = () => {
        <Navbar/> 
        <Header type='list'/> 
        <div className="hotelContainer">
+     
+        {open &&   <div className="slider">
+          <FontAwesomeIcon icon={faCircleXmark} className='close' onClick={()=>{setOpen(false)}}/>
+          <FontAwesomeIcon icon={faArrowLeft} className='arrow' onClick={()=>{handleMove('l')}}/>
+          <div className="sliderWrapper">
+            <img className='sliderImg' src={photos[slideNumber].src} alt="" />
+          </div>
+          <FontAwesomeIcon icon={faArrowRight}  className='arrow'  onClick={()=>{handleMove('r')}}/>
+
+
+          </div>}
+
             <div className="hotelWrapper">
               <button className="bookNow">Reserve or Book Now </button>
                   <h1 className='hotelTitle'>Grand Hotel</h1>
@@ -51,9 +83,9 @@ const Hotel = () => {
                   </span>
                   <div className="hotelImages">
                     {
-                      photos.map(photo => (
+                      photos.map((photo,index)=> (
                         <div className="hotelImagWrapper">
-                          <img src={photo.src} alt="" className="hotelImg" />
+                          <img onClick={()=>{handleOpen(index)}} src={photo.src} alt="" className="hotelImg" />
                         </div>
                       ))
                     }
