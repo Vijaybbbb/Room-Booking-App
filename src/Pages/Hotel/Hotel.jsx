@@ -5,7 +5,8 @@ import Header from '../../Components/Header/Header'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import src from '../../assets/room.webp'
-
+import MailList from '../../Components/MailList/MailList'
+import Footer from '../../Components/Footer/Footer'
 const Hotel = () => {
 
   const photos = [
@@ -36,11 +37,15 @@ const Hotel = () => {
        <Header type='list'/> 
        <div className="hotelContainer">
             <div className="hotelWrapper">
+              <button className="bookNow">Reserve or Book Now </button>
                   <h1 className='hotelTitle'>Grand Hotel</h1>
                   <div className="hotelAddress">
                     <FontAwesomeIcon icon={faLocationDot}/>
                     <span>Elton St  125 New york</span>
                   </div>
+                  <span className='hotelDistance'>
+                    Excellent location - 500m from center
+                  </span>
                   <span className='hotelPriceHighlight'>
                     Book a stay over $114 at this prperty and get a free airport taxi
                   </span>
@@ -72,12 +77,19 @@ const Hotel = () => {
                     <h2>
                       <b>$945</b> (9 nights)
                     </h2>
-                    <button>Reserve or Book Now !</button>
+                    <button>Reserve or Book Now</button>
 
                 </div>
+
+                
                   </div>
+                 
             </div>
+            
       </div> 
+      <MailList/>
+      <Footer/>
+      
     </div>
   )
 }

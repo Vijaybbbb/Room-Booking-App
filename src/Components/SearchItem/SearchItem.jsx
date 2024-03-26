@@ -1,8 +1,10 @@
 import React from 'react'
 import './SearchItem.css'
 import room from '../../assets/room.webp'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const SearchItem = () => {
+  const navigate = useNavigate()
   return (
     <div className='searchItem'>
        <img src={room} alt="" className="siImg" />
@@ -29,7 +31,7 @@ const SearchItem = () => {
         <div className="siDetailTexts">
           <span className="siPrice">$123</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <button className='siCheckButton'>See Avialbility</button>
+          <button className='siCheckButton' onClick={()=>{navigate('/hotels/1')}}>See Avialbility</button>
         </div>
        </div>
       
