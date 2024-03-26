@@ -3,7 +3,8 @@ import './App.css'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import Home from './Pages/Home/Home'
 import List from './Pages/List/List'
-import SingleHotel from './Pages/SingleHotel/SingleHotel'
+import Hotel from './Pages/Hotel/Hotel'
+
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
     },
     {
       path:"/hotels/:id",
-      element:<SingleHotel/>
+      element:<Hotel/>
     },
    
   ])
