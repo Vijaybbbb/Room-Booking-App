@@ -4,6 +4,7 @@ import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import Home from './Pages/Home/Home'
 import List from './Pages/List/List'
 import Hotel from './Pages/Hotel/Hotel'
+import Login from './Pages/Login/Login'
 
 
 function App() {
@@ -21,7 +22,10 @@ function App() {
       path:"/hotels/:id",
       element:<Hotel/>
     },
-   
+    {
+      path:'/login',
+      element:<Login/>
+    }   
   ])
 
   return (
