@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home'
 import List from './Pages/List/List'
 import Hotel from './Pages/Hotel/Hotel'
 import Login from './Pages/Login/Login'
+import SignUp from './Pages/SignUp/SignUp'
 
 
 function App() {
@@ -25,7 +26,11 @@ function App() {
     {
       path:'/login',
       element:<Login/>
-    }   
+    }, 
+    {
+      path:'/signup',
+      element:<SignUp/>
+    },  
   ])
 
   return (
