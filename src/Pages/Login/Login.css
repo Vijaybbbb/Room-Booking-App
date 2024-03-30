@@ -142,4 +142,14 @@
        text-transform: capitalize;
        text-rendering: optimizeLegibility;
    }
-   
+   .loginMessage{
+display: none;
+  height: 32px;
+  font-size: 14px;
+  background-color: #fee;
+  border-left: solid #d00 3px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  line-height: 32px;
+  color: #d00;
+   }
