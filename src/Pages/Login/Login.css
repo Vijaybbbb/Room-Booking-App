@@ -142,8 +142,10 @@
        text-transform: capitalize;
        text-rendering: optimizeLegibility;
    }
+
+   
    .loginMessage{
-display: none;
+
   height: 32px;
   font-size: 14px;
   background-color: #fee;
@@ -153,3 +155,19 @@ display: none;
   line-height: 32px;
   color: #d00;
    }
+
+   .loginMessage2{
+   
+    height: 32px;
+    font-size: 14px;
+    background-color: rgb(224, 241, 217);
+    border-left: solid rgb(1, 200, 24) 3px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    line-height: 32px;
+    color: rgb(4, 155, 37);
+     }
+
+     .hidden{
+        display: none;
+     }

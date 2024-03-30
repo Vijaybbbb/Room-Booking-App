@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Login/Login.css'
 import axios from 'axios'
 
 const SignUp = () => {
 
-    const [userName,setUsername]  = useState('')        
-    const [email,setEmail]  = useState('')        
-    const [passwrd,setPassword]  = useState('')        
-    const [error,setError] = useState()
+    const [message, setMessage] = useState()
+    const [userData, setUserData] = useState({
+        username: '',
+        email: '',
+        password: ''
+    })
+
+    let getValue = (e) => {
+        e.preventDefault()
+        setUserData({
+            ...userData,
+            [e.target.name]: e.target.value
+        })
+
+    }
 
     //handle signup function
-    const handleSignUp = () =>{
-        axios.post('',{
-            username:userName,
-            email:email,
-            password:password
-        }).then((response)=>{
-            console.log(response);
-        }).catch(err => setError(err))
+    const handleSignUp = async (e) => {
+        e.preventDefault(); // Prevent default form submission
+        await axios.post('http://localhost:3000/auth/register', userData).then((response) => {
+          setMessage(response.data.message)
+        }).catch(err => setMessage('Mail Already Exists'))
+        
     }
+
+
 
     return (
         <main className="mainLogin">
@@ -28,28 +39,26 @@ const SignUp = () => {
                         <h1 className="text text-large">Sign Up</h1>
                         <p className="text text-normal">New user? <span><a href="#" className="text text-links">Create an account</a></span></p>
                     </div>
-                    <form name="signin" className="formLogin">
+                    <form name="signin" className="formLogin" onSubmit={handleSignUp}>
                         <div className="input-control">
-                            <label htmlFor="" className="input-label" hidden onChange={(e)=>{setUsername(e.target.value)}}>UserName</label>
-                            <input type="email" name="email" id="email" className="input-field" placeholder="UserName" />
+                            <label htmlFor="" className="input-label" hidden>UserName</label>
+                            <input type="text" name="username" id="email" className="input-field" placeholder="UserName" onChange={getValue} />
                         </div>
                         <div className="input-control">
-                            <label htmlFor="email" className="input-label" hidden onChange={(e)=>{setEmail(e.target.value)}}>Email Address</label>
-                            <input type="email" name="email" id="email" className="input-field" placeholder="Email Address" />
+                            <label htmlFor="email" className="input-label" hidden >Email Address</label>
+                            <input type="email" name="email" id="email" className="input-field" placeholder="Email Address" onChange={getValue} />
                         </div>
                         <div className="input-control">
-                            <label htmlFor="password" className="input-label" hidden onChange={(e)=>{setPassword(e.target.value)}}>Password</label>
-                            <input type="password" name="password" id="password" className="input-field" placeholder="Password" />
+                            <label htmlFor="password" className="input-label" hidden >Password</label>
+                            <input type="password" name="password" id="password" className="input-field" placeholder="Password" onChange={getValue} />
                         </div>
                         <div className="input-control">
                             <a href="#" className="text text-links">Already a user</a>
-                            <input type="submit" name="submit" id="input-submit" value="Sign Up" onClick={()=>{handleSignUp}}/>
+                            <button type="submit" name="submit" id="input-submit">Sign Up</button>
                         </div>
                     </form>
-                    <div className="loginMessage">
-                     {
-                      error && (<span style={{marginLeft:'10px'}}>Login Failed</span>)
-                     }
+                    <div className={message=='User Hasbeen created' ? 'loginMessage2' : message=='Mail Already Exists' ? 'loginMessage' : 'hidden'}>
+                        {message && (<span style={{ marginLeft: '10px' }}>{message}</span>)}
                     </div>
                 </section>
             </div>
