@@ -5,25 +5,46 @@
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <title>Document</title>
        <link rel="stylesheet" href="./sample.css">
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
 </head>
 <body>
-       <div class="container height-100 d-flex justify-content-center align-items-center">
-              <div class="position-relative">
-                  <div class="card p-2 text-center">
-                      <h6>Please enter the one time password <br> to verify your account</h6>
-                      <div> <span>A code has been sent to</span> <small>*******9897</small> </div>
-                      <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2"> <input class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="fifth" maxlength="1" /> <input class="m-2 text-center form-control rounded" type="text" id="sixth" maxlength="1" /> </div>
-                      <div class="mt-4"> <button class="btn btn-danger px-4 validate">Validate</button> </div>
+       <div class="otpcontainer" >
+       <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-12">
+              <div class="relative bg-white px-6 pt-10 pb-9 shadow-2xl mx-auto w-full max-w-lg rounded-2xl">
+                <div class="mx-auto flex w-full max-w-md flex-col space-y-7">
+                  <div class="flex flex-col items-center justify-center text-center">
+                    <div class="font-semibold text-3xl">
+                      <p>OTP Verification</p>
+                    </div>
                   </div>
+            
+                  <div>
+                    <form class="otp-form" action="" method="post">
+                      <div class="flex flex-col space-y-6">
+                        <div class="flex flex-row items-center justify-between mx-auto w-full max-w-sm">
+                          <input type="text" class="otp-input w-14 h-14">
+                          <input type="text" class="otp-input w-14 h-14">
+                          <input type="text" class="otp-input w-14 h-14">
+                          <input type="text" class="otp-input w-14 h-14">
+                          <input type="text" class="otp-input w-14 h-14">
+                          <input type="text" class="otp-input w-14 h-14">
+                        </div>
+                        <div class="flex justify-center">
+                          <input type="text" class="text-center px-5 outline-none rounded-lg border border-gray-300 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 h-12 w-4/5" id="otpCode" readonly>
+                        </div>
+                        <div class="flex items-center flex-col space-y-5">
+            
+                          <button class="flex px-5 text-center border rounded-xl outline-none py-4 bg-blue-700 hover:bg-blue-800 border-none text-white text-md">
+                            Verify OTP
+                          </button>
+            
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
               </div>
-          </div>
+            </div>
+            
 </body>
-<script>
-       document.addEventListener("DOMContentLoaded", function(event) {
 
-function OTPInput() {
-const inputs = document.querySelectorAll('#otp > *[id]');
-for (let i = 0; i < inputs.length; i++) { inputs[i].addEventListener('keydown', function(event) { if (event.key==="Backspace" ) { inputs[i].value='' ; if (i !==0) inputs[i - 1].focus(); } else { if (i===inputs.length - 1 && inputs[i].value !=='' ) { return true; } else if (event.keyCode> 47 && event.keyCode < 58) { inputs[i].value=event.key; if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } else if (event.keyCode> 64 && event.keyCode < 91) { inputs[i].value=String.fromCharCode(event.keyCode); if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } } }); } } OTPInput(); });
-</script>
 </html>
