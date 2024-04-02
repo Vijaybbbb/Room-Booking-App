@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import './Otp.css'
 import { useState } from 'react';
 import axios from 'axios';
@@ -6,17 +6,19 @@ import { useLocation } from 'react-router-dom';
 
 const Otp = () => {
 
-
+  const resend = useRef()
   const location = useLocation()
   const [otp, setOtp] = useState('');
   const [email,setEmail] = useState(location.search.substring(1))
-
 
   const handleOtpChange = (e, index) => {
     const newOtp = [...otp];
     newOtp[index] = e.target.value;
     setOtp(newOtp.join(''));
+
   };
+
+  
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -26,6 +28,27 @@ const Otp = () => {
       console.log(error);
     })
   };
+
+
+  const resendOtp =(e)=>{
+    console.log('clicked');
+    e.preventDefault()
+    let timer  = 60;
+       
+       const countdownInterval = setInterval(function () {
+              const minutes = Math.floor(timer / 60);
+              const seconds = timer % 60;
+
+              resend.current.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+              if (--timer < 0) {
+                     clearInterval(countdownInterval);
+                     resend.current.textContent = "Resend OTP";
+                     resend.current.disabled = false; // Enable the button after timer ends
+              }
+       }, 1000);
+
+  }
 
   return (
     <div className="otpcontainer common">
@@ -53,13 +76,12 @@ const Otp = () => {
                   ))}
                 </div>
                 <div className="flex justify-center common">
-                  <input
-                    type="text"
-                    className="text-center px-5 outline-none rounded-lg border border-gray-300 text-lg bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700 h-12 w-4/5 common"
-                    id="otpCode"
-                    value={otp}
-                    readOnly
-                  />
+                    <button 
+                    className="flex px-5 text-center border rounded-xl outline-none py-4 bg-blue-700 hover:bg-blue-800 border-none text-white text-md common"
+                    ref={resend} 
+                    onClick={resendOtp}
+                     
+                    >Resend</button>
                 </div>
                 <div className="flex items-center flex-col space-y-5 common">
                   <button
