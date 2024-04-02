@@ -1,11 +1,16 @@
 import React from 'react'
-
 import './Otp.css'
 import { useState } from 'react';
-
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const Otp = () => {
+
+
+  const location = useLocation()
   const [otp, setOtp] = useState('');
+  const [email,setEmail] = useState(location.search.substring(1))
+
 
   const handleOtpChange = (e, index) => {
     const newOtp = [...otp];
@@ -13,9 +18,13 @@ const Otp = () => {
     setOtp(newOtp.join(''));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Handle OTP verification logic here
+    await axios.post('http://localhost:3000/auth/otpVerify',{email:email,userOtp:otp}).then((response)=>{
+      console.log(response);
+    }).catch((error)=>{
+      console.log(error);
+    })
   };
 
   return (

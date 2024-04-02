@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import '../Login/Login.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
-
+    const navigate = useNavigate()
     const [message, setMessage] = useState()
     const [userData, setUserData] = useState({
         username: '',
@@ -25,8 +26,10 @@ const SignUp = () => {
         e.preventDefault(); // Prevent default form submission
         await axios.post('http://localhost:3000/auth/register', userData).then((response) => {
           setMessage(response.data.message)
-        }).catch(err => setMessage('Mail Already Exists'))
-        
+          navigate(`/otp?${userData.email}`)
+         
+        }).catch(err => setMessage('Error'))
+
     }
 
 
