@@ -1,8 +1,8 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './Otp.css'
 import { useState } from 'react';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Otp = () => {
 
@@ -10,6 +10,8 @@ const Otp = () => {
   const location = useLocation()
   const [otp, setOtp] = useState('');
   const [email,setEmail] = useState(location.search.substring(1))
+  const navigate = useNavigate()
+
 
   const handleOtpChange = (e, index) => {
     const newOtp = [...otp];
@@ -24,17 +26,16 @@ const Otp = () => {
     e.preventDefault();
     await axios.post('http://localhost:3000/auth/otpVerify',{email:email,userOtp:otp}).then((response)=>{
       console.log(response);
+      navigate('/')
     }).catch((error)=>{
       console.log(error);
     })
   };
 
 
-  const resendOtp =(e)=>{
-    console.log('clicked');
-    e.preventDefault()
-    let timer  = 60;
-       
+  const resendOtp =async(e)=>{
+       e.preventDefault()
+       let timer  = 60;
        const countdownInterval = setInterval(function () {
               const minutes = Math.floor(timer / 60);
               const seconds = timer % 60;
@@ -47,8 +48,31 @@ const Otp = () => {
                      resend.current.disabled = false; // Enable the button after timer ends
               }
        }, 1000);
-
+       await axios.post('http://localhost:3000/auth/otpResend',{email:email}).then((response)=>{
+          console.log(response);
+      }).catch((error)=>{
+         console.log(error);
+       })
   }
+
+useEffect(()=>{
+  let timer  = 60;
+  const countdownInterval = setInterval(function () {
+         const minutes = Math.floor(timer / 60);
+         const seconds = timer % 60;
+
+         resend.current.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+         if (--timer < 0) {
+                clearInterval(countdownInterval);
+                resend.current.textContent = "Resend OTP";
+                resend.current.disabled = false; // Enable the button after timer ends
+         }
+  }, 1000);
+
+},[])
+
+  
 
   return (
     <div className="otpcontainer common">
@@ -80,7 +104,7 @@ const Otp = () => {
                     className="flex px-5 text-center border rounded-xl outline-none py-4 bg-blue-700 hover:bg-blue-800 border-none text-white text-md common"
                     ref={resend} 
                     onClick={resendOtp}
-                     
+                     disabled
                     >Resend</button>
                 </div>
                 <div className="flex items-center flex-col space-y-5 common">

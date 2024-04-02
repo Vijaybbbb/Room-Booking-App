@@ -40,7 +40,7 @@ const SignUp = () => {
                 <section className="wrapperLogin">
                     <div className="headingLogin">
                         <h1 className="text text-large">Sign Up</h1>
-                        <p className="text text-normal">New user? <span><a href="#" className="text text-links">Create an account</a></span></p>
+                        <p className="text text-normal">New user? <span><a href="#" className="text text-links"></a></span></p>
                     </div>
                     <form name="signin" className="formLogin" onSubmit={handleSignUp}>
                         <div className="input-control">
@@ -56,7 +56,7 @@ const SignUp = () => {
                             <input type="password" name="password" id="password" className="input-field" placeholder="Password" onChange={getValue} />
                         </div>
                         <div className="input-control">
-                            <a href="#" className="text text-links">Already a user</a>
+                            <a href="#" className="text text-links" onClick={()=>{navigate('/login')}}>Already a user</a>
                             <button type="submit" name="submit" id="input-submit">Sign Up</button>
                         </div>
                     </form>

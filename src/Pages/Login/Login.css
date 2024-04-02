@@ -55,8 +55,9 @@
    
    .text-links {
        font-size: 1rem;
-       font-weight: 400;
+       font-weight: 500;
        color: var(--color-blue);
+       text-decoration: none;
    }
    
    .text-links:hover {
