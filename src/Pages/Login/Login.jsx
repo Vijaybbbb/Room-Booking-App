@@ -3,6 +3,7 @@ import './Login.css'
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { tokenRequest } from '../token';
 
 const Login = () => {
 
@@ -25,7 +26,7 @@ const Login = () => {
     //handle signup function
     const handleLogin = async (e) => {
         e.preventDefault(); // Prevent default form submission
-        await axios.post('http://localhost:3000/auth/login',userData,{withCredentials:true}).then((response) => {
+        await tokenRequest.post('/auth/login',userData,{withCredentials:true}).then((response) => {
             console.log(response);
             navigate('/')
         }).catch(err =>console.log(err))
