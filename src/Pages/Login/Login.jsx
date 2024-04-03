@@ -4,9 +4,11 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { tokenRequest } from '../token';
-
+import { useDispatch } from 'react-redux';
+import {storeUser} from '../../Redux/loginSlice.js'
+import { store } from '../../Redux/Store.js';
 const Login = () => {
-
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const [error, setError] = useState()
     const [userData, setUserData] = useState({
@@ -28,6 +30,7 @@ const Login = () => {
         e.preventDefault(); // Prevent default form submission
         await tokenRequest.post('/auth/login',userData,{withCredentials:true}).then((response) => {
             console.log(response);
+            dispatch(storeUser(response.data._id))
             navigate('/')
         }).catch(err =>console.log(err))
     }

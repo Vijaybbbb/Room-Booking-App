@@ -8,10 +8,12 @@ import FeaturedProperties from '../../Components/FeaturedProperties/FeaturedProp
 import MailList from '../../Components/MailList/MailList'
 import Footer from '../../Components/Footer/Footer'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 
 
 const Home = () => {
 
+  const userDetails = useSelector(state => state.userDetails)
   const [access,setAccess]  = useState(false)
 
   useEffect(()=>{
@@ -19,7 +21,7 @@ const Home = () => {
   },[])
 
   async function fetchHome(){
-    await axios.get(`http://localhost:3000`,{withCredentials:true}).then((res)=>{
+    await axios.get(`http://localhost:3000?userId=${userDetails.userId}`,{withCredentials:true}).then((res)=>{
         setAccess(true)
     }).catch(err=>console.log(err))
   }
