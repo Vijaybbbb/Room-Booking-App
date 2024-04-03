@@ -1,13 +1,12 @@
 import React from 'react';
-import './Login.css'
+import '../Login/Login.css'
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { tokenRequest } from '../token';
 import { useDispatch } from 'react-redux';
 import {storeUser} from '../../Redux/loginSlice.js'
-import { store } from '../../Redux/Store.js';
-const Login = () => {
+
+const PasswordReset = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [error, setError] = useState()
@@ -40,21 +39,21 @@ const Login = () => {
             <div className="containerLogin">
                 <section className="wrapperLogin">
                     <div className="headingLogin">
-                        <h1 className="text text-large">Log in</h1>
+                        <h1 className="text text-large">Password Reset</h1>
                         <p className="text text-normal">New user? <span><a href="#" className="text text-links" onClick={()=>{navigate('/signup')}}>Create an account</a></span></p>
                     </div>
                     <form name="signin" className="formLogin" onSubmit={handleLogin}>
                         <div className="input-control">
-                            <label htmlFor="email" className="input-label" hidden>Email Address</label>
-                            <input type="email" name="email" id="email" className="input-field" placeholder="Email Address"  onChange={getValue}/>
+                            <label htmlFor="password" className="input-label" hidden>Enter New Password</label>
+                            <input type="password" name="email" id="email" className="input-field" placeholder="Enter New Password"  onChange={getValue}/>
                         </div>
                         <div className="input-control">
-                            <label htmlFor="password" className="input-label" hidden>Password</label>
-                            <input type="password" name="password" id="password" className="input-field" placeholder="Password"   onChange={getValue}/>
+                            <label htmlFor="password" className="input-label" hidden>Confirm New Password</label>
+                            <input type="password" name="password" id="password" className="input-field" placeholder="Confirm New Password"   onChange={getValue}/>
                         </div>
                         <div className="input-control">
-                            <a href="#" className="text text-links" onClick={()=>{navigate('/')}}>Forgot Password</a>
-                            <button type="submit" name="submit" id="input-submit"> Log in</button>
+                            
+                            <button type="submit" name="submit" id="input-submit"> Save</button>
                         </div>
                     </form>
                     <div className="striped">
@@ -68,4 +67,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default PasswordReset;

@@ -7,6 +7,7 @@ import Hotel from './Pages/Hotel/Hotel'
 import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
 import Otp from './Pages/Otp/Otp'
+import PasswordReset from './Pages/ForgetPassword/PasswordReset'
 
 
 function App() {
@@ -35,6 +36,10 @@ function App() {
     {
       path:'/otp',
       element:<Otp/>
+    },
+    {
+      path:'/passwordReset',
+      element:<PasswordReset/>
     }
   ])
 
