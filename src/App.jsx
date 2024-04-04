@@ -8,6 +8,8 @@ import Login from './Pages/Login/Login'
 import SignUp from './Pages/SignUp/SignUp'
 import Otp from './Pages/Otp/Otp'
 import PasswordReset from './Pages/ForgetPassword/PasswordReset'
+import EnterEmail from './Pages/ForgetPassword/EnterEmail'
+import ResetOtpPage from './Pages/ForgetPassword/ResetOtpPage'
 
 
 function App() {
@@ -40,6 +42,14 @@ function App() {
     {
       path:'/passwordReset',
       element:<PasswordReset/>
+    },
+    {
+      path:'/enterEmail',
+      element:<EnterEmail/>
+    },
+    {
+      path:'resetWithOtp',
+      element:<ResetOtpPage/>
     }
   ])
 

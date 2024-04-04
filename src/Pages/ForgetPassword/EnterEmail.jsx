@@ -5,32 +5,25 @@ import { useNavigate } from 'react-router-dom';
 import { tokenRequest } from '../token';
 import { useDispatch } from 'react-redux';
 import {storeUser} from '../../Redux/loginSlice.js'
+import axios from 'axios';
 
 const EnterEmail = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [error, setError] = useState()
-    const [userData, setUserData] = useState({
-        username: '',
-        email: '',
-        password: ''
-    })
+    const [email,setEmail] = useState()
 
-    let getValue = (e) => {
-        setUserData({
-            ...userData,
-            [e.target.name]: e.target.value
-        })
-
+    const getValue = (e) =>{
+        setEmail(e.target.value)
+        console.log(e.target.value);
     }
+    
 
     //handle signup function
     const handleLogin = async (e) => {
         e.preventDefault(); // Prevent default form submission
-        await tokenRequest.post('/auth/login',userData,{withCredentials:true}).then((response) => {
-            console.log(response);
-            dispatch(storeUser(response.data._id))
-            navigate('/')
+        await axios.post('http://localhost:3000/auth/passwordReset',{email:email},{withCredentials:true}).then((response) => {   
+            navigate('/otp')
         }).catch(err =>console.log(err))
     }
 
@@ -39,21 +32,18 @@ const EnterEmail = () => {
             <div className="containerLogin">
                 <section className="wrapperLogin">
                     <div className="headingLogin">
-                        <h1 className="text text-large">Password Reset</h1>
-                        <p className="text text-normal">New user? <span><a href="#" className="text text-links" onClick={()=>{navigate('/signup')}}>Create an account</a></span></p>
+                        <h1 className="text text-large">Enter You Email</h1>
+                        <p className="text text-normal">Enter Your Email here<span><a href="#" className="text text-links" ></a></span></p>
                     </div>
                     <form name="signin" className="formLogin" onSubmit={handleLogin}>
                         <div className="input-control">
-                            <label htmlFor="password" className="input-label" hidden>Enter New Password</label>
-                            <input type="password" name="email" id="email" className="input-field" placeholder="Enter New Password"  onChange={getValue}/>
+                            <label htmlFor="email" className="input-label" hidden>Enter here</label>
+                            <input type="email" name="email" id="email" className="input-field" placeholder="Enter here"  onChange={getValue}/>
                         </div>
-                        <div className="input-control">
-                            <label htmlFor="password" className="input-label" hidden>Confirm New Password</label>
-                            <input type="password" name="password" id="password" className="input-field" placeholder="Confirm New Password"   onChange={getValue}/>
-                        </div>
+                       
                         <div className="input-control">
                             
-                            <button type="submit" name="submit" id="input-submit"> Save</button>
+                            <button type="submit" name="submit" id="input-submit"> Send OTP</button>
                         </div>
                     </form>
                     <div className="striped">
