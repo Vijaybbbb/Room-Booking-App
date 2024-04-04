@@ -12,7 +12,9 @@ const Otp = () => {
   const [otp, setOtp] = useState('');
   const [email] = useState(location.search.substring(1))
   const navigate = useNavigate()
-
+  const [successMessage,setSuccessMessage]  = useState()
+  const [errorMessage,setErrorMessage] = useState()
+  const [state,setState] =useState(false)
 
   const handleOtpChange = (e, index) => {
     const newOtp = [...otp];
@@ -26,15 +28,16 @@ const Otp = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     await axios.post('http://localhost:3000/auth/otpVerify',{email:email,userOtp:otp}).then((response)=>{
-      console.log(response);
+      setSuccessMessage(response.data.message)
       navigate('/')
     }).catch((error)=>{
-      console.log(error);
+      setErrorMessage(error.response.data.message)
     })
   };
 
 
   const resendOtp =async(e)=>{
+      setState(false)
        e.preventDefault()
        let timer  = 60;
        const countdownInterval = setInterval(function () {
@@ -46,7 +49,8 @@ const Otp = () => {
               if (--timer < 0) {
                      clearInterval(countdownInterval);
                      resend.current.textContent = "Resend OTP";
-                     resend.current.disabled = false; // Enable the button after timer ends
+                     setState(true)
+                     resend.current.disabled = true;
               }
        }, 1000);
        await axios.post('http://localhost:3000/auth/otpResend',{email:email}).then((response)=>{
@@ -68,6 +72,7 @@ useEffect(()=>{
                 clearInterval(countdownInterval);
                 resend.current.textContent = "Resend OTP";
                 resend.current.disabled = false; // Enable the button after timer ends
+                setState(true)
          }
   }, 1000);
 
@@ -105,8 +110,8 @@ useEffect(()=>{
                     <label 
                     style={{fontFamily:'sans-serif'}}
                     className="flex px-5 text-center border rounded-xl outline-none py-4 bg-blue-700 hover:bg-blue-800 border-none text-white text-md common"
-                    ref={resend} 
-                    onClick={resendOtp}
+                    ref={resend}
+                    onClick={state ? resendOtp : null }
                      disabled
                     >Resend</label>
                 </div>
@@ -119,6 +124,16 @@ useEffect(()=>{
                     Verify OTP
                   </button>
                 </div>
+                {successMessage &&
+                    <div className='loginMessage2'>
+                        <span style={{ marginLeft: '10px' }}>{successMessage}</span>
+                    </div>
+                    }
+                    {errorMessage &&
+                    <div className='loginMessage'>
+                        <span style={{ marginLeft: '10px' }}>{errorMessage}</span>
+                    </div>
+                    }
               </div>
             </form>
           </div>
