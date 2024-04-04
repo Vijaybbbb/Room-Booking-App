@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+
 const Otp = () => {
 
   const resend = useRef()
@@ -61,7 +62,7 @@ useEffect(()=>{
          const minutes = Math.floor(timer / 60);
          const seconds = timer % 60;
 
-         resend.current.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+         resend.current.textContent = `${minutes.toString()?.padStart(2, '0')}:${seconds.toString()?.padStart(2, '0')}`;
 
          if (--timer < 0) {
                 clearInterval(countdownInterval);
@@ -99,14 +100,17 @@ useEffect(()=>{
                     />
                   ))}
                 </div>
+                
                 <div className="flex justify-center common">
-                    <button 
+                    <label 
+                    style={{fontFamily:'sans-serif'}}
                     className="flex px-5 text-center border rounded-xl outline-none py-4 bg-blue-700 hover:bg-blue-800 border-none text-white text-md common"
                     ref={resend} 
                     onClick={resendOtp}
                      disabled
-                    >Resend</button>
+                    >Resend</label>
                 </div>
+                
                 <div className="flex items-center flex-col space-y-5 common">
                   <button
                     type="submit"

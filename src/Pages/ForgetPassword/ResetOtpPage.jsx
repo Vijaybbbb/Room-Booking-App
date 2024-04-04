@@ -40,7 +40,7 @@ const ResetOtpPage = () => {
               const minutes = Math.floor(timer / 60);
               const seconds = timer % 60;
 
-              resend.current.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+              resend.current.textContent = `${minutes.toString()?.padStart(2, '0')}:${seconds.toString()?.padStart(2, '0')}`;
 
               if (--timer < 0) {
                      clearInterval(countdownInterval);
