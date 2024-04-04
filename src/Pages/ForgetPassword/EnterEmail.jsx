@@ -23,7 +23,7 @@ const EnterEmail = () => {
     const handleLogin = async (e) => {
         e.preventDefault(); // Prevent default form submission
         await axios.post('http://localhost:3000/auth/passwordReset',{email:email},{withCredentials:true}).then((response) => {   
-            navigate('/otp')
+            navigate(`/resetWithOtp?${email}`)
         }).catch(err =>console.log(err))
     }
 

@@ -1,25 +1,28 @@
 import React from 'react';
 import '../Login/Login.css'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { tokenRequest } from '../token';
 import { useDispatch } from 'react-redux';
 import {storeUser} from '../../Redux/loginSlice.js'
+import axios from 'axios';
 
 const PasswordReset = () => {
-    const dispatch = useDispatch()
+
+    const location = useLocation()
     const navigate = useNavigate()
-    const [error, setError] = useState()
+    const [email, setEmail] = useState(location.search.substring(1))
     const [userData, setUserData] = useState({
-        username: '',
-        email: '',
-        password: ''
+        newPassword: '',
+        confirmnNewPassword: '',
+      
     })
 
     let getValue = (e) => {
         setUserData({
             ...userData,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            email:email
         })
 
     }
@@ -27,9 +30,7 @@ const PasswordReset = () => {
     //handle signup function
     const handleLogin = async (e) => {
         e.preventDefault(); // Prevent default form submission
-        await tokenRequest.post('/auth/login',userData,{withCredentials:true}).then((response) => {
-            console.log(response);
-            dispatch(storeUser(response.data._id))
+        await axios.post('http://localhost:3000/auth/newPasswordSet',userData,{withCredentials:true}).then((response) => {        
             navigate('/')
         }).catch(err =>console.log(err))
     }
@@ -45,11 +46,11 @@ const PasswordReset = () => {
                     <form name="signin" className="formLogin" onSubmit={handleLogin}>
                         <div className="input-control">
                             <label htmlFor="password" className="input-label" hidden>Enter New Password</label>
-                            <input type="password" name="email" id="email" className="input-field" placeholder="Enter New Password"  onChange={getValue}/>
+                            <input type="password" name="newPassword" id="password" className="input-field" placeholder="Enter New Password"  onChange={getValue}/>
                         </div>
                         <div className="input-control">
                             <label htmlFor="password" className="input-label" hidden>Confirm New Password</label>
-                            <input type="password" name="password" id="password" className="input-field" placeholder="Confirm New Password"   onChange={getValue}/>
+                            <input type="password" name="confirmnNewPassword" id="password" className="input-field" placeholder="Confirm New Password"   onChange={getValue}/>
                         </div>
                         <div className="input-control">
                             

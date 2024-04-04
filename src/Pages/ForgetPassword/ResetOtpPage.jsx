@@ -26,7 +26,7 @@ const ResetOtpPage = () => {
     e.preventDefault();
     await axios.post('http://localhost:3000/auth/otpVerify',{email:email,userOtp:otp}).then((response)=>{
       console.log(response);
-      navigate('/')
+      navigate(`/passwordReset?${email}`)
     }).catch((error)=>{
       console.log(error);
     })

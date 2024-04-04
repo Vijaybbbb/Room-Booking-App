@@ -9,7 +9,7 @@ const Otp = () => {
   const resend = useRef()
   const location = useLocation()
   const [otp, setOtp] = useState('');
-  const [email,setEmail] = useState(location.search.substring(1))
+  const [email] = useState(location.search.substring(1))
   const navigate = useNavigate()
 
 
