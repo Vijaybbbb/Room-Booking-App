@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const navigate = useNavigate()
-    const [message, setMessage] = useState()
+    const [successMessage,setSuccessMessage]  = useState()
+    const [errorMessage,setErrorMessage] = useState()
     const [userData, setUserData] = useState({
         username: '',
         email: '',
@@ -25,10 +26,10 @@ const SignUp = () => {
     const handleSignUp = async (e) => {
         e.preventDefault(); // Prevent default form submission
         await axios.post('http://localhost:3000/auth/register', userData).then((response) => {
-          setMessage(response.data.message)
+            setSuccessMessage(response.data.message)
           navigate(`/otp?${userData.email}`)
          
-        }).catch(err => setMessage('Error'))
+        }).catch(err =>setErrorMessage(err.response.data.message))
 
     }
 
@@ -60,9 +61,16 @@ const SignUp = () => {
                             <button type="submit" name="submit" id="input-submit">Sign Up</button>
                         </div>
                     </form>
-                    <div className={message=='User Hasbeen created' ? 'loginMessage2' : message=='Mail Already Exists' ? 'loginMessage' : 'hidden'}>
-                        {message && (<span style={{ marginLeft: '10px' }}>{message}</span>)}
+                    {successMessage &&
+                    <div className='loginMessage2'>
+                        <span style={{ marginLeft: '10px' }}>{successMessage}</span>
                     </div>
+                    }
+                    {errorMessage &&
+                    <div className='loginMessage'>
+                        <span style={{ marginLeft: '10px' }}>{errorMessage}</span>
+                    </div>
+                    }
                 </section>
             </div>
         </main>

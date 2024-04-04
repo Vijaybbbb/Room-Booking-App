@@ -10,7 +10,8 @@ import { store } from '../../Redux/Store.js';
 const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [error, setError] = useState()
+    const [successMessage,setSuccessMessage]  = useState()
+    const [errorMessage,setErrorMessage] = useState()
     const [userData, setUserData] = useState({
         username: '',
         email: '',
@@ -29,10 +30,10 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault(); // Prevent default form submission
         await tokenRequest.post('/auth/login',userData,{withCredentials:true}).then((response) => {
-            console.log(response);
+            setSuccessMessage(response.data.message)
             dispatch(storeUser(response.data._id))
             navigate('/')
-        }).catch(err =>console.log(err))
+        }).catch(err => setErrorMessage(err.response.data.message))
     }
 
     return (
@@ -57,11 +58,16 @@ const Login = () => {
                             <button type="submit" name="submit" id="input-submit"> Log in</button>
                         </div>
                     </form>
-                    <div className="striped">
-                        <span className="striped-line"></span>
-                        <span className="striped-text"></span>
-                        <span className="striped-line"></span>
+                    {successMessage &&
+                    <div className='loginMessage2'>
+                        <span style={{ marginLeft: '10px' }}>{successMessage}</span>
                     </div>
+                    }
+                    {errorMessage &&
+                    <div className='loginMessage'>
+                        <span style={{ marginLeft: '10px' }}>{errorMessage}</span>
+                    </div>
+                    }
                 </section>
             </div>
         </main>
