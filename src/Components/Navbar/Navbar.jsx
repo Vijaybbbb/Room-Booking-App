@@ -40,6 +40,7 @@ const Navbar = ({access}) => {
         
         <span className='logo'> logo </span>
         <div className="navItems">
+              <button className="navButton" onClick={()=>{navigate('/')}}>Create</button>
               <button className="navButton" onClick={()=>{navigate('/')}}>My Bookings</button>
               <button className="navButton" onClick={()=>{navigate('/')}}>Profile</button>
               <button className="navButton" onClick={async()=>{
