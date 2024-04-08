@@ -15,15 +15,17 @@ const Home = () => {
 
   const userDetails = useSelector(state => state.userDetails)
   const [access,setAccess]  = useState(false)
+  const [error,setError]  = useState()
+
 
   useEffect(()=>{
     fetchHome()
   },[])
 
   async function fetchHome(){
-    await axios.get(`http://localhost:3000?userId=${userDetails.userId}`,{withCredentials:true}).then((res)=>{
+    await axios.get(`http://localhost:3000?userId=${userDetails?.userId}`,{withCredentials:true}).then((res)=>{
         setAccess(true)
-    }).catch(err=>console.log(err))
+    }).catch(err=>setError(err))
   }
   return (
     <div>
