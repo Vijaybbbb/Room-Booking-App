@@ -1,8 +1,12 @@
 import React from 'react'
 import './Featured.css'
 import img1 from '../../assets/img8.webp'
+import useFetch from '../../hooks/useFetch'
 
 const Featured = () => {
+
+  const {data,loading,error} = useFetch('')
+
   return (
     <div>
       <div className="featured">
