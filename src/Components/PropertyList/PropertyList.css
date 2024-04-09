@@ -32,6 +32,7 @@
 
 #headdingTypeh1{
        font-family: system-ui;
+       text-transform: capitalize;
 }
 
 #headdingTypeh2{
