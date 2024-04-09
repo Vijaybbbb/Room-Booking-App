@@ -7,6 +7,8 @@ import { faArrowLeft, faArrowRight, faCircleXmark, faLocationDot } from '@fortaw
 import src from '../../assets/room.webp'
 import MailList from '../../Components/MailList/MailList'
 import Footer from '../../Components/Footer/Footer'
+
+
 const Hotel = () => {
 
 const [slideNumber,setSlideNumber] = useState(0)

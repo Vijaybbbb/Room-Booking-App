@@ -1,7 +1,7 @@
 import React from 'react'
 import './SearchItem.css'
 import room from '../../assets/room.webp'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const SearchItem = () => {
   const navigate = useNavigate()
