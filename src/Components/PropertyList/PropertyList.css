@@ -29,3 +29,12 @@
        font-size: 12px;
        font-weight: 3000;
 }
+
+#headdingTypeh1{
+       font-family: system-ui;
+}
+
+#headdingTypeh2{
+       font-family: sans-serif;
+    font-size: 16px;
+}

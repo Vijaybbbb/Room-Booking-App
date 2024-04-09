@@ -1,7 +1,10 @@
 import React from 'react'
 import './FeaturedProperties.css'
-import img from '../../assets/im9.webp'
 import useFetch from '../../hooks/useFetch'
+import img1 from '../../assets/ByTypeImages/hamburg-2976711_1280.jpg'
+import img2 from '../../assets/ByTypeImages/hamburg-3071437_1280.jpg'
+import img3 from '../../assets/ByTypeImages/hamburg-4103411_1280.jpg'
+import img4 from '../../assets/ByTypeImages/hamburg-5974223_1280.jpg'
 
 
 const FeaturedProperties = () => {
@@ -11,7 +14,7 @@ const FeaturedProperties = () => {
   return (
     <div className="fp">
        <div className="fpItem">
-          <img className='fpImg' src={img} alt="" />
+          <img className='fpImg' src={img1} alt="" />
           <span className="fpName">aptrrts Hotel</span>
           <span className="fpCity">Madrid</span>
           <span className="fpPrice">Startting form $200</span>
@@ -21,7 +24,7 @@ const FeaturedProperties = () => {
            </div>
        </div>
        <div className="fpItem">
-          <img className='fpImg' src={img} alt="" />
+          <img className='fpImg' src={img2} alt="" />
           <span className="fpName">aptrrts Hotel</span>
           <span className="fpCity">Madrid</span>
           <span className="fpPrice">Startting form $200</span>
@@ -31,7 +34,7 @@ const FeaturedProperties = () => {
            </div>
        </div>
        <div className="fpItem">
-          <img  className='fpImg' src={img} alt="" />
+          <img  className='fpImg' src={img3} alt="" />
           <span className="fpName">aptrrts Hotel</span>
           <span className="fpCity">Madrid</span>
           <span className="fpPrice">Startting form $200</span>
@@ -41,7 +44,7 @@ const FeaturedProperties = () => {
            </div>
        </div>
        <div className="fpItem">
-          <img  className='fpImg'  src={img} alt="" />
+          <img  className='fpImg'  src={img4} alt="" />
           <span className="fpName">aptrrts Hotel</span>
           <span className="fpCity">Madrid</span>
           <span className="fpPrice">Startting form $200</span>
