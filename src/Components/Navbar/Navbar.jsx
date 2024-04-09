@@ -2,7 +2,7 @@ import React from 'react'
 import './Navbar.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 
 const Navbar = ({access}) => {
 
@@ -13,8 +13,9 @@ const Navbar = ({access}) => {
       {!access ? (
     <div className='navbar'>
       <div className="navContainer">
-        
-        <span className='logo'> logo </span>
+        <Link to='/' >
+        <span className='logo'> Get Your Room </span>
+        </Link>
         <div className="navItems">
               <button className="navButton" onClick={()=>{navigate('/signup')}}>Register</button>
               <button className="navButton" onClick={()=>{navigate('/login')}}>Login</button>
@@ -25,7 +26,9 @@ const Navbar = ({access}) => {
       <div className='navbar'>
       <div className="navContainer">
         
-        <span className='logo'> logo </span>
+        <Link  to='/'>
+        <span className='logo' > Get Your Room </span>
+        </Link>
         <div className="navItems">
               <button className="navButton" onClick={()=>{navigate('/')}}>Create</button>
               <button className="navButton" onClick={()=>{navigate('/')}}>My Bookings</button>

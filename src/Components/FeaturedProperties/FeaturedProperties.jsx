@@ -5,7 +5,7 @@ import img1 from '../../assets/ByTypeImages/hamburg-2976711_1280.jpg'
 
 const FeaturedProperties = () => {
 
-   const {data,loading,error} = useFetch('http://localhost:3000/hotels')
+  const {data,loading,error} = useFetch('http://localhost:3000/hotels')
 
   return (
     <div className="fp">

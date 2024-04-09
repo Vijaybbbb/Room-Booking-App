@@ -10,7 +10,6 @@ import SearchItem from '../../Components/SearchItem/SearchItem'
 const List = () => {
 
    const location = useLocation()
-   console.log(location);
    const [destination,setDestination] = useState(location.state?.destination)
    const [date,setDate] = useState(location.state?.date)
    const [openDate,setOpenDate]   = useState(false)
@@ -31,7 +30,7 @@ const List = () => {
                    </div>
                  <div className="lsItem">
                     <label htmlFor="">Check-in Date</label>
-                    <span onClick={() => setOpenDate(!openDate)}> {`${format(date[0]?.startDate, 'MM/dd/yyyy')} to ${format(date[0].endDate, 'MM/dd/yyyy')} `}</span>
+                    <span onClick={() => setOpenDate(!openDate)}> {`${format(date[0]?.startDate, 'MM/dd/yyyy')} to ${format(date[0]?.endDate, 'MM/dd/yyyy')} `}</span>
                     {openDate &&
                        <DateRange
                           onChange={item => setDate([item.selection])}

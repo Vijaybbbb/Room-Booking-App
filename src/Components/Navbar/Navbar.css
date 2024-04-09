@@ -21,6 +21,9 @@ body{
 .logo{
        font-weight: 500;
        margin-left: 20px;
+       color: white;
+       cursor: pointer;
+       text-decoration: none;
 }
 .navButton{
        margin-right: 20px;
