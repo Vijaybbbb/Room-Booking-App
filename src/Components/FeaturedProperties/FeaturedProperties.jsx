@@ -5,13 +5,13 @@ import img1 from '../../assets/ByTypeImages/hamburg-2976711_1280.jpg'
 
 const FeaturedProperties = () => {
 
-  const {data,loading,error} = useFetch('http://localhost:3000/hotels')
-
+  const {data,loading,error} = useFetch('http://localhost:3000/hotels?featured=true&limit=4')
+console.log(data);
   return (
     <div className="fp">
       {loading ? ('Loading') : (
-      data.map((data)=>
-       <div className="fpItem">
+      data?.map((data)=>
+       <div className="fpItem" key={data._id}>
           <img className='fpImg' src={img1} alt="" />
           <span className="fpName">{data.name}</span>
           <span className="fpCity">{data.city}</span>

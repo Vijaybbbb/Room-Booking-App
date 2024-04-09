@@ -6,6 +6,8 @@ import { useLocation } from 'react-router-dom'
 import { format } from 'date-fns'
 import { DateRange } from 'react-date-range'
 import SearchItem from '../../Components/SearchItem/SearchItem'
+import { baseUrl } from '../../utils'
+import useFetch from '../../hooks/useFetch'
 
 const List = () => {
 
@@ -14,6 +16,9 @@ const List = () => {
    const [date,setDate] = useState(location.state?.date)
    const [openDate,setOpenDate]   = useState(false)
    const [options,setOptions] = useState(location.state?.options)
+
+   const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels?city=${destination}`)
+
    
 
   return ( 
@@ -69,15 +74,13 @@ const List = () => {
              </div>
              
              <div className="listResult">
-                    <SearchItem/>
-                    <SearchItem/>
-                    <SearchItem/>
-                    <SearchItem/>
-                    <SearchItem/>
-                    <SearchItem/>
-                    <SearchItem/>
-                    <SearchItem/>
-
+                 {loading ? (
+                    'Loading'
+                 ) : (
+                    data?.map((item) => (
+                       <SearchItem item={item} key={item._id}/>
+                    ))
+                 )}  
              </div>
           </div>
        </div>

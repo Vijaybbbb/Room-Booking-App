@@ -3,17 +3,17 @@ import './SearchItem.css'
 import room from '../../assets/room.webp'
 import { useNavigate } from 'react-router-dom'
 
-const SearchItem = () => {
+const SearchItem = ({item}) => {
   const navigate = useNavigate()
   return (
     <div className='searchItem'>
        <img src={room} alt="" className="siImg" />
        <div className="siDesc">
-          <h1 className="siTitle">Tower Street Appartments</h1>
-          <span className="siDistance">500m from center</span>
+          <h1 className="siTitle">{item.name}</h1>
+          <span className="siDistance">{item.distance} from center</span>
           <span className="siTaxiOp">Free airport taxi</span>
           <span className="siSubtitle">
-            Studio Apartments with air conditioning
+            {item.description}
           </span>
           <span className="siFeatures">
             Entire studio 1 bathroom 21m 1 full bed
@@ -25,13 +25,13 @@ const SearchItem = () => {
        </div>
        <div className="siDetails">
         <div className="siRating">
-          <span>Excellent</span>
-          <button>8.9</button>
+          <span>{item.rating > 4.4 ? 'Excellent' : "Good"}</span>
+          <button>{item.rating}</button>
         </div>
         <div className="siDetailTexts">
-          <span className="siPrice">$123</span>
+          <span className="siPrice"> Starting from ${item.cheapestPrice}</span>
           <span className="siTaxOp">Includes taxes and fees</span>
-          <button className='siCheckButton' onClick={()=>{navigate('/hotels/1')}}>See Avialbility</button>
+          <button className='siCheckButton' onClick={()=>{navigate(`/hotels/${item._id}`)}}>See Avialbility</button>
         </div>
        </div>
       

@@ -86,7 +86,7 @@ const handleMove=(direction)=>{
                   <div className="hotelImages">
                     {
                       photos.map((photo,index)=> (
-                        <div className="hotelImagWrapper">
+                        <div className="hotelImagWrapper" key={index}>
                           <img onClick={()=>{handleOpen(index)}} src={photo.src} alt="" className="hotelImg" />
                         </div>
                       ))
