@@ -20,7 +20,7 @@ const Featured = () => {
       ):(
       <div className="featured">
         {images && images.map((img,index)=>
-       <div className="featuredItem">
+       <div className="featuredItem" key={index}>
               <img src={img} alt="" className="featuredImg" />
               <div className="featuredTitles">
                 <h1 style={{position:'relative',marginBottom:'2px'}}>{places[index]}</h1>
