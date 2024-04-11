@@ -39,6 +39,8 @@ const Header = ({type}) => {
     navigate('/hotels',{state:{destination,date,options}})
   }
 
+    
+
   return (
     <div className='header'>
        <div className={type == 'list' ? 'headerContainer listMode' : 'headerContainer'}>
