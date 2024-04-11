@@ -13,7 +13,7 @@ const SearchItem = ({item}) => {
           <span className="siDistance">{item.distance} from center</span>
           <span className="siTaxiOp">Free airport taxi</span>
           <span className="siSubtitle">
-            {item.description}
+            {item.description} in {item.city}
           </span>
           <span className="siFeatures">
             Entire studio 1 bathroom 21m 1 full bed

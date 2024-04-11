@@ -26,7 +26,7 @@ const List = () => {
 
    const handleClick = async() =>{
       refetchData()
-   }
+   } 
    
 
   return ( 

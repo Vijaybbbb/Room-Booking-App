@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './Hotels.css'
 import Navbar from '../../Components/Navbar/Navbar'
 import Header from '../../Components/Header/Header'
@@ -10,6 +10,7 @@ import Footer from '../../Components/Footer/Footer'
 import useFetch from '../../hooks/useFetch'
 import { baseUrl } from '../../utils'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { SearchContext } from '../../context/SearchContext'
 
 
 
@@ -24,11 +25,14 @@ const [slideNumber,setSlideNumber] = useState(0)
 const [open,setOpen] = useState(false)
 
 const {data,loading,error,refetchData} =useFetch(`${baseUrl}/hotels/${id}`)
-console.log(data);
+
 const handleOpen  = (index) =>{
   setSlideNumber(index)
   setOpen(true)
 }
+
+const {date}  = useContext(SearchContext)
+console.log(date);
 
 const handleMove=(direction)=>{
     let newSlideNumber;
