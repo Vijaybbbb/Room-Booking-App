@@ -34,7 +34,6 @@ const Header = ({type}) => {
           ...prev,
           [name] : operation === 'i' ? options[name] + 1 : options[name] - 1,
         }})
-        console.log(options);
   }
 
   const handleSearch = () =>{
