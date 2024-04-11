@@ -25,7 +25,7 @@ const List = () => {
    const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`)
 
    const handleClick = async() =>{
-
+      refetchData()
    }
    
 
