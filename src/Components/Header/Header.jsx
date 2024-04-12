@@ -26,7 +26,7 @@ const Header = ({type}) => {
   const [options,setOptions] = useState({
     adults:0,
     children:0,
-    room:0
+    room:1
   })
   
   const handleOption = (name,operation)=>{

@@ -31,8 +31,17 @@ const handleOpen  = (index) =>{
   setOpen(true)
 }
 
-const {date}  = useContext(SearchContext)
-console.log(date);
+const {date,options}  = useContext(SearchContext)
+console.log(options);
+
+const MIILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+
+function dayDiffrence(date1,date2){
+ const timeDiff  = Math.abs(date2?.getTime() - date1?.getTime() )
+ const diffDays = Math.ceil(timeDiff / MIILLISECONDS_PER_DAY)
+ return diffDays;
+}
+const days  = dayDiffrence(date[0]?.endDate,date[0]?.startDate);
 
 const handleMove=(direction)=>{
     let newSlideNumber;
@@ -115,12 +124,12 @@ const handleMove=(direction)=>{
               </p>
                     </div>
                 <div className="hotelsDetailsPrice">
-                    <h1>Perfect for a  9-night Stay</h1>
+                    <h1>Perfect for a  {days}-night Stay</h1>
                     <span>
                       Located in the heart of koaroe , this propty has an excelletn location score  of 9.7
                     </span>
                     <h2>
-                      <b>$945</b> (9 nights)
+                      <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
                     </h2>
                     <button>Reserve or Book Now</button>
 
