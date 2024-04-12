@@ -9,7 +9,7 @@ import MailList from '../../Components/MailList/MailList'
 import Footer from '../../Components/Footer/Footer'
 import useFetch from '../../hooks/useFetch'
 import { baseUrl } from '../../utils'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext'
 
 
