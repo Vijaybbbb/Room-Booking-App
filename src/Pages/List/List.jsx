@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import Header from '../../Components/Header/Header'
 import './List.css'
@@ -8,18 +8,30 @@ import { DateRange } from 'react-date-range'
 import SearchItem from '../../Components/SearchItem/SearchItem'
 import { baseUrl } from '../../utils'
 import useFetch from '../../hooks/useFetch'
+import  axios  from 'axios'
+import { useSelector } from 'react-redux'
 
 const List = () => {
-
+   const userDetails = useSelector(state => state.userDetails)
    const location = useLocation()
    const [destination,setDestination] = useState(location.state?.destination)
    const [date,setDate] = useState(location.state?.date)
    const [openDate,setOpenDate]   = useState(false)
    const [options,setOptions] = useState(location.state?.options)
+   const [access,setAccess]  = useState(false)
 
    const [min,setMin]   = useState(undefined)
    const [max,setMax]   = useState(undefined)
 
+   useEffect(()=>{
+      fetchHome()
+    },[])
+  
+    async function fetchHome(){
+      await axios.get(`http://localhost:3000?userId=${userDetails?.userId}`,{withCredentials:true}).then((res)=>{
+          setAccess(true)
+      }).catch(err=>setError(err))
+    }
 
 
    const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`)
@@ -31,7 +43,7 @@ const List = () => {
 
   return ( 
     <div>
-       <Navbar/>
+       <Navbar access={access}/>
        <Header type='list'/>
        <div className="listContainer">
           <div className="listWrapper">

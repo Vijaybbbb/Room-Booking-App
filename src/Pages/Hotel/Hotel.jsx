@@ -26,16 +26,15 @@ const id = location.pathname.split('/')[2];
 
 const [slideNumber,setSlideNumber] = useState(0)
 const [open,setOpen] = useState(false)
+const [openModel,setOpenModel] = useState(false) 
+
+
 const navigate = useNavigate()
-
-
 const {data,loading,error,refetchData} =useFetch(`${baseUrl}/hotels/${id}`)
-
 const handleOpen  = (index) =>{
   setSlideNumber(index)
   setOpen(true)
 }
-
 const {date,options}  = useContext(SearchContext)
 console.log(options);
 
@@ -83,7 +82,7 @@ const handleMove=(direction)=>{
 
   const  handleReserve=()=>{
     if(userDetails.userId){
-      navigate('/')
+      setOpenModel(true)
     }
     else{
       navigate('/login')
