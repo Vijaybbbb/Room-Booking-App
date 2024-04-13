@@ -10,12 +10,14 @@ import { SearchContextProvider } from './context/SearchContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+     <SearchContextProvider>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <SearchContextProvider>
+       
            <App />
-        </SearchContextProvider>
+        
       </PersistGate>
     </Provider>
+    </SearchContextProvider>
   </React.StrictMode>,
 )

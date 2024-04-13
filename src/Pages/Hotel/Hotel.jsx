@@ -11,18 +11,23 @@ import useFetch from '../../hooks/useFetch'
 import { baseUrl } from '../../utils'
 import { useLocation } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 
 const Hotel = () => {
 
 const location  = useLocation()
-
+const userDetails = useSelector(state => state.userDetails)
+console.log(userDetails);
 // takinn id from url
 const id = location.pathname.split('/')[2];
 
 const [slideNumber,setSlideNumber] = useState(0)
 const [open,setOpen] = useState(false)
+const navigate = useNavigate()
+
 
 const {data,loading,error,refetchData} =useFetch(`${baseUrl}/hotels/${id}`)
 
@@ -76,6 +81,14 @@ const handleMove=(direction)=>{
     },
   ]
 
+  const  handleReserve=()=>{
+    if(userDetails.userId){
+      navigate('/')
+    }
+    else{
+      navigate('/login')
+    }
+  }
 
   return (
     <div>
@@ -95,7 +108,7 @@ const handleMove=(direction)=>{
           </div>}
 
             <div className="hotelWrapper">
-              <button className="bookNow">Reserve or Book Now </button>
+              <button className="bookNow" onClick={handleReserve}>Reserve or Book Now </button>
                   <h1 className='hotelTitle'>{data.name}</h1>
                   <div className="hotelAddress">
                     <FontAwesomeIcon icon={faLocationDot}/>
@@ -131,7 +144,7 @@ const handleMove=(direction)=>{
                     <h2>
                       <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
                     </h2>
-                    <button>Reserve or Book Now</button>
+                    <button  onClick={handleReserve}>Reserve or Book Now</button>
 
                 </div>
 
