@@ -13,6 +13,7 @@ import { useLocation } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import Reserve from '../../Components/Reserve/Reserve'
 
 
 
@@ -30,7 +31,7 @@ const [openModel,setOpenModel] = useState(false)
 
 
 const navigate = useNavigate()
-const {data,loading,error,refetchData} =useFetch(`${baseUrl}/hotels/${id}`)
+const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels/${id}`)
 const handleOpen  = (index) =>{
   setSlideNumber(index)
   setOpen(true)
@@ -149,7 +150,7 @@ const handleMove=(direction)=>{
 
                 
                   </div>
-                 
+                 {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
             </div>
             
       </div> 
