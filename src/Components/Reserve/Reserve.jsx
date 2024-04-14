@@ -3,11 +3,11 @@ import './Reserve.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import useFetch from '../../hooks/useFetch.js'
-
+import {baseUrl} from '../../utils.js'
 
 const Reserve = ({setOpen,hotelId}) => {
 
- const {data,loading,error} = useFetch(`http://localhost:3000/hotels/room/${hotelId}`)
+ const {data,loading,error} = useFetch(`${baseUrl}/hotels/room/${hotelId}`)
 
 
   return (
