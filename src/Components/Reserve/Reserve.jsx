@@ -5,6 +5,7 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import useFetch from '../../hooks/useFetch.js';
 import { baseUrl } from '../../utils.js';
 import {SearchContext}  from '../../context/SearchContext.jsx'
+import axios from 'axios';
 
 const Reserve = ({ setOpen, hotelId }) => {
   const { data, loading, error } = useFetch(`${baseUrl}/hotels/room/${hotelId}`);
@@ -21,17 +22,22 @@ const getDatesRange = (startDate,endDate) =>{
   const date  = new Date(start.getTime())
   let list = []
   while(date <= end){
+    console.log(date);
     list.push(new Date(date).getTime())
     date.setDate(date.getDate()+1)
   }
   return list
 }
 const allDates  = getDatesRange(date[0].startDate,date[0].endDate);
-
+console.log(allDates);
 const isAvailable = (roomNumber) =>{
-  const isFound  = roomNumber.unavailableDates.some(dates => (
-    allDates.includes(new Date(date).getTime())
-  ))
+  const isFound  = roomNumber.unavailableDates.some(dates => {
+    
+    console.log(dates)
+     return allDates.includes(new Date(dates).getTime());
+   
+})
+  // console.log(isFound);
   return !isFound
 }
 
@@ -40,12 +46,19 @@ const isAvailable = (roomNumber) =>{
     const checked = event.target.checked
     const value = event.target.value
     setSelectedRooms(checked ? [...selectedRooms,value]  :
-       selectedRooms.filter((item)=>item !== value))
+       selectedRooms.filter((item)=>item !== value)) 
   };
 
   //handle button click
-  const handleClick =  () =>{
-
+  const handleClick = async () =>{
+      try {
+        await Promise.all(selectedRooms.map(roomId=>{
+          const res = axios.put(`${baseUrl}/rooms/availability/${roomId}`,{dates:allDates})
+          
+        }))
+      } catch (error) {
+        console.log(error);
+      }
   }
 
   return (
@@ -61,7 +74,7 @@ const isAvailable = (roomNumber) =>{
               <div className="rMax">Max People : {item.maxPeople}</div>
               <div className="rPrice">{item.price}</div>
             </div>
-            <div className="room-list">
+            <div className="rSelectRooms">
               {item.roomNumbers.map((roomNumber) => (
                 <div className="room" key={roomNumber._id}>
                   <label htmlFor="">{roomNumber.number}</label>

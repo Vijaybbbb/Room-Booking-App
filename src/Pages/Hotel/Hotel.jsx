@@ -21,7 +21,7 @@ const Hotel = () => {
 
 const location  = useLocation()
 const userDetails = useSelector(state => state.userDetails)
-console.log(userDetails);
+
 // takinn id from url
 const id = location.pathname.split('/')[2];
 
@@ -37,7 +37,7 @@ const handleOpen  = (index) =>{
   setOpen(true)
 }
 const {date,options}  = useContext(SearchContext)
-console.log(options);
+
 
 const MIILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 
