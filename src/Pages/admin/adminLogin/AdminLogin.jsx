@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import '../../Login/Login.css'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { tokenRequest } from '../../token'
 
 const AdminLogin = () => {
 
@@ -15,11 +16,20 @@ const AdminLogin = () => {
     }) 
 
 
-    function handleLogin(){
-
+    async function handleLogin(e){
+       e.preventDefault(); // Prevent default form submission
+       await tokenRequest.post('/admin/login',adminDetails,{withCredentials:true}).then((response) => {
+           setSuccessMessage(response.data.message)
+          // dispatch(storeUser(response.data._id))
+           navigate('/adminHome')
+       }).catch(err => setErrorMessage(err.response.data.message))
     }
-    function getValue(){
-       
+
+    function getValue(e){
+       setAdminDetails({
+              ...adminDetails,
+              [e.target.name]: e.target.value
+          })
     }
 
 
