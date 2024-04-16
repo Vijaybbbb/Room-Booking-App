@@ -488,4 +488,24 @@ body {
      .admindashboard ::-webkit-scrollbar-thumb:hover {
        background: #555;
      }
+
+     .admindashboard .coloumn{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+     }
+
+     .admindashboard .columnContainer{
+      display: flex;
+      gap: 50px;
+     }
      
+     .admindashboard .columnContainer{
+         margin-top: 40px;
+         margin-left: 140px;
+     }
+
+     .admindashboard .card{
+      width: 130px;
+      height: 150px;
+     }
