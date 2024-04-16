@@ -6,6 +6,7 @@ import useFetch from '../../hooks/useFetch.js';
 import { baseUrl } from '../../utils.js';
 import {SearchContext}  from '../../context/SearchContext.jsx'
 import axios from 'axios';
+import { tr } from 'date-fns/locale';
 
 const Reserve = ({ setOpen, hotelId }) => {
   const { data, loading, error } = useFetch(`${baseUrl}/hotels/room/${hotelId}`);
@@ -22,23 +23,21 @@ const getDatesRange = (startDate,endDate) =>{
   const date  = new Date(start.getTime())
   let list = []
   while(date <= end){
-    console.log(date);
+   
     list.push(new Date(date).getTime())
     date.setDate(date.getDate()+1)
   }
   return list
 }
 const allDates  = getDatesRange(date[0].startDate,date[0].endDate);
-console.log(allDates);
+
+//checking room availability
 const isAvailable = (roomNumber) =>{
-  const isFound  = roomNumber.unavailableDates.some(dates => {
-    
-    console.log(dates)
-     return allDates.includes(new Date(dates).getTime());
-   
+  const isFound  = roomNumber.unavailableDates.some((item,index) => {
+    return allDates.includes(item);
+
 })
-  // console.log(isFound);
-  return !isFound
+  return isFound
 }
 
 //handle rooms selecting
@@ -82,7 +81,7 @@ const isAvailable = (roomNumber) =>{
                    type="checkbox"
                     value={roomNumber._id}
                      onChange={handleSelect}
-                     disabled={!isAvailable(roomNumber)}
+                     disabled={isAvailable(roomNumber)}
                      />
                 </div>
               ))}
