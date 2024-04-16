@@ -10,6 +10,8 @@ import Otp from './Pages/Otp/Otp'
 import PasswordReset from './Pages/ForgetPassword/PasswordReset'
 import EnterEmail from './Pages/ForgetPassword/EnterEmail'
 import ResetOtpPage from './Pages/ForgetPassword/ResetOtpPage'
+import AdminLogin from './Pages/admin/adminLogin/AdminLogin'
+import AdminHome from './Pages/admin/adminHome/AdminHome'
 
 
 function App() {
@@ -48,8 +50,16 @@ function App() {
       element:<EnterEmail/>
     },
     {
-      path:'resetWithOtp',
+      path:'/resetWithOtp',
       element:<ResetOtpPage/>
+    },
+    {
+      path:"/adminLogin",
+      element:<AdminLogin/>
+    },
+    {
+      path:"/adminHome",
+      element:<AdminHome/>
     }
   ])
 
