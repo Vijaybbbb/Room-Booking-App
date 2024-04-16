@@ -3,6 +3,7 @@ import '../../Login/Login.css'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { tokenRequest } from '../../token'
+import {storeAdmin} from '../../../Redux/adminLoginSlice'
 
 const AdminLogin = () => {
 
@@ -20,9 +21,9 @@ const AdminLogin = () => {
        e.preventDefault(); // Prevent default form submission
        await tokenRequest.post('/admin/login',adminDetails,{withCredentials:true}).then((response) => {
            setSuccessMessage(response.data.message)
-          // dispatch(storeUser(response.data._id))
+           dispatch(storeAdmin(response.data._id))
            navigate('/adminHome')
-       }).catch(err => setErrorMessage(err.response.data.message))
+       }).catch()
     }
 
     function getValue(e){
