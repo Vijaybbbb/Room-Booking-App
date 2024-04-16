@@ -4,6 +4,12 @@ import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './AdminHome.css'
+import UserManagement from '../AdminComponents/UserManagement'
+import HotelManagement from '../AdminComponents/HotelManagement'
+import RoomManagement from '../AdminComponents/RoomManagement'
+import BookingsManagement from '../AdminComponents/BookingsManagement'
+
+
 
 const AdminHome = () => {
 
@@ -11,6 +17,9 @@ const AdminHome = () => {
   const [access,setAccess]  = useState(false)
   const [error,setError]  = useState()
   const navigate = useNavigate()
+  const [show,setShow]  = useState(false)
+  const [openWindow,setOpenWindow]  = useState()
+
 
   useEffect(()=>{
     fetchAdminHome()
@@ -24,6 +33,29 @@ const AdminHome = () => {
         setAccess(false)
     })
   }
+
+  function compClick(e,Name){
+   e.preventDefault();
+    setShow(true)
+    setOpenWindow(Name)
+
+  }
+  const dynamicComponent = () => {
+    switch (openWindow) {
+      case 'UserManagement':
+        return <UserManagement showUser={true} />;
+      case 'HotelManagement':
+        return <HotelManagement />;
+      case 'RoomManagement':
+        return <RoomManagement />;
+      case 'BookingsManagement':
+        return <BookingsManagement />;
+      default:
+        return null;
+    }
+  };
+
+
 
   return (
     <div>
@@ -104,195 +136,39 @@ const AdminHome = () => {
           </div>
         </div>
         {/* Content of the right-body */}
-         <div className='columnContainer1'>
-                  <main>
-                    <div className="columnContainer">
-                      <div className="col s6">
-                        <div style={{ padding: '35px' }} align="center" className="card">
-                          <div className="row">
-                            <div className="left card-title">
-                              <b>User Management</b>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <a href="#!">
-                              <div style={{ padding: '30px' }} className="grey lighten-3 col s5 waves-effect">
-                                <i className="indigo-text text-lighten-1 large material-icons">person</i>
-                                <span className="indigo-text text-lighten-1"><h5>Seller</h5></span>
-                              </div>
-                            </a>
-                            
-                            {/* Repeat the rest of the cards here */}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="col s6">
-                        <div style={{ padding: '35px' }} align="center" className="card">
-                          <div className="row">
-                            <div className="left card-title">
-                              <b>Hotel Management</b>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <a href="#!">
-                              <div style={{ padding: '30px' }} className="grey lighten-3 col s5 waves-effect">
-                                <i className="indigo-text text-lighten-1 large material-icons">person</i>
-                                <span className="indigo-text text-lighten-1"><h5>Seller</h5></span>
-                              </div>
-                            </a>
-                            
-                            {/* Repeat the rest of the cards here */}
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div className="col s6">
-                        <div style={{ padding: '35px' }} align="center" className="card">
-                          <div className="row">
-                            <div className="left card-title">
-                              <b>Room Management</b>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <a href="#!">
-                              <div style={{ padding: '30px' }} className="grey lighten-3 col s5 waves-effect">
-                                <i className="indigo-text text-lighten-1 large material-icons">person</i>
-                                <span className="indigo-text text-lighten-1"><h5>Seller</h5></span>
-                              </div>
-                            </a>
-                            
-                            {/* Repeat the rest of the cards here */}
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div className="col s6">
-                        <div style={{ padding: '35px' }} align="center" className="card">
-                          <div className="row">
-                            <div className="left card-title">
-                              <b>Bookings </b>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <a href="#!">
-                              <div style={{ padding: '30px' }} className="grey lighten-3 col s5 waves-effect">
-                                <i className="indigo-text text-lighten-1 large material-icons">person</i>
-                                <span className="indigo-text text-lighten-1"><h5>Seller</h5></span>
-                              </div>
-                            </a>
-                            
-                            {/* Repeat the rest of the cards here */}
-                          </div>
-                        </div>
-                      </div>
-
+                {
+                  show ? (
+                    <div>
+                    {dynamicComponent()}
                     </div>
-
-                    <div className="columnContainer">
-                      <div className="col s6">
-                        <div style={{ padding: '35px' }} align="center" className="card">
-                          <div className="row">
-                            <div className="left card-title">
-                              <b>User Management</b>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <a href="#!">
-                              <div style={{ padding: '30px' }} className="grey lighten-3 col s5 waves-effect">
-                                <i className="indigo-text text-lighten-1 large material-icons">person</i>
-                                <span className="indigo-text text-lighten-1"><h5>Seller</h5></span>
-                              </div>
-                            </a>
-                            
-                            {/* Repeat the rest of the cards here */}
-                          </div>
+                  ) : (
+                    <div className='columnContainer1'>
+                      <main>
+                        <div className="columnContainer" >
+                          <UserManagement compClick={compClick}/>
+                          <HotelManagement />
+                          <RoomManagement />
+                          <BookingsManagement />
                         </div>
-                      </div>
-
-                      <div className="col s6">
-                        <div style={{ padding: '35px' }} align="center" className="card">
-                          <div className="row">
-                            <div className="left card-title">
-                              <b>Hotel Management</b>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <a href="#!">
-                              <div style={{ padding: '30px' }} className="grey lighten-3 col s5 waves-effect">
-                                <i className="indigo-text text-lighten-1 large material-icons">person</i>
-                                <span className="indigo-text text-lighten-1"><h5>Seller</h5></span>
-                              </div>
-                            </a>
-                            
-                            {/* Repeat the rest of the cards here */}
-                          </div>
+                        <div className="fixed-action-btn click-to-toggle" style={{ bottom: '45px', right: '24px' }}>
+                          <ul>
+                            {/* Repeat the rest of the list items here */}
+                          </ul>
                         </div>
-                      </div>
-
-
-                      <div className="col s6">
-                        <div style={{ padding: '35px' }} align="center" className="card">
-                          <div className="row">
-                            <div className="left card-title">
-                              <b>Room Management</b>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <a href="#!">
-                              <div style={{ padding: '30px' }} className="grey lighten-3 col s5 waves-effect">
-                                <i className="indigo-text text-lighten-1 large material-icons">person</i>
-                                <span className="indigo-text text-lighten-1"><h5>Seller</h5></span>
-                              </div>
-                            </a>
-                            
-                            {/* Repeat the rest of the cards here */}
-                          </div>
-                        </div>
-                      </div>
-
-
-                      <div className="col s6">
-                        <div style={{ padding: '35px' }} align="center" className="card">
-                          <div className="row">
-                            <div className="left card-title">
-                              <b>Bookings </b>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <a href="#!">
-                              <div style={{ padding: '30px' }} className="grey lighten-3 col s5 waves-effect">
-                                <i className="indigo-text text-lighten-1 large material-icons">person</i>
-                                <span className="indigo-text text-lighten-1"><h5>Seller</h5></span>
-                              </div>
-                            </a>
-                            
-                            {/* Repeat the rest of the cards here */}
-                          </div>
-                        </div>
-                      </div>
-
+                      </main>
                     </div>
+                  )
+                }
 
 
-                    <div className="fixed-action-btn click-to-toggle" style={{ bottom: '45px', right: '24px' }}>
-                      <ul>
-                        {/* Repeat the rest of the list items here */}
-                      </ul>
-                    </div>
-                  </main>
-                </div>
-
+              </div> 
               </div>
-              </div>
-              </div>
-          ):(
+          </div>
+            ):(
             <div><Link to={'/adminLogin'}>Authentication Failed PLease Login Again</Link></div>
-          )
-        }
-    </div>
+            )
+            }
+   </div>
   )
 }
 
