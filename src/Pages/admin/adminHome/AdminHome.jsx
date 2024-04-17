@@ -43,13 +43,13 @@ const AdminHome = () => {
   const dynamicComponent = () => {
     switch (openWindow) {
       case 'UserManagement':
-        return <UserManagement showUser={true} />;
+        return <UserManagement showUsers={true} />;
       case 'HotelManagement':
-        return <HotelManagement />;
+        return <HotelManagement showHotels={true}/>;
       case 'RoomManagement':
-        return <RoomManagement />;
+        return <RoomManagement showRooms={true}/>;
       case 'BookingsManagement':
-        return <BookingsManagement />;
+        return <BookingsManagement showBookings={true}/>;
       default:
         return null;
     }
@@ -113,7 +113,7 @@ const AdminHome = () => {
             </div>
             <div className="middle-buttons">
               <div className="buttons">
-                <button className="new button"> 
+                <button className="new button" onClick={()=>{setShow(false)}}> 
                   <img src="https://i.ibb.co/X4j3TZR/reload.png" alt="Reload" />
                 </button>
                 <button className="new button"> 
@@ -146,9 +146,9 @@ const AdminHome = () => {
                       <main>
                         <div className="columnContainer" >
                           <UserManagement compClick={compClick}/>
-                          <HotelManagement />
-                          <RoomManagement />
-                          <BookingsManagement />
+                          <HotelManagement  compClick={compClick}/>
+                          <RoomManagement  compClick={compClick}/>
+                          <BookingsManagement  compClick={compClick}/>
                         </div>
                         <div className="fixed-action-btn click-to-toggle" style={{ bottom: '45px', right: '24px' }}>
                           <ul>

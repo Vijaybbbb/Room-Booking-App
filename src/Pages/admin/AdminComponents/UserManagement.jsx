@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import '../adminHome/AdminHome.css'
 
-const UserManagement = ({compClick,showUser}) => {
+const UserManagement = ({compClick,showUsers}) => {
 
   const [openWindow,setOpenWindow] = useState(false)
-
-console.log(showUser);
  
-
   return (
       <div>
         {
-          showUser ? (
+          showUsers ? (
             <div>user information</div>
           ):(
             <div className="col s6" onClick={()=>{compClick(event,'UserManagement')}}>
