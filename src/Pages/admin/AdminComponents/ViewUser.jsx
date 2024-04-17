@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useFetch from '../../../hooks/useFetch'
 import { baseUrl } from '../../../utils'
 import '../AdminComponents/css/viewProfilePage.css'
 
 const ViewUser = ({userId,handleGoBack}) => {
 
-const {data,loading,error,refetchData} = useFetch(`${baseUrl}/user/singleUser?id=${userId}`)
+       const {data,loading,error,refetchData} = useFetch(`${baseUrl}/user/singleUser?id=${userId}`)
+       const [showEditBox,setShowEditBox] = useState(false)
  
+       function handleEdit(){
+              setShowEditBox(!showEditBox)
+       }
+
   return (
     <div className='userProfilePage'>
       <button onClick={handleGoBack}>back</button>
@@ -16,21 +21,17 @@ const {data,loading,error,refetchData} = useFetch(`${baseUrl}/user/singleUser?id
         <h2>{data.username}</h2>
         <small>{data.email}</small>
         <div className="bar">
-          <button className="btn">
+          <button className="btn" onClick={()=>{handleEdit()}}>
             <i className="far fa-smile"></i>
-            <span>Update</span>
-          </button>
-          <button className="btn">
-            <i className="fas fa-pen"></i>
-            <span>Block</span>
+            <span>Edit</span>
           </button>
           <button className="btn btn-more">
             <i className="fas fa-ellipsis-h"></i>
             <span>Delete</span>
-            
           </button>
         </div>
       </div>
+
     </div>
     </div>
   )
