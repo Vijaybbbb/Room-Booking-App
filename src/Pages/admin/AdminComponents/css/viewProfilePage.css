@@ -1,0 +1,170 @@
+.userProfilePage * {
+       margin-top: 0;
+       padding: 0;
+       box-sizing: border-box;
+     }
+     
+     .userProfilePage body {
+       font-family: "Ubuntu", sans-serif;
+       background-color: #ecf0fc;
+       height: 100vh;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+     }
+     
+     .userProfilePage .card {
+       width: 35rem;
+    background-color: #fff;
+    border-radius: 24px;
+    height: 34rem;
+    margin-left: 300px;
+    margin-top: 50px;
+
+     }
+     
+     .userProfilePage .card .container {
+       width: 80%;
+       margin: 0 auto;
+       padding: 1rem 0;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+     }
+     
+     .userProfilePage .container img {
+       width: 160px;
+       height: 160px;
+       border-radius: 50%;
+       border: 10px solid #ecf0fc;
+     }
+     
+     .userProfilePage .container h2 {
+       font-size: 32px;
+       font-weight: 700;
+       margin: 1rem 0 0.5rem 0;
+     }
+     
+     .userProfilePage .container small {
+       color: #120c35;
+       font-size: 18px;
+       font-weight: 300;
+       margin-bottom: 2rem;
+     }
+     
+     .userProfilePage .container .bar {
+       width: 100%;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+     }
+     
+     .userProfilePage .bar .btn {
+       width: 6rem;
+       cursor: pointer;
+       background-color: #fff;
+       padding: 10px 0;
+       border-radius: 16px;
+       border: 1px solid #c2cdef;
+       color: #120c35;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+     }
+     
+     .userProfilePage .btn i {
+       font-size: 20px;
+       margin-bottom: 0.5rem;
+     }
+     
+     .userProfilePage .more {
+       display: none;
+       background-color: #120c35;
+       width: 15rem;
+       border-radius: 24px;
+       padding: 2rem 1rem;
+       position: absolute;
+       bottom: 0%;
+       right: -275%;
+     }
+     
+     .userProfilePage .more.active {
+       display: block;
+       transition: 0.4s ease;
+     }
+     
+     .userProfilePage .more li {
+       width: 90%;
+       height: 2rem;
+       background-color: transparent;
+       list-style-type: none;
+     }
+     
+     .userProfilePage .more li a {
+       display: block;
+       height: 100%;
+       color: #fff;
+       font-size: 18px;
+       line-height: 2rem;
+       padding-left: 0.5rem;
+       text-decoration: none;
+       transition: 0.4s ease;
+       border-radius: 4px;
+     }
+     
+     .userProfilePage .more li a:hover {
+       background-color: #2d2559;
+     }
+     
+     .userProfilePage .btn-more {
+       position: relative;
+     }
+     
+     @media screen and (max-width: 860px) {
+       .userProfilePage .more {
+         right: 0%;
+         bottom: 125%;
+       }
+     }
+     
+     @media screen and (max-width: 425px) {
+       .userProfilePage .card {
+         width: 15rem;
+       }
+     
+       .userProfilePage .container img {
+         width: 100px;
+         height: 100px;
+       }
+     
+       .userProfilePage .container h2 {
+         font-size: 20px;
+       }
+     
+       .userProfilePage .container small {
+         font-size: 14px;
+       }
+     
+       .userProfilePage .bar .btn {
+         width: 3.7rem;
+         font-size: 10px;
+       }
+     
+       .userProfilePage .more {
+         width: 10rem;
+         padding: 1rem 0.5rem;
+       }
+     
+       .userProfilePage .more li {
+         height: 1.5rem;
+       }
+     
+       .userProfilePage .more li a {
+         line-height: 1.5rem;
+         font-size: 14px;
+       }
+     }
+     
+

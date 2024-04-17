@@ -32,18 +32,25 @@ const UserManagement = ({compClick,showUsers}) => {
   }
   
   async function handleViewUser(userId){
+    console.log('clicked');
     setViewUser(true)
     setUserId(userId)
   }
-  
+
+
+  function handleGoBack(){
+      setViewUser(false)
+  }
   
   return (
     <div>
-      {
+      {viewUser ? (
+              <ViewUser userId={userId} handleGoBack={handleGoBack}/>
+          ):
         showUsers ? (
           <div className='allUsersTable'>
             <div className="table">
-              <div className="table__body">
+              <div className="table__body" >
                 <TableRow>
                   <TableCell>User</TableCell>
                   <TableCell>Email</TableCell>
@@ -55,8 +62,8 @@ const UserManagement = ({compClick,showUsers}) => {
                 {/* Example of a row */}
                 {
                   data && data.slice((page - 1) * 5, page * 5).map(user=>(
-                    <TableRow>
-                  <TableCell>
+                    <TableRow key={data._id}>
+                    <TableCell>
                     <h3 className="table__crypto-name">{user?.username}</h3>
                   </TableCell>
                   <TableCell><input type="text" value={user?.email} className='detailsshowinput' readOnly /></TableCell>
@@ -97,10 +104,8 @@ const UserManagement = ({compClick,showUsers}) => {
             </div>
           </div>
           ):
-          viewUser?(
-              <ViewUser id={userId}/>
-          )
-          :(
+          
+          (
             <div className="col s6" onClick={()=>{compClick(event,'UserManagement')}}>
        <div style={{ padding: '35px' }} align="center" className="card">
          <div className="row">

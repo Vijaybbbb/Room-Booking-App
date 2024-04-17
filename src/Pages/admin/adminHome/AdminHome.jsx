@@ -27,7 +27,6 @@ const AdminHome = () => {
 
   async function fetchAdminHome(){
     await axios.post(`${baseUrl}/admin/adminHome?userId=${adminDetails?.userId}`,{},{withCredentials:true}).then((res)=>{
-      console.log(res);
       res?.status === 200 ?  setAccess(true) :  setAccess(false)
     }).catch(err=>{
         setAccess(false)
