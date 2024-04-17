@@ -191,6 +191,7 @@ body {
        padding: 8px 30px;
        display: flex;
        flex-direction: column;
+       height: 1200px;
      }
      .admindashboard .right-body {
        flex: 1;
