@@ -67,7 +67,6 @@ const ViewUser = ({userId,handleGoBack}) => {
         </div>
 
       </div>
-
     </div>
     </div>
   )

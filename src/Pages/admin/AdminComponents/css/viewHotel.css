@@ -1,0 +1,182 @@
+.singleHotelPage * {
+       margin-top: 0;
+       padding: 0;
+       box-sizing: border-box;
+     }
+     
+     .singleHotelPage body {
+       font-family: "Ubuntu", sans-serif;
+       background-color: #ecf0fc;
+       height: 100vh;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+     }
+     
+     .singleHotelPage .card {
+       width: 35rem;
+       background-color: #fff;
+       border-radius: 24px;
+       height: 30rem;
+       margin-left: 300px;
+       margin-top: 50px;
+     }
+     
+     .singleHotelPage .card .container {
+       width: 80%;
+       margin: 0 auto;
+       padding: 1rem 0;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+     }
+     
+     .singleHotelPage .container img {
+       width: 160px;
+       height: 160px;
+       border-radius: 50%;
+       border: 10px solid #ecf0fc;
+     }
+     
+     .singleHotelPage .container h2 {
+       font-size: 32px;
+       font-weight: 700;
+       margin: 1rem 0 0.5rem 0;
+     }
+     
+     .singleHotelPage .container small {
+       color: #120c35;
+       font-size: 18px;
+       font-weight: 300;
+       margin-bottom: 2rem;
+     }
+     
+     .singleHotelPage .container .bar {
+       width: 100%;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+     }
+     
+     .singleHotelPage .bar .btn {
+       width: 6rem;
+       cursor: pointer;
+       background-color: #fff;
+       padding: 10px 0;
+       border-radius: 16px;
+       border: 1px solid #c2cdef;
+       color: #ffffff;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+     }
+     
+     .singleHotelPage .btn i {
+       font-size: 20px;
+       margin-bottom: 0.5rem;
+     }
+     
+     .singleHotelPage .more {
+       display: none;
+       background-color: #120c35;
+       width: 15rem;
+       border-radius: 24px;
+       padding: 2rem 1rem;
+       position: absolute;
+       bottom: 0%;
+       right: -275%;
+     }
+     
+     .singleHotelPage .more.active {
+       display: block;
+       transition: 0.4s ease;
+     }
+     
+     .singleHotelPage .more li {
+       width: 90%;
+       height: 2rem;
+       background-color: transparent;
+       list-style-type: none;
+     }
+     
+     .singleHotelPage .more li a {
+       display: block;
+       height: 100%;
+       color: #fff;
+       font-size: 18px;
+       line-height: 2rem;
+       padding-left: 0.5rem;
+       text-decoration: none;
+       transition: 0.4s ease;
+       border-radius: 4px;
+     }
+     
+     .singleHotelPage .more li a:hover {
+       background-color: #2d2559;
+     }
+     
+     .singleHotelPage .btn-more {
+       position: relative;
+     }
+     
+     @media screen and (max-width: 860px) {
+       .singleHotelPage .more {
+         right: 0%;
+         bottom: 125%;
+       }
+     }
+     
+     @media screen and (max-width: 425px) {
+       .singleHotelPage .card {
+         width: 15rem;
+       }
+     
+       .singleHotelPage .container img {
+         width: 100px;
+         height: 100px;
+       }
+     
+       .singleHotelPage .container h2 {
+         font-size: 20px;
+       }
+     
+       .singleHotelPage .container small {
+         font-size: 14px;
+       }
+     
+       .singleHotelPage .bar .btn {
+         width: 3.7rem;
+         font-size: 10px;
+       }
+     
+       .singleHotelPage .more {
+         width: 10rem;
+         padding: 1rem 0.5rem;
+       }
+     
+       .singleHotelPage .more li {
+         height: 1.5rem;
+       }
+     
+       .singleHotelPage .more li a {
+         line-height: 1.5rem;
+         font-size: 14px;
+       }
+     }
+     
+     .singleHotelPage .showEditBox {
+       display: flex;
+       gap: 10px;
+       flex-direction: column;
+       width: 300px;
+       align-items: center;
+       justify-content: center;
+       margin-left: 100px;
+     }
+     
+     .singleHotelPage .btn {
+       background-color: darkolivegreen;
+     }
+     

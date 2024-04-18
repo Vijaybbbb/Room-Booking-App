@@ -1,87 +1,83 @@
-.allUsersTable * {
+.allHotelsTable * {
        margin: 0;
        padding: 0;
        box-sizing: border-box;
      }
      
-     .allUsersTable html {
-      
+     .allHotelsTable html {
        font-family: "Roboto", sans-serif;
      }
      
-     .allUsersTable .table {
+     .allHotelsTable .table {
        max-width: 100%;
        width: 1024px;
        margin: 50px auto;
      }
      
-     .allUsersTable .table__row {
+     .allHotelsTable .table__row {
        display: flex;
        align-items: center;
        background-color: #ecedf1;
        padding: 15px 0;
        transition: 0.2s ease;
        font-size: 14px;
-      
      }
      
-     .allUsersTable .table__row:hover {
+     .allHotelsTable .table__row:hover {
        background-color: #dcdfe3;
      }
      
-     .allUsersTable .table__row:nth-child(odd) {
+     .allHotelsTable .table__row:nth-child(odd) {
        background-color: white;
      }
      
-     .allUsersTable .table__heading {
+     .allHotelsTable .table__heading {
        background-color: white;
        font-weight: bold;
        font-size: 6px;
-       
      }
      
-     .allUsersTable .table__heading:hover {
+     .allHotelsTable .table__heading:hover {
        background-color: transparent !important;
      }
      
-     .allUsersTable .table__cell {
+     .allHotelsTable .table__cell {
        display: flex;
        align-items: center;
      }
      
-     .allUsersTable .table__cell:first-child {
+     .allHotelsTable .table__cell:first-child {
        width: 20%;
        padding-left: 20px;
      }
      
-     .allUsersTable .table__cell:nth-child(2),
-     .allUsersTable .table__cell:nth-child(3),
-     .allUsersTable .table__cell:nth-child(4) {
+     .allHotelsTable .table__cell:nth-child(2),
+     .allHotelsTable .table__cell:nth-child(3),
+     .allHotelsTable .table__cell:nth-child(4) {
        width: calc(50% / 3);
      }
      
-     .allUsersTable .table__cell:nth-child(5) {
+     .allHotelsTable .table__cell:nth-child(5) {
        width: 30%;
        text-align: center;
        justify-content: center;
        padding-right: 20px;
      }
      
-     .allUsersTable .table__crypto-name {
+     .allHotelsTable .table__crypto-name {
        font-weight: bold;
      }
      
-     .allUsersTable .table__crypto-image {
+     .allHotelsTable .table__crypto-image {
        margin-right: 10px;
      }
      
-     .allUsersTable .button {
+     .allHotelsTable .button {
        height: 28px;
        min-width: 100px;
        line-height: 28px;
        border-radius: 100px;
        font-size: 12px;
-       
        border: 0;
        background-color: transparent;
        cursor: pointer;
@@ -90,63 +86,61 @@
        padding: 0 15px;
      }
      
-     .allUsersTable .button--outline {
+     .allHotelsTable .button--outline {
        border: 1px solid #556fe7;
        color: black;
      }
      
-     .allUsersTable .button--outline:hover {
+     .allHotelsTable .button--outline:hover {
        background-color: #556fe7;
        color: white;
      }
      
-     .allUsersTable .button--primary {
+     .allHotelsTable .button--primary {
        color: white;
        background-image: linear-gradient(to right, #4975e6, #8d55e9);
        border: 1px solid transparent;
      }
      
-     .allUsersTable .button--primary:hover {
+     .allHotelsTable .button--primary:hover {
        background-image: linear-gradient(to right, transparent, transparent);
        color: black;
        border: 1px solid #556fe7;
      }
      
-     .allUsersTable  .detailsshowinput{
+     .allHotelsTable .detailsshowinput {
        border: none;
        background-color: transparent;
        outline: none;
      }
-
-
- 
-
-     .allUsersTable  .page-btn {
+     
+     .allHotelsTable .page-btn {
        display: flex;
        justify-content: center;
-       margin-top: 30px; 
+       margin-top: 30px;
        padding-bottom: 20px;
-      }
-      
-      .allUsersTable  .page-btn span {
-        display: inline-block;
-        border: 1px solid linear-gradient(to right, #4975e6, #8d55e9);
-        margin-left: 10px;
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
-        cursor: pointer;
-        justify-content: center;
-      }
-      
-      .allUsersTable  .page-btn span:hover {
-        background: linear-gradient(to right, #4975e6, #8d55e9);
-        color: #ffffff;
-      }
-    
-      .allUsersTable  .pagination_selected{
+     }
+     
+     .allHotelsTable .page-btn span {
+       display: inline-block;
+       border: 1px solid linear-gradient(to right, #4975e6, #8d55e9);
+       margin-left: 10px;
+       width: 40px;
+       height: 40px;
+       text-align: center;
+       line-height: 40px;
+       cursor: pointer;
+       justify-content: center;
+     }
+     
+     .allHotelsTable .page-btn span:hover {
+       background: linear-gradient(to right, #4975e6, #8d55e9);
+       color: #ffffff;
+     }
+     
+     .allHotelsTable .pagination_selected {
        background: linear-gradient(to right, #4975e6, #8d55e9);
        color: #ffffff;
 
-       }
+     }
+     
