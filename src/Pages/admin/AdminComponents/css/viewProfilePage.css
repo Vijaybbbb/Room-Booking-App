@@ -67,7 +67,7 @@
        padding: 10px 0;
        border-radius: 16px;
        border: 1px solid #c2cdef;
-       color: #120c35;
+       color: #ffffff;
        display: flex;
        flex-direction: column;
        align-items: center;
@@ -176,4 +176,8 @@
     align-items: center;
     justify-content: center;
     margin-left: 100px;
+     }
+
+     .userProfilePage .btn{
+        background-color: darkolivegreen;
      }

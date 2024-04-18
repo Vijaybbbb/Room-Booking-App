@@ -32,7 +32,7 @@ const UserManagement = ({compClick,showUsers}) => {
   }
   
   async function handleViewUser(userId){
-    console.log('clicked');
+    console.log(userId);
     setViewUser(true)
     setUserId(userId)
   }
@@ -72,7 +72,7 @@ const UserManagement = ({compClick,showUsers}) => {
                   <TableCell></TableCell>
                   <TableCell>
                     <div className="buttons">
-                      <button className="button button--outline buttons__venta" onClick={()=>{handleViewUser(user._id)}}>View User</button>
+                      <button className="button button--outline buttons__venta" onClick={()=>{handleViewUser(user?._id)}}>View User</button>
                       <button className="button button--primary buttons__comprar">Edit User</button>
                     </div>
                   </TableCell>
