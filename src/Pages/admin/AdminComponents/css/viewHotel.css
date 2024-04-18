@@ -14,11 +14,11 @@
      }
      
      .singleHotelPage .card {
-       width: 35rem;
+       width: 65rem;
        background-color: #fff;
        border-radius: 24px;
        height: 30rem;
-       margin-left: 300px;
+       margin-left: 30px; 
        margin-top: 50px;
      }
      
@@ -180,3 +180,8 @@
        background-color: darkolivegreen;
      }
      
+
+     
+
+
+    
