@@ -4,96 +4,134 @@ import useFetch from '../../../hooks/useFetch'
 import { baseUrl } from '../../../utils'
 
 
+
 const ViewHotel = ({ hotelId, handleGoBack }) => {
-
-       const { data, loading, error, refetchData } = useFetch(`${baseUrl}/user/singleUser?id=${hotelId}`)
+      
+       const { data, loading, error, refetchData } = useFetch(`${baseUrl}/hotels/${hotelId}`)
        const [showEditBox, setShowEditBox] = useState(true)
-       const [userData, setUserData] = useState({
-              username: data.username,
-              email: data.email
-       })
+      
+       console.log(data);
 
+       const [hotelData, setHotelData] = useState({
+              name:null,
+              type:null,
+              city:null,
+              address:null,
+              distance:null,
+              discription:null,
+              cheapestPrice:null
+       });
 
-       const [name, setName] = useState('');
-       const [email, setEmail] = useState('');
-       const [phone, setPhone] = useState('');
-       const [website, setWebsite] = useState('');
-       const [message, setMessage] = useState('');
+       const getValue = (e) =>{
+              setHotelData({
+                     ...hotelData,
+                     [e.target.name]:e.target.value
+              })
+       }
      
        // Function to handle form submission
-       const handleSubmit = (e) => {
+       const handleUpdate = (e) => {
          e.preventDefault();
-         // Process form submission here, e.g., send data to server
-         console.log('Form submitted:', { name, email, phone, website, message });
-         // Optionally, you can reset form fields here
-         // setName('');
-         // setEmail('');
-         // setPhone('');
-         // setWebsite('');
-         // setMessage('');
+
        };
+
+       const handleDelete=(e)=>{
+              e.preventDefault();
+
+       }
+
        return (
               <div>
                      <div className='singleHotelPage'>
                             <button onClick={handleGoBack}>back</button>
                             <div className="container">
-                                   <form id="contact" onSubmit={handleSubmit}>
-                                          <h3>Quick Contact</h3>
-                                          <h4>Contact us today, and get reply within 24 hours!</h4>
+                                   <form id="contact">
+                                          <h3>Hotel information</h3><br />
+                                          <label htmlFor="" style={{marginBottom:'10px'}}>Hotel Name</label>
                                           <fieldset>
                                                  <input
-                                                        placeholder="Your name"
+                                                        name='name'
                                                         type="text"
                                                         tabIndex="1"
                                                         required
                                                         autoFocus
-                                                        value={name}
-                                                        onChange={(e) => setName(e.target.value)}
+                                                       value={data.name}
+                                                        onChange={(e) => getValue(e.target.value)}
                                                  />
                                           </fieldset>
+                                          <label htmlFor="" style={{marginBottom:'10px'}}>Hotel Type</label>
                                           <fieldset>
                                                  <input
-                                                        placeholder="Your Email Address"
+                                                        name='type'
+                                                        type="text"
+                                                        tabIndex="1"
+                                                        required
+                                                        autoFocus
+                                                        value={data.type}
+                                                        onChange={(e) => getValue(e.target.value)}
+                                                 />
+                                          </fieldset>
+                                          <label htmlFor="">City</label>
+                                          <fieldset>
+                                                 <input
+                                                        name='city'
                                                         type="email"
                                                         tabIndex="2"
                                                         required
-                                                        value={email}
-                                                        onChange={(e) => setEmail(e.target.value)}
+                                                        value={data.name}
+                                                        onChange={(e) => getValue(e.target.value)}
                                                  />
                                           </fieldset>
+                                          <label htmlFor="">Address</label>
+
                                           <fieldset>
                                                  <input
-                                                        placeholder="Your Phone Number"
+                                                       name='address'
                                                         type="tel"
                                                         tabIndex="3"
                                                         required
-                                                        value={phone}
-                                                        onChange={(e) => setPhone(e.target.value)}
+                                                        value={data.address}
+                                                        onChange={(e) => getValue(e.target.value)}
                                                  />
                                           </fieldset>
+                                          <label htmlFor="">Distance</label>
                                           <fieldset>
                                                  <input
-                                                        placeholder="Your Web Site starts with http://"
+                                                        name='distance'
                                                         type="url"
                                                         tabIndex="4"
                                                         required
-                                                        value={website}
+                                                        value={data.distance}
+                                                        onChange={(e) => getValue(e.target.value)}
+                                                 />
+                                          </fieldset>
+                                         
+                                          <label htmlFor="">Cheapest Price</label>
+                                          <fieldset>
+                                                 <input
+                                                        name='cheapestPrice'
+                                                        type="url"
+                                                        tabIndex="4"
+                                                        required
+                                                        value={data.cheapestPrice}
                                                         onChange={(e) => setWebsite(e.target.value)}
                                                  />
                                           </fieldset>
+                                          <label htmlFor="">Description</label>
                                           <fieldset>
                                                  <textarea
-                                                        placeholder="Type your Message Here...."
+                                                       name='description'
                                                         tabIndex="5"
                                                         required
-                                                        value={message}
-                                                        onChange={(e) => setMessage(e.target.value)}
+                                                        value={data.description}
+                                                        onChange={(e) => getValue(e.target.value)}
                                                  ></textarea>
                                           </fieldset>
                                           <fieldset>
-                                                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">
+                                                 <button type="" id="contact-submit" data-submit="...Sending" onClick={handleUpdate}>
                                                         Submit
-                                                 </button>
+                                                 </button><br /><br /><br />
+                                                 <button onClick={handleDelete}>Delete</button>
                                           </fieldset>
                                    </form>
                             </div>

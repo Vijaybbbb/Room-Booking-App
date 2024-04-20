@@ -13,7 +13,6 @@ const HotelManagement = ({compClick,showHotels}) => {
   const [page, setPage] = useState(1)
   const [viewHotel,setViewHotel] = useState(false) 
   const [hotelId, setHotelId] = useState() 
-  console.log(data);
 
   const TableRow = ({ children }) => {
     return <div className="table__row">{children}</div>;
@@ -39,7 +38,8 @@ const HotelManagement = ({compClick,showHotels}) => {
   }
 
 
-  function handleViewHotel() {
+  function handleViewHotel(id) {
+    setHotelId(id)
     setViewHotel(true)
   }
 
