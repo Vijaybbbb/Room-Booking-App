@@ -13,6 +13,13 @@ const HotelManagement = ({compClick,showHotels}) => {
   const [page, setPage] = useState(1)
   const [viewHotel,setViewHotel] = useState(false) 
   const [hotelId, setHotelId] = useState() 
+  // const [prevData,setPrevData] = useState(data)
+
+  // useEffect(() => {
+  //   if (data) {
+  //     setPrevData(data);
+  //   }
+  // }, [data]);
 
   const TableRow = ({ children }) => {
     return <div className="table__row">{children}</div>;

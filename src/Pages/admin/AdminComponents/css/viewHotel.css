@@ -315,7 +315,7 @@ last css */
     
 
 
-.singleHotelPage button {
+.singleHotelPage .container button {
   border: 1px solid #556fe7;
   color: black;
   width: 100%;
@@ -323,18 +323,18 @@ last css */
   border-radius: 5px;
 }
 
-.singleHotelPage button:hover {
+.singleHotelPage .container button:hover {
   background-color: #556fe7;
   color: white;
 }
 
-.singleHotelPage button {
+.singleHotelPage .container button {
   color: white;
   background-image: linear-gradient(to right, #4975e6, #8d55e9);
   border: 1px solid transparent;
 }
 
-.singleHotelPage button:hover {
+.singleHotelPage .container button:hover {
   background-image: linear-gradient(to right, transparent, transparent);
   color: black;
   border: 1px solid #556fe7;

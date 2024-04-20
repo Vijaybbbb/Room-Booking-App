@@ -17,7 +17,7 @@ const UserManagement = ({compClick,showUsers}) => {
 
   useEffect(() => {
     if (data) {
-        setPreData(data);
+      setPrevData(data);
     }
   }, [data]);
 
