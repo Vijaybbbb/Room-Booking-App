@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../adminHome/AdminHome.css'
 import { baseUrl } from '../../../utils'
 import useFetch from '../../../hooks/useFetch'
@@ -34,6 +34,7 @@ const HotelManagement = ({compClick,showHotels}) => {
 
   
   function handleGoBack() {
+    console.log('back');
     setViewHotel(false)
   }
 

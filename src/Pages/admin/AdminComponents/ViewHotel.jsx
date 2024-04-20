@@ -1,37 +1,42 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../AdminComponents/css/viewHotel.css'
 import useFetch from '../../../hooks/useFetch'
 import { baseUrl } from '../../../utils'
+import axios from 'axios'
 
 
 
 const ViewHotel = ({ hotelId, handleGoBack }) => {
       
        const { data, loading, error, refetchData } = useFetch(`${baseUrl}/hotels/${hotelId}`)
-       const [showEditBox, setShowEditBox] = useState(true)
-      
-       console.log(data);
+       const [showUpdate, setShowUpdate] = useState(true)
+       const [preData,setPreData] = useState(data)
+       useEffect(() => {
+              if (data) {
+                  setPreData(data);
+                  setHotelData(data);
+              }
+          }, [data]);
 
-       const [hotelData, setHotelData] = useState({
-              name:null,
-              type:null,
-              city:null,
-              address:null,
-              distance:null,
-              discription:null,
-              cheapestPrice:null
-       });
+      // console.log(preData);
+       const [hotelData, setHotelData] = useState(preData);
 
        const getValue = (e) =>{
               setHotelData({
                      ...hotelData,
                      [e.target.name]:e.target.value
               })
+              setShowUpdate(false)
        }
      
        // Function to handle form submission
-       const handleUpdate = (e) => {
+       const handleUpdate = async (e) => {
          e.preventDefault();
+        await axios.put(`${baseUrl}/hotels/find/${hotelId}`,hotelData,{withCredentials:true}).then((res)=>{
+              handleGoBack()
+        }).catch((err)=>{
+              console.log(err);
+        })
 
        };
 
@@ -55,8 +60,8 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         tabIndex="1"
                                                         required
                                                         autoFocus
-                                                       value={data.name}
-                                                        onChange={(e) => getValue(e.target.value)}
+                                                        value={hotelData.name || data.name}
+                                                        onChange={getValue}
                                                  />
                                           </fieldset>
                                           <label htmlFor="" style={{marginBottom:'10px'}}>Hotel Type</label>
@@ -67,8 +72,8 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         tabIndex="1"
                                                         required
                                                         autoFocus
-                                                        value={data.type}
-                                                        onChange={(e) => getValue(e.target.value)}
+                                                        value={hotelData.type || data.type}
+                                                        onChange={getValue}
                                                  />
                                           </fieldset>
                                           <label htmlFor="">City</label>
@@ -78,8 +83,8 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         type="email"
                                                         tabIndex="2"
                                                         required
-                                                        value={data.name}
-                                                        onChange={(e) => getValue(e.target.value)}
+                                                        value={hotelData.city || data.city}
+                                                        onChange={getValue}
                                                  />
                                           </fieldset>
                                           <label htmlFor="">Address</label>
@@ -90,8 +95,8 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         type="tel"
                                                         tabIndex="3"
                                                         required
-                                                        value={data.address}
-                                                        onChange={(e) => getValue(e.target.value)}
+                                                        value={hotelData.address || data.address}
+                                                        onChange={getValue}
                                                  />
                                           </fieldset>
                                           <label htmlFor="">Distance</label>
@@ -101,8 +106,8 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         type="url"
                                                         tabIndex="4"
                                                         required
-                                                        value={data.distance}
-                                                        onChange={(e) => getValue(e.target.value)}
+                                                        value={hotelData.distance || data.distance}
+                                                        onChange={getValue}
                                                  />
                                           </fieldset>
                                          
@@ -113,8 +118,8 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         type="url"
                                                         tabIndex="4"
                                                         required
-                                                        value={data.cheapestPrice}
-                                                        onChange={(e) => setWebsite(e.target.value)}
+                                                        value={hotelData.cheapestPrice || data.cheapestPrice}
+                                                        onChange={getValue}
                                                  />
                                           </fieldset>
                                           <label htmlFor="">Description</label>
@@ -123,13 +128,18 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                        name='description'
                                                         tabIndex="5"
                                                         required
-                                                        value={data.description}
-                                                        onChange={(e) => getValue(e.target.value)}
+                                                        value={hotelData.description || data.description}
+                                                        onChange={getValue}
                                                  ></textarea>
                                           </fieldset>
                                           <fieldset>
-                                                 <button type="" id="contact-submit" data-submit="...Sending" onClick={handleUpdate}>
-                                                        Submit
+                                                 <button type="" 
+                                                 id="contact-submit" 
+                                                 data-submit="...Sending"
+                                                  onClick={handleUpdate}
+                                                  disabled={showUpdate}
+                                                  >
+                                                        Update
                                                  </button><br /><br /><br />
                                                  <button onClick={handleDelete}>Delete</button>
                                           </fieldset>
