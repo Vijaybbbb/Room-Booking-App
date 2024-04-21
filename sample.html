@@ -6,35 +6,38 @@
 </head>
 <body>
 
-  <div class="card">
-    <div class="container">
-      <img src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="profile-img">
-      <h2>Ildiko Gaspar</h2>
-      <small>UX Designer</small>
-      <div class="bar">
-        <button class="btn">
-          <i class="far fa-smile"></i>
-          <span>Set a status</span>
-        </button>
-        <button class="btn">
-          <i class="fas fa-pen"></i>
-          <span>Edit profile</span>
-        </button>
-        <button class="btn btn-more">
-          <i class="fas fa-ellipsis-h"></i>
-          <span>More</span>
-          <ul class="more">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Join</a></li>
-            <li><a href="#">Change Language</a></li>
-            <li><a href="#">Image & Video API</a></li>
-            <li><a href="#">Apps & Plugins</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Partnerships</a></li>
-            <li><a href="#">Inprint & Terms</a></li>
-          </ul>
-        </button>
-      </div>
+  <div class="wrapper">
+    <div class="login-box">
+      <h3 class="info-text">User Registration</h3>
+      <form class="form-container" action="">
+        <div class="input-addon">
+          <input class="form-element input-field" placeholder="Name" type="text">
+          <button class="input-addon-item">
+            <span class="fa fa-user"></span>
+          </button>
+          
+        </div>
+        <div class="input-addon">
+          <input class="form-element input-field" placeholder="Email" type="email">
+          <button class="input-addon-item">
+            <span class="fa fa-envelope"></span>
+          </button>
+        </div>
+        <div class="input-addon">
+          <input class="form-element input-field" placeholder="Password" type="password">
+          <button class="input-addon-item">
+            <span class="fa fa-lock"></span>
+          </button>
+        </div>
+        <div class="input-addon">
+          <input class="form-element input-field" placeholder="Re-type password" type="password">
+          <button class="input-addon-item">
+            <span class="fa fa-lock"></span>
+          </button>
+        </div>
+        <input class="form-element is-submit" type="submit" value="Create User">
+      </form>
+      <p>Or if you already have an user <a href="#">login here.</a></p>
     </div>
   </div>
 

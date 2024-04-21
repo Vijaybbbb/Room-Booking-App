@@ -1,0 +1,85 @@
+
+.createUserByAdmin body {
+	background: #d2d6de;
+	width: 100vw;
+	height: 100vh;
+	font-family: 'Raleway', sans-serif;
+}
+
+.createUserByAdmin .info-text {
+	font-size: 1rem;
+}
+
+.createUserByAdmin .wrapper {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+       margin-top: 50px;
+}
+
+.createUserByAdmin .login-box {
+	background: #fff;
+	width: 300px;
+	height: 400px;
+	box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.1);
+	text-align: center;
+	padding: 20px;
+}
+
+.createUserByAdmin .form-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.createUserByAdmin .form-container .input-addon {
+	margin-top: 1.5rem;
+}
+
+.createUserByAdmin .form-element {
+	margin-top: 0.8rem;
+	height: 1.5rem;
+	border: 1px solid #d2d6de;
+	padding: 5px;
+	font-size: .9rem;
+}
+
+.createUserByAdmin .form-element:focus {
+	outline: 1px solid #673ab7;
+}
+
+.createUserByAdmin .form-element::placeholder {
+	font-family: 'Raleway', sans-serif;
+	font-size: .8rem;
+}
+
+.createUserByAdmin .form-element.is-submit {
+	height: 3rem;
+	font-size: 1rem;
+	line-height: normal;
+	font-family: 'Raleway', sans-serif;
+	background-image: linear-gradient(to right, #4975e6, #8d55e9);
+	color: #fff;
+}
+
+.createUserByAdmin .input-addon {
+	display: flex;
+}
+
+.createUserByAdmin .input-addon > .form-element {
+	margin-top: 0;
+}
+
+.createUserByAdmin .input-field {
+	flex: 1;
+}
+
+.createUserByAdmin .input-addon-item {
+	padding: 5px;
+	width: 35px;
+	border: 1px solid #d2d6de;
+	border-left: 0;
+	background: #fff;
+	color: #6a6b6d;
+}

@@ -1,164 +1,85 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
 body {
-  font-family: "Ubuntu", sans-serif;
-  background-color: #ecf0fc;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	background: #d2d6de;
+	width: 100vw;
+	height: 100vh;
+	font-family: 'Raleway', sans-serif;
 }
 
-.card {
-  width: 25rem;
-  background-color: #fff;
-  border-radius: 24px;
+.info-text {
+	font-size: 1rem;
 }
 
-.card .container {
-  width: 80%;
-  margin: 0 auto;
-  padding: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.wrapper {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.container img {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 10px solid #ecf0fc;
+.login-box {
+		background: #fff;
+		width: 300px;
+		height: 400px;
+		box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.1);
+		text-align: center;
+		padding: 20px;
 }
 
-.container h2 {
-  font-size: 32px;
-  font-weight: 700;
-  margin: 1rem 0 0.5rem 0;
+.form-container {
+	display: flex;
+	flex-direction: column;
 }
 
-.container small {
-  color: #120c35;
-  font-size: 18px;
-  font-weight: 300;
-  margin-bottom: 2rem;
+.form-container .input-addon {
+	margin-top: 1.5rem;
 }
 
-.container .bar {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.form-element {
+	margin-top: 0.8rem;
+	height: 1.5rem;
+	border: 1px solid #d2d6de;
+	padding: 5px;
+	font-size: .9rem;
 }
 
-.bar .btn {
-  width: 6rem;
-  cursor: pointer;
-  background-color: #fff;
-  padding: 10px 0;
-  border-radius: 16px;
-  border: 1px solid #c2cdef;
-  color: #120c35;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.form-element:focus {
+	outline: 1px solid #673ab7;
 }
 
-.btn i {
-  font-size: 20px;
-  margin-bottom: 0.5rem;
+.form-element::placeholder {
+	font-family: 'Raleway', sans-serif;
+	font-size: .8rem;
 }
 
-.more {
-  display: none;
-  background-color: #120c35;
-  width: 15rem;
-  border-radius: 24px;
-  padding: 2rem 1rem;
-  position: absolute;
-  bottom: 0%;
-  right: -275%;
+.form-element.is-submit {
+	height: 3rem;
+	font-size: 1rem;
+	line-height: normal;
+	font-family: 'Raleway', sans-serif;
+	background: #673ab7;
+	color: #fff;
 }
 
-.more.active {
-  display: block;
-  transition: 0.4s ease;
+.input-addon {
+	display: flex;
 }
 
-.more li {
-  width: 90%;
-  height: 2rem;
-  background-color: transparent;
-  list-style-type: none;
+.input-addon > .form-element {
+	margin-top: 0;
 }
 
-.more li a {
-  display: block;
-  height: 100%;
-  color: #fff;
-  font-size: 18px;
-  line-height: 2rem;
-  padding-left: 0.5rem;
-  text-decoration: none;
-  transition: 0.4s ease;
-  border-radius: 4px;
+.input-field {
+	flex: 1;
 }
 
-.more li a:hover {
-  background-color: #2d2559;
-}
-
-.btn-more {
-  position: relative;
-}
-
-@media screen and (max-width: 860px) {
-  .more {
-    right: 0%;
-    bottom: 125%;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .card {
-    width: 15rem;
-  }
-
-  .container img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .container h2 {
-    font-size: 20px;
-  }
-
-  .container small {
-    font-size: 14px;
-  }
-
-  .bar .btn {
-    width: 3.7rem;
-    font-size: 10px;
-  }
-
-  .more {
-    width: 10rem;
-    padding: 1rem 0.5rem;
-  }
-
-  .more li {
-    height: 1.5rem;
-  }
-
-  .more li a {
-    line-height: 1.5rem;
-    font-size: 14px;
-  }
+.input-addon-item {
+	padding: 5px;
+	width: 35px;
+	border: 1px solid #d2d6de;
+	border-left: 0;
+	background: #fff;
+	color: #6a6b6d;
 }
