@@ -8,6 +8,7 @@ import UserManagement from '../AdminComponents/UserManagement'
 import HotelManagement from '../AdminComponents/HotelManagement'
 import RoomManagement from '../AdminComponents/RoomManagement'
 import BookingsManagement from '../AdminComponents/BookingsManagement'
+import CreateUser from '../AdminComponents/CreateUser'
 
 
 
@@ -49,6 +50,8 @@ const AdminHome = () => {
         return <RoomManagement showRooms={true}/>;
       case 'BookingsManagement':
         return <BookingsManagement showBookings={true}/>;
+        case 'CreateUser':
+          return <CreateUser showUserCreation={true}/>;
       default:
         return null;
     }
@@ -148,6 +151,10 @@ const AdminHome = () => {
                           <HotelManagement  compClick={compClick}/>
                           <RoomManagement  compClick={compClick}/>
                           <BookingsManagement  compClick={compClick}/>
+                        </div>
+                        <div className="columnContainer" >
+                          <CreateUser compClick={compClick}/>
+                          
                         </div>
                         <div className="fixed-action-btn click-to-toggle" style={{ bottom: '45px', right: '24px' }}>
                           <ul>

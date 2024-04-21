@@ -8,7 +8,7 @@ import axios from 'axios'
 
 const ViewRoom = ({ roomId, handleGoBack }) => {
      
-       const { data, loading, error, refetchData } = useFetch(`${baseUrl}/rooms/singleRoom/${roomId}`)
+       const { data, loading, error,  } = useFetch(`${baseUrl}/rooms/singleRoom/${roomId}`)
        const [showUpdate, setShowUpdate] = useState(true)
        const [preData,setPreData] = useState(data)
        useEffect(() => {
@@ -18,7 +18,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
               }
           }, [data]);
           console.log(data);
-      // console.log(preData);
+
        const [roomData, setRoomData] = useState(preData);
 
        const getValue = (e) =>{
@@ -41,6 +41,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
        };
 
        const handleDelete=(e)=>{
+              
               e.preventDefault();
 
        }
@@ -55,19 +56,19 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
                                           <label htmlFor="" style={{marginBottom:'10px'}}>Room Name</label>
                                           <fieldset>
                                                  <input
-                                                        name='name'
+                                                        name='title'
                                                         type="text"
                                                         tabIndex="1"
                                                         required
                                                         autoFocus
-                                                        value={roomData.title || data.title}
+                                                        value={roomData?.title || data.title}
                                                         onChange={getValue}
                                                  />
                                           </fieldset>
                                           <label htmlFor="" style={{marginBottom:'10px'}}>Room Price</label>
                                           <fieldset>
                                                  <input
-                                                        name='type'
+                                                        name='price'
                                                         type="text"
                                                         tabIndex="1"
                                                         required
@@ -79,7 +80,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
                                           <label htmlFor="">Maximum persons</label>
                                           <fieldset>
                                                  <input
-                                                        name='city'
+                                                        name='maxPeople'
                                                         type="email"
                                                         tabIndex="2"
                                                         required
@@ -88,7 +89,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
                                                  />
                                           </fieldset>
                                          
-                                          <label htmlFor="">Room Numbers</label>
+                                          {/* <label htmlFor="">Room Numbers</label>
                                           <fieldset>
                                                  <input
                                                         name='cheapestPrice'
@@ -98,11 +99,11 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
                                                         value={roomData.cheapestPrice || data.cheapestPrice}
                                                         onChange={getValue}
                                                  />
-                                          </fieldset>
+                                          </fieldset> */}
                                           <label htmlFor="">Description</label>
                                           <fieldset>
                                                  <textarea
-                                                       name='description'
+                                                       name='desc'
                                                         tabIndex="5"
                                                         required
                                                         value={roomData.desc || data.desc}
