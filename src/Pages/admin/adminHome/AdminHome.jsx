@@ -9,6 +9,7 @@ import HotelManagement from '../AdminComponents/HotelManagement'
 import RoomManagement from '../AdminComponents/RoomManagement'
 import BookingsManagement from '../AdminComponents/BookingsManagement'
 import CreateUser from '../AdminComponents/CreateUser'
+import CreateHotel from '../AdminComponents/CreateHotel'
 
 
 
@@ -43,15 +44,17 @@ const AdminHome = () => {
   const dynamicComponent = () => {
     switch (openWindow) {
       case 'UserManagement':
-        return <UserManagement showUsers={true}  />;
+        return <UserManagement showUsers={true} />;
       case 'HotelManagement':
-        return <HotelManagement showHotels={true}/>;
+        return <HotelManagement showHotels={true} />;
       case 'RoomManagement':
-        return <RoomManagement showRooms={true}/>;
+        return <RoomManagement showRooms={true} />;
       case 'BookingsManagement':
-        return <BookingsManagement showBookings={true}/>;
-        case 'CreateUser':
-          return <CreateUser showUserCreation={true} setShow={setShow}/>;
+        return <BookingsManagement showBookings={true} />;
+      case 'CreateUser':
+        return <CreateUser showUserCreation={true} setShow={setShow} />;
+      case 'CreateHotel':
+        return <CreateHotel showHotelCreation={true} setShow={setShow} />;
       default:
         return null;
     }
@@ -154,7 +157,7 @@ const AdminHome = () => {
                         </div>
                         <div className="columnContainer" >
                           <CreateUser compClick={compClick}/>
-                          <CreateUser compClick={compClick}/>  
+                          <CreateHotel compClick={compClick}/>  
                         </div>
                         <div className="fixed-action-btn click-to-toggle" style={{ bottom: '45px', right: '24px' }}>
                           <ul>

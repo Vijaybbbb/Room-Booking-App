@@ -1,0 +1,162 @@
+.createHotelPage * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+       -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+       -webkit-font-smoothing: antialiased;
+       -moz-font-smoothing: antialiased;
+       -o-font-smoothing: antialiased;
+       text-rendering: optimizeLegibility;
+   }
+   
+   .createHotelPage body {
+       font-family: "Open Sans", Helvetica, Arial, sans-serif;
+       font-weight: 300;
+       font-size: 12px;
+       line-height: 30px;
+       color: #777;
+       background: #0CF;
+   }
+   
+   .createHotelPage .container {
+       max-width: 700px;
+       width: 100%;
+       margin: 0 auto;
+       position: relative;
+   }
+   
+   .createHotelPage input[type="text"],
+  .createHotelPage input[type="email"],
+   .createHotelPage input[type="tel"],
+   .createHotelPage input[type="url"],
+   .createHotelPage textarea,
+  .createHotelPage button[type="submit"] {
+       font: 400 12px/16px "Open Sans", Helvetica, Arial, sans-serif;
+   }
+   
+   createHotelPage {
+       background: #F9F9F9;
+       padding: 25px;
+       margin: 50px 0;
+   }
+   
+   .createHotelPage h3 {
+       color: #F96;
+       display: block;
+       font-size: 30px;
+       font-weight: 400;
+   }
+   
+   .createHotelPage h4 {
+       margin: 5px 0 15px;
+       display: block;
+       font-size: 13px;
+   }
+   
+   .createHotelPage fieldset {
+       border: medium none !important;
+       margin: 0 0 10px;
+       min-width: 100%;
+       padding: 0;
+       width: 100%;
+   }
+   
+   .createHotelPage input[type="text"],
+   .createHotelPage input[type="email"],
+  .createHotelPage input[type="tel"],
+   .createHotelPage input[type="url"],
+   .createHotelPage textarea {
+       width: 100%;
+       border: 1px solid #CCC;
+       background: #FFF;
+       margin: 0 0 5px;
+       padding: 10px;
+   }
+   
+   .createHotelPage input[type="text"]:hover,
+   .createHotelPage input[type="email"]:hover,
+   .createHotelPage input[type="tel"]:hover,
+   .createHotelPage input[type="url"]:hover,
+   .createHotelPage textarea:hover {
+       -webkit-transition: border-color 0.3s ease-in-out;
+       -moz-transition: border-color 0.3s ease-in-out;
+       transition: border-color 0.3s ease-in-out;
+       border: 1px solid #AAA;
+   }
+   
+   .createHotelPage textarea {
+       height: 100px;
+       max-width: 100%;
+       resize: none;
+   }
+   
+   .createHotelPage button[type="submit"] {
+       cursor: pointer;
+       width: 100%;
+       border: none;
+       background: #0CF;
+       color: #FFF;
+       margin: 0 0 5px;
+       padding: 10px;
+       font-size: 15px;
+   }
+   
+   .createHotelPage button[type="submit"]:hover {
+       background: #09C;
+       -webkit-transition: background 0.3s ease-in-out;
+       -moz-transition: background 0.3s ease-in-out;
+       transition: background-color 0.3s ease-in-out;
+   }
+   
+  .createHotelPage button[type="submit"]:active {
+       box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+   }
+   
+   .createHotelPage input:focus,
+   .createHotelPage textarea:focus {
+       outline: 0;
+       border: 1px solid #999;
+   }
+   
+   ::-webkit-input-placeholder {
+       color: #888;
+   }
+   
+   :-moz-placeholder {
+       color: #888;
+   }
+   
+   ::-moz-placeholder {
+       color: #888;
+   }
+   
+   :-ms-input-placeholder {
+       color: #888;
+   }
+   
+   .createHotelPage .container button {
+       border: 1px solid #556fe7;
+       color: black;
+       width: 100%;
+       height: 30px;
+       border-radius: 5px;
+   }
+   
+   .createHotelPage .container button:hover {
+       background-color: #556fe7;
+       color: white;
+   }
+   
+   .createHotelPage .container button {
+       color: white;
+       background-image: linear-gradient(to right, #4975e6, #8d55e9);
+       border: 1px solid transparent;
+   }
+   
+   .createHotelPage .container button:hover {
+       background-image: linear-gradient(to right, transparent, transparent);
+       color: black;
+       border: 1px solid #556fe7;
+   }
+   
