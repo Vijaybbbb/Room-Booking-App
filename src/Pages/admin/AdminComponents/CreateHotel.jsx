@@ -11,14 +11,17 @@ const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
       
           }
 
-          
+          async function handleCreate(){
+              
+          }
+
   return (
     <div>
     {
        showHotelCreation ? (
               <div>
                       <div className='createHotelPage'>
-                            <button >back</button>
+                            <button onClick={()=>{setShow(false)}}>back</button>
                             <div className="container">
                                    <form id="contact">
                                           <h3>Hotel information</h3><br />
@@ -106,7 +109,7 @@ const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
                                                  <button type="" 
                                                  id="contact-submit" 
                                                  data-submit="...Sending"
-                                                 
+                                                 onClick={handleCreate}
                                                   >
                                                         Create Hotel
                                                  </button><br /><br /><br />
