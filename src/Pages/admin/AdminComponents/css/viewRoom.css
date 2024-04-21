@@ -1,0 +1,208 @@
+
+.singleRoomPage * {
+       margin-top: 0;
+       padding: 0;
+       box-sizing: border-box;
+     }
+     
+     .singleRoomPage body {
+       font-family: "Ubuntu", sans-serif;
+       background-color: #ecf0fc;
+       height: 100vh;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+     }
+     
+     .singleRoomPage .card {
+       width: 65rem;
+       background-color: #fff;
+       border-radius: 24px;
+       height: 30rem;
+       margin-left: 30px;
+       margin-top: 50px;
+     }
+     
+     .singleRoomPage .card .container {
+       width: 80%;
+       margin: 0 auto;
+       padding: 1rem 0;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+     }
+     
+     .singleRoomPage .container img {
+       width: 160px;
+       height: 160px;
+       border-radius: 50%;
+       border: 10px solid #ecf0fc;
+     }
+     
+     .singleRoomPage .container h2 {
+       font-size: 32px;
+       font-weight: 700;
+       margin: 1rem 0 0.5rem 0;
+     }
+     
+     .singleRoomPage .container small {
+       color: #120c35;
+       font-size: 18px;
+       font-weight: 300;
+       margin-bottom: 2rem;
+     }
+     
+     .singleRoomPage .container .bar {
+       width: 100%;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+     }
+     
+     .singleRoomPage .bar .btn {
+       width: 6rem;
+       cursor: pointer;
+       background-color: #fff;
+       padding: 10px 0;
+       border-radius: 16px;
+       border: 1px solid #c2cdef;
+       color: #ffffff;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+     }
+     
+     .singleRoomPage .btn i {
+       font-size: 20px;
+       margin-bottom: 0.5rem;
+     }
+     
+     .singleRoomPage .more {
+       display: none;
+       background-color: #120c35;
+       width: 15rem;
+       border-radius: 24px;
+       padding: 2rem 1rem;
+       position: absolute;
+       bottom: 0%;
+       right: -275%;
+     }
+     
+     .singleRoomPage .more.active {
+       display: block;
+       transition: 0.4s ease;
+     }
+     
+     .singleRoomPage .more li {
+       width: 90%;
+       height: 2rem;
+       background-color: transparent;
+       list-style-type: none;
+     }
+     
+     .singleRoomPage .more li a {
+       display: block;
+       height: 100%;
+       color: #fff;
+       font-size: 18px;
+       line-height: 2rem;
+       padding-left: 0.5rem;
+       text-decoration: none;
+       transition: 0.4s ease;
+       border-radius: 4px;
+     }
+     
+     .singleRoomPage .more li a:hover {
+       background-color: #2d2559;
+     }
+     
+     .singleRoomPage .btn-more {
+       position: relative;
+     }
+     
+     @media screen and (max-width: 860px) {
+       .singleRoomPage .more {
+         right: 0%;
+         bottom: 125%;
+       }
+     }
+     
+     @media screen and (max-width: 425px) {
+       .singleRoomPage .card {
+         width: 15rem;
+       }
+     
+       .singleRoomPage .container img {
+         width: 100px;
+         height: 100px;
+       }
+     
+       .singleRoomPage .container h2 {
+         font-size: 20px;
+       }
+     
+       .singleRoomPage .container small {
+         font-size: 14px;
+       }
+     
+       .singleRoomPage .bar .btn {
+         width: 3.7rem;
+         font-size: 10px;
+       }
+     
+       .singleRoomPage .more {
+         width: 10rem;
+         padding: 1rem 0.5rem;
+       }
+     
+       .singleRoomPage .more li {
+         height: 1.5rem;
+       }
+     
+       .singleRoomPage .more li a {
+         line-height: 1.5rem;
+         font-size: 14px;
+       }
+     }
+     
+     .singleRoomPage .showEditBox {
+       display: flex;
+       gap: 10px;
+       flex-direction: column;
+       width: 300px;
+       align-items: center;
+       justify-content: center;
+       margin-left: 100px;
+     }
+     
+     .singleRoomPage .btn {
+       background-color: darkolivegreen;
+     }
+     
+     .singleRoomPage .container button {
+       border: 1px solid #556fe7;
+       color: black;
+       width: 100%;
+       height: 30px;
+       border-radius: 5px;
+     }
+     
+     .singleRoomPage .container button:hover {
+       background-color: #556fe7;
+       color: white;
+     }
+     
+     .singleRoomPage .container button {
+       color: white;
+       background-image: linear-gradient(to right, #4975e6, #8d55e9);
+       border: 1px solid transparent;
+     }
+     
+     .singleRoomPage .container button:hover {
+       background-image: linear-gradient(to right, transparent, transparent);
+       color: black;
+       border: 1px solid #556fe7;
+     }
+     
