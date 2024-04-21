@@ -1,18 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../AdminComponents/css/createHotel.css'
+import axios from 'axios'
+import { baseUrl } from '../../../utils'
 
 const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
+       const [hotelData,setHotelData]  = useState()
 
        let getValue = (e) => {
-              setUserData({
-                  ...userData,
+              setHotelData({
+                  ...hotelData,
                   [e.target.name]: e.target.value
               })
       
           }
 
           async function handleCreate(){
-              
+              await axios.post(`${baseUrl}/hotels`,hotelData,{withCredentials:true}).then((res)=>{
+                     setShow(false)
+              }).catch((error)=>{
+                     console.log(error);
+              })
           }
 
   return (
