@@ -60,8 +60,23 @@ const Checkout = ({handleClose,reserve}) => {
     
   }, [hotelId]);
 
+  //function verify payment 
+  async function verifyPaymentSucess(response, order) {
+   
+    await axios.post(`${baseUrl}/user/verifyPayment`, { response: response, order: order }, { withCredentials: true }).then((res) => {
+
+    }).catch((err) => {
+
+    })
+
+  }
+
 
 async function createOrder(){
+
+    //close checkout page 
+     handleClose()
+
      await axios.post(`${baseUrl}/user/createOrder`,checkoutDetails,{withCredentials:true}).then((res)=>{
       console.log(res);
       if(res){
@@ -74,12 +89,12 @@ async function createOrder(){
           image: "https://example.com/your_logo",
           order_id: res.data.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of createOrder().
           handler: function (response) {
-            // alert(response.razorpay_payment_id);
-            // alert(response.razorpay_order_id);
-            // alert(response.razorpay_signature);
+
+            verifyPaymentSucess(response,res.data.order_id)
+            
           },
           prefill: {
-            name: "Piyush Garg",
+            name: "vijay ram ",
             email: "youremail@example.com",
             contact: "9999999999",
           },
