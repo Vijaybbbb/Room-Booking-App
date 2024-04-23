@@ -9,6 +9,8 @@ import useRazorpay from "react-razorpay";
 const Checkout = ({handleClose,reserve}) => {
 
   const checkoutDetails  = useSelector(state => state.checkoutDetails)
+  const userDetails = useSelector(state => state.userDetails)
+
   const hotelId = checkoutDetails.hotelId
   const rooms = checkoutDetails.rooms
 
@@ -61,9 +63,14 @@ const Checkout = ({handleClose,reserve}) => {
   }, [hotelId]);
 
   //function verify payment 
-  async function verifyPaymentSucess(response, order) {
+  async function verifyPaymentSucess(response, bookingId) {
    
-    await axios.post(`${baseUrl}/user/verifyPayment`, { response: response, order: order }, { withCredentials: true }).then((res) => {
+    await axios.post(`${baseUrl}/user/verifyPayment`,
+     { response: response,
+       bookingId: bookingId ,
+      userId:userDetails.userId
+      
+      }, { withCredentials: true }).then((res) => {
 
     }).catch((err) => {
 
@@ -90,8 +97,8 @@ async function createOrder(){
           order_id: res.data.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of createOrder().
           handler: function (response) {
 
-            verifyPaymentSucess(response,res.data.order_id)
-            
+            verifyPaymentSucess(response,res.data.bookingId)
+
           },
           prefill: {
             name: "vijay ram ",
