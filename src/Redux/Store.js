@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage'
 
 import userDetails from './loginSlice.js'
 import adminDetails from './adminLoginSlice.js'
+import checkoutDetails from './checkoutSlice.js'
 
 
 const persistConfig = {
@@ -23,8 +24,8 @@ const persistConfig = {
 }
 const rootReducer = combineReducers({
        userDetails:userDetails,
-       adminDetails:adminDetails
-       
+       adminDetails:adminDetails,
+       checkoutDetails:checkoutDetails
 })
 
 const persistedReducer = persistReducer(persistConfig,rootReducer)

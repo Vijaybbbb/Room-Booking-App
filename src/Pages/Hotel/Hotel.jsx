@@ -14,6 +14,7 @@ import { SearchContext } from '../../context/SearchContext'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Reserve from '../../Components/Reserve/Reserve'
+import Checkout from '../../Components/Checkout/Checkout'
 
 
 
@@ -90,6 +91,12 @@ const handleMove=(direction)=>{
     }
   }
 
+
+  function handleOpenCheckout(){
+    setOpenModel(false)
+    setOpenCheckout(true)
+  }
+
   return (
     <div>
        <Navbar/> 
@@ -150,7 +157,16 @@ const handleMove=(direction)=>{
 
                 
                   </div>
-                 {openModel && <Reserve setOpen={setOpenModel} hotelId={id} />}
+                 {openModel && <Reserve 
+                      handleOpenCheckout={handleOpenCheckout}
+                       setOpen={setOpenModel}
+                        hotelId={id} 
+                        price={days * data.cheapestPrice * options.room}
+                        
+                        />}
+                
+                 
+                  
             </div>
             
       </div> 

@@ -7,12 +7,17 @@ import { baseUrl } from '../../utils.js';
 import {SearchContext}  from '../../context/SearchContext.jsx'
 import axios from 'axios';
 import { tr } from 'date-fns/locale';
+import { useDispatch, useSelector } from 'react-redux';
+import Checkout from '../Checkout/Checkout.jsx';
+import {addCheckout} from '../../Redux/checkoutSlice.js'
 
-const Reserve = ({ setOpen, hotelId }) => {
+const Reserve = ({ setOpen, hotelId, price,handleOpenCheckout}) => {
   const { data, loading, error } = useFetch(`${baseUrl}/hotels/room/${hotelId}`);
   const [selectedRooms,setSelectedRooms] = useState([])
   const {date} = useContext(SearchContext)
-
+  const {userId}  = useSelector(state => state.userDetails)
+  const [openCheckout,setOpenCheckout] = useState(false) 
+  const dispatch = useDispatch()
 
 //get all dates according to date
 const getDatesRange = (startDate,endDate) =>{
@@ -50,18 +55,44 @@ const isAvailable = (roomNumber) =>{
 
   //handle button click
   const handleClick = async () =>{
-      try {
+    const data = {
+      hotelId:hotelId,
+      hotelName:'neh',
+      userId:userId,
+      rooms:[selectedRooms],
+      price:price,
+      dates:allDates
+    }
+      dispatch(addCheckout(data))
+      setOpenCheckout(true)
+     // handleOpenCheckout()
+      
+  }
+
+  async function reserve (){
+    try {
         await Promise.all(selectedRooms.map(roomId=>{
-          const res = axios.put(`${baseUrl}/rooms/availability/${roomId}`,{dates:allDates})
-          
+          const res = axios.put(`${baseUrl}/rooms/availability/${roomId}`,{dates:allDates,userId:userId,hotelId:hotelId,price:price})
+              
         }))
+        
       } catch (error) {
         console.log(error);
       }
   }
+  
+ function handleClose(){
+  setOpenCheckout(false)
+ }
+
 
   return (
-    <div className="reserve">
+    <div>
+      {
+        openCheckout ?(
+          <Checkout handleClose={handleClose} reserve={reserve}/>
+        ):(
+          <div className="reserve">
       <div className="rContainer">
         <FontAwesomeIcon icon={faCircleXmark} className="rClose" onClick={() => setOpen(false)} />
         <span>Select Your Rooms : </span>
@@ -90,6 +121,9 @@ const isAvailable = (roomNumber) =>{
         ))}
         <button onClick={handleClick} className='rButton'>Reserve Now</button>
       </div>
+    </div>
+        )
+      }
     </div>
   );
 };
