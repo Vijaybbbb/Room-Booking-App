@@ -6,12 +6,16 @@ import { baseUrl } from '../../utils';
 import { useSelector } from 'react-redux';
 import Navbar from '../../Components/Navbar/Navbar';
 import Header from '../../Components/Header/Header';
+import { Center } from '@chakra-ui/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 const MyBookings = () => {
 
       
        const {userId}  = useSelector(state => state.userDetails)
        const { data, loading, error } = useFetch(`${baseUrl}/user/getAllBookings/${userId}`);
+       const [openDetails,setOpenDetails] = useState(false)
        console.log(data.bookings);
        const [showFilter, setShowFilter] = useState(false);
        const [filter, setFilter] = useState({
@@ -57,6 +61,16 @@ const MyBookings = () => {
          // You need to implement this function
        };
 
+       function handleClick(e){
+        e.preventDefault()
+        setOpenDetails(true)
+       }
+       
+       function close(e){
+        e.preventDefault()
+        setOpenDetails(false)
+       }
+       
 
   return (
     <div className='myBookingsPage'>
@@ -151,13 +165,29 @@ const MyBookings = () => {
       {data.bookings && (
         <div>
           {data.bookings !== 0 ? (
-            data.bookings.map((order, index) => (
+            data.bookings.reverse().map((order, index) => (
               <div key={index} className="receipt__container">
-                <p className="receipt__client"></p>
-                <p className="receipt__date"></p>
-                <p className="receipt__days">{order.hotel}</p>
-                <p className="receipt__cost"></p>
+                <div>
+                <img src={`../../../src/images/${order.images[0]}`} style={{height:'200px',width:'200px',borderRadius:'5px'}}/>
+                </div>
+                <div style={{paddingLeft:'100px'}}>
+                  <p className="receipt__client">{order.hotelName}</p>
+                  <div style={{display:'flex',gap:'5px'}}>
+                    {
+                      order?.bookedNumbers?.map((no)=>(
+                        <div style={{width:"30px",height:'30px',background:'#003580'}}>
+                          <label htmlFor="" style={{fontSize:'13px',}}>{no}</label>
+                        </div>
+                      ))
+                    }
+                  </div>
+                 <p className="receipt__days">{order.status}</p>
+                </div>
+                <div style={{}}>
+                  <button onClick={handleClick}>Order Details</button>
+                </div>
               </div>
+              
             ))
           ) : (
             <div>
@@ -167,6 +197,35 @@ const MyBookings = () => {
           )}
         </div>
       )}
+
+      {
+        openDetails&&(
+          <div>
+             <div className="reserve">
+              <div className="rContainer"  style={{width:"750px",height:'500px',borderRadius:'10px',marginLeft:"350px"}}>
+                <FontAwesomeIcon icon={faCircleXmark} className="rClose" onClick={close} />
+                <span>Reservation Details</span>
+               
+                  <div className="rItem">
+                    <div className="rItemInfo">
+                     34wgrgerg
+                    </div>
+                    <div className="rSelectRooms">
+                      
+                        <div className="room" >
+                          <label htmlFor=""></label>
+                         
+                        </div>
+                    
+                    </div>
+                  </div>
+            
+             {/* //<button  className='rButton'>Reserve Now</button> */}
+           </div>
+        </div>
+          </div>
+        )
+      }
     </div>
     </div>
     

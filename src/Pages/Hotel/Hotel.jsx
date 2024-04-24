@@ -41,7 +41,7 @@ useEffect(()=>{
 
 },[data])
 
-console.log(data.images);
+console.log(data);
 
 const MIILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 
@@ -147,7 +147,7 @@ const handleMove=(direction)=>{
                        setOpen={setOpenModel}
                         hotelId={id} 
                         price={days * data.cheapestPrice * options.room}
-                        
+                        images = {data.images}
                         />}
                 
                  

@@ -40,15 +40,17 @@
        margin-bottom: 30px;
        box-shadow: 0 2px 2px 0 #e7e7e7;
        border: 1px solid #e6e5e5;
-       background:  #0071c2;
+       background:  #e2edf4;
        border-radius: 20px;
        color: white;
        font-size: 30px;
-      height: 200px;
+       height: 200px;
+       display: flex;
      }
      
      .myBookingsPage .receipt__container p {
        margin-bottom: 5px;
+       color: #0071c2;
      }
      
      .myBookingsPage .receipt__client {
