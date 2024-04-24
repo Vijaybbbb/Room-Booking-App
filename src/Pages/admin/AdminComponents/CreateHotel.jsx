@@ -5,6 +5,8 @@ import { baseUrl } from '../../../utils'
 
 const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
        const [hotelData,setHotelData]  = useState()
+       const [images,setImages]  = useState([])
+
 
        let getValue = (e) => {
               setHotelData({
@@ -14,12 +16,38 @@ const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
       
           }
 
-          async function handleCreate(){
-              await axios.post(`${baseUrl}/hotels`,hotelData,{withCredentials:true}).then((res)=>{
-                     setShow(false)
-              }).catch((error)=>{
-                     console.log(error);
-              })
+       async function handleCreate(e) {
+              e.preventDefault();
+              const formData = new FormData();
+
+              images.forEach((image) => {
+                     formData.append('images', image);
+              });
+              for (const key in hotelData) {
+                     formData.append(key, hotelData[key]);
+                   }
+
+              await axios.post(`${baseUrl}/hotels`, formData ,
+
+                     {
+                            withCredentials: true,
+                            headers: {
+                                   'Content-Type': 'multipart/form-data'
+                            }
+                     }).then((res) => {
+
+                            setShow(false)
+
+                     }).catch((error) => {
+                            console.log(error);
+                     })
+       }
+
+          function onInputChange(e){
+            //  console.log(e.target.files);
+            const files = Array.from(e.target.files);
+            setImages([...images, ...files]);
+             
           }
 
   return (
@@ -111,6 +139,12 @@ const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
                                                        
                                                         onChange={getValue}
                                                  ></textarea>
+                                          </fieldset>
+                                          <label htmlFor="">Images</label>
+                                          <fieldset>
+                                                 <div style={{height:'100px'}}>
+                                                 <input type="file" multiple   onChange={onInputChange} />
+                                                 </div>
                                           </fieldset>
                                           <fieldset>
                                                  <button type="" 

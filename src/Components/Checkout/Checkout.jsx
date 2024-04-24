@@ -6,11 +6,11 @@ import { baseUrl } from '../../utils'
 import axios from 'axios'
 import useRazorpay from "react-razorpay";
 
-const Checkout = ({handleClose,reserve}) => {
+const Checkout = ({handleClose,reserve,setOpen}) => {
 
   const checkoutDetails  = useSelector(state => state.checkoutDetails)
   const userDetails = useSelector(state => state.userDetails)
-
+console.log(checkoutDetails);
   const hotelId = checkoutDetails.hotelId
   const rooms = checkoutDetails.rooms
 
@@ -72,6 +72,8 @@ const Checkout = ({handleClose,reserve}) => {
       
       }, { withCredentials: true }).then((res) => {
 
+        reserve()
+
     }).catch((err) => {
 
     })
@@ -85,7 +87,9 @@ async function createOrder(){
      handleClose()
 
      await axios.post(`${baseUrl}/user/createOrder`,checkoutDetails,{withCredentials:true}).then((res)=>{
-      console.log(res);
+      setOpen(false)
+      
+      
       if(res){
         const options = {
           key: "rzp_test_9QHYCj7luW7qlw", // Enter the Key ID generated from the Dashboard
@@ -138,7 +142,9 @@ async function createOrder(){
     <div className='userCheckoutWindow'>
        
        <div className='userCheckoutWindowContainer'>
-       <button onClick={handleClose}>back</button>
+       <button onClick={()=>{handleClose()
+      setOpen(false)
+      }}>back</button>
               
        <Product checkoutDetails={checkoutDetails}/>
 

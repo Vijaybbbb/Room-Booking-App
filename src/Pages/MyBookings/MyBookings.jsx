@@ -5,13 +5,14 @@ import useFetch from '../../hooks/useFetch';
 import { baseUrl } from '../../utils';
 import { useSelector } from 'react-redux';
 import Navbar from '../../Components/Navbar/Navbar';
+import Header from '../../Components/Header/Header';
 
 const MyBookings = () => {
 
       
        const {userId}  = useSelector(state => state.userDetails)
        const { data, loading, error } = useFetch(`${baseUrl}/user/getAllBookings/${userId}`);
-       console.log(data);
+       console.log(data.bookings);
        const [showFilter, setShowFilter] = useState(false);
        const [filter, setFilter] = useState({
          company: '',
@@ -22,7 +23,7 @@ const MyBookings = () => {
        });
 
 
-       const [filteredReceipts, setFilteredReceipts] = useState([]);
+       const [bookings] = useState(data.bookings);
 
 
        const [companies, setCompanies] = useState([]); // Assuming you have a state for companies
@@ -61,8 +62,9 @@ const MyBookings = () => {
     <div className='myBookingsPage'>
 
        <Navbar/>
+       <Header type='list'/>
        <div id="app">
-              <div>
+              {/* <div>
               <div className="listSearch">
                   <h1 className="isTitle">Search</h1>
                   <div className="lsItem">
@@ -101,7 +103,7 @@ const MyBookings = () => {
                    </div>
                    <button >Search</button>
              </div>
-              </div>
+              </div> */}
         <div>
       
         <h1>YOUR ORDERS</h1>
@@ -146,45 +148,22 @@ const MyBookings = () => {
           </div>
         )}
       </div>
-      {filteredReceipts && (
+      {data.bookings && (
         <div>
-          {filteredReceipts.length !== 0 ? (
-            filteredReceipts.map((receipt, index) => (
+          {data.bookings !== 0 ? (
+            data.bookings.map((order, index) => (
               <div key={index} className="receipt__container">
-                <p className="receipt__client">{findCompanyName(receipt)}</p>
-                <p className="receipt__date">{receipt.date}</p>
-                <p className="receipt__days">{receipt.items} items</p>
-                <p className="receipt__cost">£{receipt.totalCost}</p>
+                <p className="receipt__client"></p>
+                <p className="receipt__date"></p>
+                <p className="receipt__days">{order.hotel}</p>
+                <p className="receipt__cost"></p>
               </div>
             ))
           ) : (
             <div>
               <p>There are no matching orders</p>
-            <div className="receipt__container">
-                <p className="receipt__client"></p>
-                <p className="receipt__date"></p>
-                <p className="receipt__days"> items</p>
-                <p className="receipt__cost"></p>
-              </div>
-              <div className="receipt__container">
-                <p className="receipt__client"></p>
-                <p className="receipt__date"></p>
-                <p className="receipt__days"> items</p>
-                <p className="receipt__cost"></p>
-              </div>
-              <div className="receipt__container">
-                <p className="receipt__client"></p>
-                <p className="receipt__date"></p>
-                <p className="receipt__days"> items</p>
-                <p className="receipt__cost"></p>
-              </div>
-              <div className="receipt__container">
-                <p className="receipt__client"></p>
-                <p className="receipt__date"></p>
-                <p className="receipt__days"> items</p>
-                <p className="receipt__cost"></p>
-              </div>
-            </div>
+           </div>
+           
           )}
         </div>
       )}

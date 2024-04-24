@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Hotels.css'
 import Navbar from '../../Components/Navbar/Navbar'
 import Header from '../../Components/Header/Header'
@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Reserve from '../../Components/Reserve/Reserve'
 import Checkout from '../../Components/Checkout/Checkout'
+import axios from 'axios'
 
 
 
@@ -29,8 +30,6 @@ const id = location.pathname.split('/')[2];
 const [slideNumber,setSlideNumber] = useState(0)
 const [open,setOpen] = useState(false)
 const [openModel,setOpenModel] = useState(false) 
-
-
 const navigate = useNavigate()
 const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels/${id}`)
 const handleOpen  = (index) =>{
@@ -38,7 +37,11 @@ const handleOpen  = (index) =>{
   setOpen(true)
 }
 const {date,options}  = useContext(SearchContext)
+useEffect(()=>{
 
+},[data])
+
+console.log(data.images);
 
 const MIILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 
@@ -61,26 +64,8 @@ const handleMove=(direction)=>{
     setSlideNumber(newSlideNumber)
 }
 
-  const photos = [
-    {
-      src:src
-    },
-    {
-      src:src
-    },
-    {
-      src:src
-    },
-    {
-      src:src
-    },
-    {
-      src:src
-    },
-    {
-      src:src
-    },
-  ]
+
+  
 
   const  handleReserve=()=>{
     if(userDetails.userId){
@@ -129,9 +114,9 @@ const handleMove=(direction)=>{
                   </span>
                   <div className="hotelImages">
                     {
-                      photos.map((photo,index)=> (
+                      data?.images?.map((photo,index)=> (
                         <div className="hotelImagWrapper" key={index}>
-                          <img onClick={()=>{handleOpen(index)}} src={photo.src} alt="" className="hotelImg" />
+                          <img onClick={()=>{handleOpen(index)}} src={`../../../src/images/${photo}`} alt="" className="hotelImg" />
                         </div>
                       ))
                     }

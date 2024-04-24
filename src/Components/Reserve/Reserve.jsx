@@ -17,7 +17,9 @@ const Reserve = ({ setOpen, hotelId, price,handleOpenCheckout}) => {
   const {date} = useContext(SearchContext)
   const {userId}  = useSelector(state => state.userDetails)
   const [openCheckout,setOpenCheckout] = useState(false) 
+  const [numbers,setNumbers] = useState([])
   const dispatch = useDispatch()
+  const [floorID,setFloor] = useState()
 
 //get all dates according to date
 const getDatesRange = (startDate,endDate) =>{
@@ -38,7 +40,8 @@ const allDates  = getDatesRange(date[0].startDate,date[0].endDate);
 
 //checking room availability
 const isAvailable = (roomNumber) =>{
-  const isFound  = roomNumber.unavailableDates.some((item,index) => {
+   
+    const isFound  = roomNumber.unavailableDates.some((item,index) => {
     return allDates.includes(item);
 
 })
@@ -46,25 +49,28 @@ const isAvailable = (roomNumber) =>{
 }
 
 //handle rooms selecting
-  const handleSelect = (event) => {
+  const handleSelect = (event,roomNumber) => {
     const checked = event.target.checked
     const value = event.target.value
     setSelectedRooms(checked ? [...selectedRooms,value]  :
        selectedRooms.filter((item)=>item !== value)) 
+       setNumbers(checked ? [...numbers, roomNumber] : numbers.filter((item) => item !== roomNumber));
+    
   };
 
   //handle button click
   const handleClick = async () =>{
     const data = {
       hotelId:hotelId,
-      hotelName:'neh',
       userId:userId,
       rooms:[selectedRooms],
       price:price,
-      dates:allDates
+      dates:allDates,
+      roomNumbers:[numbers]
     }
       dispatch(addCheckout(data))
       setOpenCheckout(true)
+      
      // handleOpenCheckout()
       
   }
@@ -90,7 +96,7 @@ const isAvailable = (roomNumber) =>{
     <div>
       {
         openCheckout ?(
-          <Checkout handleClose={handleClose} reserve={reserve}/>
+          <Checkout handleClose={handleClose} reserve={reserve} setOpen={setOpen}/>
         ):(
           <div className="reserve">
       <div className="rContainer">
@@ -111,7 +117,8 @@ const isAvailable = (roomNumber) =>{
                   <input
                    type="checkbox"
                     value={roomNumber._id}
-                     onChange={handleSelect}
+                     //onChange={handleSelect}
+                     onChange={()=>{handleSelect(event,roomNumber.number)}}
                      disabled={isAvailable(roomNumber)}
                      />
                 </div>
