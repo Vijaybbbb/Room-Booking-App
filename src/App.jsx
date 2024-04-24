@@ -12,6 +12,7 @@ import EnterEmail from './Pages/ForgetPassword/EnterEmail'
 import ResetOtpPage from './Pages/ForgetPassword/ResetOtpPage'
 import AdminLogin from './Pages/admin/adminLogin/AdminLogin'
 import AdminHome from './Pages/admin/adminHome/AdminHome'
+import MyBookings from './Pages/MyBookings/MyBookings'
 
 
 function App() {
@@ -52,6 +53,10 @@ function App() {
     {
       path:'/resetWithOtp',
       element:<ResetOtpPage/>
+    },
+    {
+      path:'/myBookings',
+      element:<MyBookings/>
     },
     {
       path:"/adminLogin",

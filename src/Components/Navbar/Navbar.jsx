@@ -31,7 +31,7 @@ const Navbar = ({access}) => {
         </Link>
         <div className="navItems">
               <button className="navButton" onClick={()=>{navigate('/')}}>Create</button>
-              <button className="navButton" onClick={()=>{navigate('/')}}>My Bookings</button>
+              <button className="navButton" onClick={()=>{navigate('/myBookings')}}>My Bookings</button>
               <button className="navButton" onClick={()=>{navigate('/')}}>Profile</button>
               <button className="navButton" onClick={async()=>{
                await axios.post('http://localhost:3000/clearCookie','',{withCredentials:true}).then(()=>{
