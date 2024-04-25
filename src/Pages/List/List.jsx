@@ -10,6 +10,8 @@ import { baseUrl } from '../../utils'
 import useFetch from '../../hooks/useFetch'
 import  axios  from 'axios'
 import { useSelector } from 'react-redux'
+import Footer from '../../Components/Footer/Footer'
+import MailList from '../../Components/MailList/MailList'
 
 const List = () => {
    const userDetails = useSelector(state => state.userDetails)
@@ -20,7 +22,7 @@ const List = () => {
    const [openDate,setOpenDate]   = useState(false)
    const [options,setOptions] = useState(location.state?.options)
    const [access,setAccess]  = useState(false)
-
+   const [page, setPage] = useState(1)
    const [min,setMin]   = useState(undefined)
    const [max,setMax]   = useState(undefined)
 
@@ -44,6 +46,18 @@ const List = () => {
    function setDestValue(e){
       setDestination(e.target.value)
    }
+
+
+   //function for indicate pagination
+  function selectedPage(selectedPage) {
+   if (
+     selectedPage >= 1 &&
+     selectedPage <= data.length &&
+     selectedPage !== page
+   )
+     setPage(selectedPage)
+ }
+
 
   return ( 
     <div>
@@ -101,13 +115,30 @@ const List = () => {
                  {loading ? (
                     'Loading'
                  ) : (
-                    data?.map((item) => (
+                  data && data.slice((page - 1) * 5, page * 5).map((item) => (
                        <SearchItem item={item} key={item._id}/>
                     ))
                  )}  
              </div>
           </div>
        </div>
+       <div className='listPagePagination'>
+          <div style={{alignItems:'center'}}>
+                  <div className="page-btn">
+                    <span onClick={() => selectedPage(page - 1)}>{'<'}</span>
+                    {[...Array(Math.ceil(data.length / 5))].map((_, i) => (
+                      <span
+                        key={i + 1}
+                        onClick={() => selectedPage(i + 1)}
+                        className={page === i + 1 ? 'pagination_selected' : ''}
+                      >{i + 1}</span>
+                    ))}
+                    <span onClick={() => selectedPage(page + 1)}>{'>'}</span>
+                  </div>
+                  </div>
+       </div>
+       <MailList/>
+       <Footer/>
     </div>
   )
 }

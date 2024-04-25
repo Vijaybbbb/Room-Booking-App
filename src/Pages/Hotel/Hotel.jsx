@@ -29,6 +29,7 @@ const id = location.pathname.split('/')[2];
 
 const [slideNumber,setSlideNumber] = useState(0)
 const [open,setOpen] = useState(false)
+const [access,setAccess]  = useState(false)
 const [openModel,setOpenModel] = useState(false) 
 const navigate = useNavigate()
 const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels/${id}`)
@@ -37,11 +38,23 @@ const handleOpen  = (index) =>{
   setOpen(true)
 }
 const {date,options}  = useContext(SearchContext)
+
+
 useEffect(()=>{
 
 },[data])
 
-console.log(data);
+useEffect(()=>{
+  fetchHome()
+},[])
+
+async function fetchHome(){
+  await axios.get(`http://localhost:3000?userId=${userDetails?.userId}`,{withCredentials:true}).then((res)=>{
+      setAccess(true)
+  }).catch(err=>setError(err))
+}
+
+
 
 const MIILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
 
@@ -84,7 +97,7 @@ const handleMove=(direction)=>{
 
   return (
     <div>
-       <Navbar/> 
+       <Navbar access={access}/> 
        <Header type='list'/> 
        <div className="hotelContainer">
      

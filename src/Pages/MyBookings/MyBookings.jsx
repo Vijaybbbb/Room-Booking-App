@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import './MyBookings.css'
 import useFetch from '../../hooks/useFetch';
@@ -10,16 +10,18 @@ import { Center } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import Footer from '../../Components/Footer/Footer'
+import MailList from '../../Components/MailList/MailList'
 
 
 
 const MyBookings = () => {
 
-      
+   const [access,setAccess]  = useState(false)
        const {userId}  = useSelector(state => state.userDetails)
        const { data, loading, error } = useFetch(`${baseUrl}/user/getAllBookings/${userId}`);
        const [openDetails,setOpenDetails] = useState(false)
-       console.log(data.bookings);
+       const datas = data.bookings
        const [showFilter, setShowFilter] = useState(false);
        const [filter, setFilter] = useState({
          company: '',
@@ -30,13 +32,28 @@ const MyBookings = () => {
        });
 
 
-       const [bookings] = useState(data.bookings);
-       const [selectedBooking,setSelectedBooking] = useState()
+      
+       const [page, setPage] = useState(1)
+       const [selectedBooking,setSelectedBooking] = useState() 
        console.log(selectedBooking);
 
        const [companies, setCompanies] = useState([]); // Assuming you have a state for companies
        const [filterInUse, setFilterInUse] = useState(false); // Assuming you have a state for filterInUse
      
+       useEffect(()=>{
+        fetchHome()
+      },[])
+    
+      async function fetchHome(){
+        await axios.get(`http://localhost:3000?userId=${userId}`,{withCredentials:true}).then((res)=>{
+            setAccess(true)
+        }).catch(err=>setError(err))
+      }
+
+
+
+
+
        const toggleFilter = () => {
          setShowFilter(!showFilter);
        };
@@ -91,12 +108,30 @@ const MyBookings = () => {
             console.log(err);
           })
        }
-       
+
+
+  
+      
+
+       const handleDownloadInvoice = () => {
+       }
+    
+       function selectedPage(selectedPage) {
+        if (
+          selectedPage >= 1 &&
+          selectedPage <= data.bookings.length &&
+          selectedPage !== page
+        )
+          setPage(selectedPage)
+      }
+     
+     
 
   return (
+    <div>
     <div className='myBookingsPage'>
 
-       <Navbar/>
+       <Navbar access={access}/>
        <Header type='list'/>
        <div id="app">
               {/* <div>
@@ -186,13 +221,14 @@ const MyBookings = () => {
       {data.bookings && (
         <div>
           {data.bookings !== 0 ? (
-            data.bookings.reverse().map((order, index) => (
+            data.bookings.slice((page - 1) * 4, page * 4).map((order, index) => (
               <div key={index} className="receipt__container">
                 <div>
                 <img src={`../../../src/images/${order.images[0]}`} />
                 </div>
                 <div style={{paddingLeft:'100px'}}>
                   <p className="receipt__client">{order.hotelName}</p>
+                  <p style={{fontSize:15}}>Booked Numbers</p>
                   <div style={{display:'flex',gap:'5px'}}>
                     {
                       order?.bookedNumbers?.map((no)=>(
@@ -202,10 +238,10 @@ const MyBookings = () => {
                       ))
                     }
                   </div>
-                 <p className="receipt__days">{order.status}</p>
+                 <p className={order.status == 'Canceled' ? 'receipt__days' : "receipt__days2"}>{order.status}</p>
                 </div>
                 <div className='btnContainer'>
-                  <button onClick={()=>{handleClick(event,order)}}>Order Details</button>
+                  <button onClick={()=>{handleClick(event,order)}}>Order Details</button> 
                 </div>
               </div>
               
@@ -276,15 +312,21 @@ const MyBookings = () => {
                     </div>
                   </div>
 
-                  <div className="rSelectRooms">
+                  {
+                    selectedBooking.status == 'Canceled' ? (
+                      <div>Order Has been Canceled</div>
+                    ):(
+                      <div className="rSelectRooms">
 
-                    <button>View Invoice</button>
-
+                    <button onClick={handleDownloadInvoice} >Download Invoice</button>
+                    <button onClick={handleDownloadInvoice} >View Invoice</button>
                     <button onClick={() => {
                       cancelOrder(selectedBooking._id)
                     }}>Cancel Order</button>
 
                   </div>
+                    )
+                  }
                 </div>
 
                 {/* //<button  className='rButton'>Reserve Now</button> */}
@@ -294,7 +336,27 @@ const MyBookings = () => {
         )
       }
     </div>
-
+      
+    </div>
+    <div>
+    <div className='bookingsPagePagination'>
+           <div style={{alignItems:'center'}}>
+                  <div className="page-btn">
+                    <span onClick={() => selectedPage(page - 1)}>{'<'}</span>
+                    {datas && [...Array(Math.ceil(datas.length / 4))].map((_, i) => (
+                      <span
+                        key={i + 1}
+                        onClick={() => selectedPage(i + 1)}
+                        className={page === i + 1 ? 'pagination_selected' : ''}
+                      >{i + 1}</span>
+                    ))}
+                    <span onClick={() => selectedPage(page + 1)}>{'>'}</span>
+                  </div>
+                  </div>
+       </div>
+    </div>
+    <MailList/>
+      <Footer/>
     </div>
     
    

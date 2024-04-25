@@ -4,10 +4,11 @@ import room from '../../assets/room.webp'
 import { useNavigate } from 'react-router-dom'
 
 const SearchItem = ({item}) => {
+  console.log(item);
   const navigate = useNavigate()
   return (
     <div className='searchItem'>
-       <img src={room} alt="" className="siImg" />
+       <img src={`../../../src/images/${item.images[0]}`} alt="" className="siImg" />
        <div className="siDesc">
           <h1 className="siTitle">{item.name}</h1>
           <span className="siDistance">{item.distance} from center</span>

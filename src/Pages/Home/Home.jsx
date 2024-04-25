@@ -37,12 +37,12 @@ const Home = () => {
       <Navbar access={access}/>
       <Header access={access}/>
       <div className="homeContainer">
-        <Featured/>
+        <Featured access={access}/>
         <h1 className="homeTitle"> Browse Property By Type</h1>
-        <PropertyList/>
+        <PropertyList access={access}/>
         <h1 className="homeTitle"> Home guests love</h1>
-        <FeaturedProperties/>
-        <MailList/>
+        <FeaturedProperties access={access}/>
+        <MailList access={access}/>
         <Footer/>
       </div>
     </div>
