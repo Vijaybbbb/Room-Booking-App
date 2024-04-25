@@ -140,67 +140,57 @@ async function createOrder(){
 
   return (
     <div className='userCheckoutWindow'>
-       
-       <div className='userCheckoutWindowContainer'>
-         
-              
-       <Product checkoutDetails={checkoutDetails}/>
 
-       <div className="form-wrapper">
-         <h2>Payment Checkout</h2>
-         <form className="payment-form" style={{display:'flex',flexDirection:'column'}}>
+      <div className='userCheckoutWindowContainer'>
+
+
+        <Product checkoutDetails={checkoutDetails} />
+
+        <div className="form-wrapper">
+          <h2>Payment Checkout</h2>
+          <form className="payment-form" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className='items'>
               <div>
                 <label htmlFor="">Hotel Name</label>
                 <input type="text" name="cvc" id="cvc" />
               </div>
               <div>
-              <label htmlFor="">Hotel Name</label>
+                <label htmlFor="">User Name</label>
                 <input type="text" name="cvc" id="cvc" />
               </div>
               <div>
-              <label htmlFor="">Hotel Name</label>
+                <label htmlFor="">Contact</label>
                 <input type="text" name="cvc" id="cvc" />
               </div>
             </div>
+            <div className="control-group">
+              <div className="input-control">
+                <label htmlFor="expiration">Check-in Date</label><br />
+                <div className="icon-input">
+                  <input type="text" name="expiration" readOnly id="expiration" />
+                </div>
+              </div>
+              <div className="input-control">
+                <label htmlFor="cvc">Check-out Date</label>
+                <input type="text" name="cvc" id="cvc" />
+              </div>
+            </div><br /><br />
 
-      {/* <div className="input-control"
-        <label htmlFor="cardnumber">Room Numbers</label>
-        {
-          rooms.map((room)=>(
-            <div className="icon-input">
-        <label htmlFor="cardholder">{room}</label>
-          
+            <button className="btn-order" onClick={(e) => {
+              e.preventDefault()
+              createOrder()
+            }}
+
+            >Proceed to Payment</button>
+
+          </form>
         </div>
-          ))
-        }
-      </div> */}
-      <div className="control-group">
-        <div className="input-control">
-          <label htmlFor="expiration">Check-in Date</label><br />
-          <div className="icon-input">
-            <input type="text" name="expiration" readOnly id="expiration" />
-          </div>
-        </div>
-        <div className="input-control">
-          <label htmlFor="cvc">Check-out Date</label>    
-          <input type="text" name="cvc" id="cvc" />
-        </div>
-      </div><br /><br />
-      
-      <button  className="btn-order" onClick={(e)=>{
-       e.preventDefault()
-       createOrder()
-       }} 
-       
-       >Proceed to Payment</button>
-       <button>bhbh</button>
-       <button onClick={()=>{handleClose()
-        setOpen(false)
-         }}>back</button>
-    </form>
-  </div>
-       </div>
+
+        <button className='closebuttoncheckout' onClick={() => {
+          handleClose()
+          setOpen(false)
+        }}>back</button>
+      </div>
     </div>
   )
 }

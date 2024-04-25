@@ -226,7 +226,7 @@
     .userCheckoutWindow .control-group {
         display: flex;
         justify-content: space-between;
-        padding-top: 100px;
+        padding-top: 60px;
     }
     .userCheckoutWindow .control-group .input-control {
         flex: 0 0 48%;
@@ -241,4 +241,15 @@
 }
 .userCheckoutWindow .userCheckoutWindowContainer .form-wrapper .items {
    margin-top: 40px;
+}
+
+.userCheckoutWindow .userCheckoutWindowContainer .closebuttoncheckout {
+    position: absolute;
+    height: 46px;
+    background: #95cef4;
+    top: 469px;
+    left: 320px;
+    width: 92px;
+    border-radius: 7px;
+    
 }
