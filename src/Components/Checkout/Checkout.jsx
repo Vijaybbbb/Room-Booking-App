@@ -142,21 +142,29 @@ async function createOrder(){
     <div className='userCheckoutWindow'>
        
        <div className='userCheckoutWindowContainer'>
-       <button onClick={()=>{handleClose()
-      setOpen(false)
-      }}>back</button>
+         
               
        <Product checkoutDetails={checkoutDetails}/>
 
        <div className="form-wrapper">
-    <h2>Payment Checkout</h2>
-    <form className="payment-form" style={{display:'flex',flexDirection:'column'}}>
-      <div className="input-control">
-        <label htmlFor="cardholder">Hotel's Name</label>
-        <label htmlFor="cardholder">{hotelName}</label>
-       
-      </div>
-      {/* <div className="input-control">
+         <h2>Payment Checkout</h2>
+         <form className="payment-form" style={{display:'flex',flexDirection:'column'}}>
+            <div className='items'>
+              <div>
+                <label htmlFor="">Hotel Name</label>
+                <input type="text" name="cvc" id="cvc" />
+              </div>
+              <div>
+              <label htmlFor="">Hotel Name</label>
+                <input type="text" name="cvc" id="cvc" />
+              </div>
+              <div>
+              <label htmlFor="">Hotel Name</label>
+                <input type="text" name="cvc" id="cvc" />
+              </div>
+            </div>
+
+      {/* <div className="input-control"
         <label htmlFor="cardnumber">Room Numbers</label>
         {
           rooms.map((room)=>(
@@ -175,16 +183,21 @@ async function createOrder(){
           </div>
         </div>
         <div className="input-control">
-          <label htmlFor="cvc">Check-out Date</label>
+          <label htmlFor="cvc">Check-out Date</label>    
           <input type="text" name="cvc" id="cvc" />
         </div>
       </div><br /><br />
+      
       <button  className="btn-order" onClick={(e)=>{
        e.preventDefault()
        createOrder()
        }} 
        
-       >Place Order</button>
+       >Proceed to Payment</button>
+       <button>bhbh</button>
+       <button onClick={()=>{handleClose()
+        setOpen(false)
+         }}>back</button>
     </form>
   </div>
        </div>
@@ -194,9 +207,7 @@ async function createOrder(){
 
 const Product = ({checkoutDetails}) => (
        <div className="product">
-         <img src="https://raw.githubusercontent.com/fleepgeek/dailyui/master/002-checkout/images/beats.png" alt="product" />
          <div className="info">
-           
            <p className="type">Grand Total</p>
            <h2 className="price">${checkoutDetails.price}</h2>
          </div>

@@ -48,6 +48,8 @@ const isAvailable = (roomNumber) =>{
   return isFound
 }
 
+
+
 //handle rooms selecting
   const handleSelect = (event,roomNumber) => {
     const checked = event.target.checked
@@ -57,6 +59,7 @@ const isAvailable = (roomNumber) =>{
        setNumbers(checked ? [...numbers, roomNumber] : numbers.filter((item) => item !== roomNumber));
     
   };
+
 
   //handle button click
   const handleClick = async () =>{

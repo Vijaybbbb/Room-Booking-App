@@ -119,9 +119,11 @@
 /* product */
 
 .userCheckoutWindow .product {
-    grid-area: p;
-    position: relative;
+    position: absolute;
     min-height: 350px;
+    width: 100px;
+    top: 193px;
+    left: 501px;
 }
 
 .userCheckoutWindow .product img {
@@ -157,18 +159,25 @@
 .userCheckoutWindow .form-wrapper {
     grid-area: f;
     padding: 40px;
-    background-color:rgb(234, 231, 231);
+    background-color:rgb(219, 245, 254);
+    width: 100%;
 }
 
 .userCheckoutWindow .form-wrapper h2 {
-    font-size: 24px;
+    font-size: 34px;
     font-weight: 300;
     color: var(--light-blue);
-    margin-bottom: 40px;
+    margin-bottom: 41px;
+    position: absolute;
+    top: 29px;
+    left: 42px;
+    
+
 }
 
 .userCheckoutWindow .input-control {
-    margin-bottom: 20px;
+ 
+    margin-bottom: 250px;
 }
 
 .userCheckoutWindow .icon-input {
@@ -190,10 +199,14 @@
 
 .userCheckoutWindow .btn-order {
     border: none;
-    background-color:  #0071c2;
+    background-color: #0071c2;
     color: #ffffff;
     text-transform: uppercase;
-    margin-top: 20px;
+    margin-top: 409px;
+    position: absolute;
+    width: 241px;
+    height: 46px;
+    border-radius: 7px;
 }
 
 @media (min-width: 1024px) {
@@ -213,8 +226,19 @@
     .userCheckoutWindow .control-group {
         display: flex;
         justify-content: space-between;
+        padding-top: 100px;
     }
     .userCheckoutWindow .control-group .input-control {
         flex: 0 0 48%;
     }
+}
+
+
+.userCheckoutWindow .userCheckoutWindowContainer .form-wrapper .items div{
+    display: flex;
+    gap: 5px;
+    padding-top: 5px;
+}
+.userCheckoutWindow .userCheckoutWindowContainer .form-wrapper .items {
+   margin-top: 40px;
 }
