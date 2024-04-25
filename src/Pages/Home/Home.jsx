@@ -24,15 +24,18 @@ const Home = () => {
 
   async function fetchHome(){
     await axios.get(`http://localhost:3000?userId=${userDetails?.userId}`,{withCredentials:true}).then((res)=>{
+      console.log(res);
         setAccess(true)
     }).catch(err=>setError(err))
   }
+
+
   return (
     <div>
       {access ? (
     <div>
       <Navbar access={access}/>
-      <Header/>
+      <Header access={access}/>
       <div className="homeContainer">
         <Featured/>
         <h1 className="homeTitle"> Browse Property By Type</h1>

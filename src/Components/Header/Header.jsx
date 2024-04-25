@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons';
@@ -9,12 +9,14 @@ import {format} from 'date-fns'
 import { useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext';
 
-const Header = ({type}) => {
+const Header = ({type,access}) => {
+
+  const [destinationFilled, setDestinationFilled] = useState(false);
   const [openDate,setOpenDate] =  useState(false)
   const [destination,setDestination]  = useState('')
   const navigate = useNavigate()
   const {dispatch}  = useContext(SearchContext)
-
+  const [placeHolder,setPlaceHolder] = useState(false)
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -24,7 +26,7 @@ const Header = ({type}) => {
   ]);
   const [openOptions,setOpenOptions] = useState(false)
   const [options,setOptions] = useState({
-    adults:0,
+    adults:1,
     children:0,
     room:1
   })
@@ -37,10 +39,18 @@ const Header = ({type}) => {
   }
 
   const handleSearch = () =>{
+    if (!destinationFilled) {
+      setPlaceHolder(true)
+      return;
+    }
     dispatch({type:"NEW_SEARCH",payload:{destination,date,options}})
     navigate('/hotels',{state:{destination,date,options}})
   }
 
+  function getValue(e){
+    setDestinationFilled(!!e.target.value); 
+    setDestination(e.target.value)
+  }
    
 
   return (
@@ -74,15 +84,24 @@ const Header = ({type}) => {
      <p className='headerDesc'>
       Get rewarded for your travels - unlocks savings of 10 % or with a free booking account
      </p>
-     <button className='headerBtn'>Sign in / Register</button>
+     {
+      access ? (
+        <h1 style={{marginBottom:'0px',fontFamily:' var(--bui_font_display_3_font-family)',fontSize:'40px'}}>find your next stay ...</h1>
+      ):(
+        <button className='headerBtn'>Sign in / Register</button>
+      )
+     }
      <div className="headerSearch">
         <div className="headerSearchItem">
             <FontAwesomeIcon icon={faBed} className='headerIcon'/>
-            <input 
+            <input
+            
+            required
             type="text"
-            placeholder='Where are you going ? '
-            className='headerSearchInput'
-            onChange={e => setDestination(e.target.value)} 
+            placeholder={!placeHolder ? 'Where are you going' : ' Please enter a destination...?'} 
+            className={!placeHolder ? 'headerSearchInput' : 'headerSearchInputError'}
+            onChange={getValue} 
+            
           />
         </div>
      

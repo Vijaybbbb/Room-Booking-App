@@ -23,6 +23,7 @@ const useFetch = (url) =>{
 
 
        const refetchData = async ()=>{
+   
               setLoading(true)
               try {
                      const res  = await axios.get(url)

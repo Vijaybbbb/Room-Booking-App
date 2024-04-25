@@ -73,6 +73,17 @@
        border: none;
        outline: none;
 }
+.headerSearchInputError {
+       border: none;
+       outline: none;
+     }
+
+
+.headerSearchInputError::placeholder {
+       color: red; /* Change placeholder color to red */
+     }
+
+
 .headerSearchText{
        color: lightgray;
        cursor: pointer;

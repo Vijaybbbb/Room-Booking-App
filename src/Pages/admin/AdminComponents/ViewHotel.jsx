@@ -40,9 +40,13 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
 
        };
 
-       const handleDelete=(e)=>{
+       const handleDelete=async(e)=>{
               e.preventDefault();
-
+              await axios.delete(`${baseUrl}/hotels/find/${hotelId}`,{},{withCredentials:true}).then((res)=>{
+                     handleGoBack()
+               }).catch((err)=>{
+                     console.log(err);
+               })
        }
 
        return (
@@ -60,7 +64,7 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         tabIndex="1"
                                                         required
                                                         autoFocus
-                                                        value={hotelData.name || data.name}
+                                                        value={hotelData?.name || data?.name}
                                                         onChange={getValue}
                                                  />
                                           </fieldset>
@@ -72,7 +76,7 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         tabIndex="1"
                                                         required
                                                         autoFocus
-                                                        value={hotelData.type || data.type}
+                                                        value={hotelData?.type || data?.type}
                                                         onChange={getValue}
                                                  />
                                           </fieldset>
@@ -83,7 +87,7 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         type="email"
                                                         tabIndex="2"
                                                         required
-                                                        value={hotelData.city || data.city}
+                                                        value={hotelData?.city || data?.city}
                                                         onChange={getValue}
                                                  />
                                           </fieldset>
@@ -95,7 +99,7 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         type="tel"
                                                         tabIndex="3"
                                                         required
-                                                        value={hotelData.address || data.address}
+                                                        value={hotelData?.address || data?.address}
                                                         onChange={getValue}
                                                  />
                                           </fieldset>
@@ -106,7 +110,7 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         type="url"
                                                         tabIndex="4"
                                                         required
-                                                        value={hotelData.distance || data.distance}
+                                                        value={hotelData?.distance || data?.distance}
                                                         onChange={getValue}
                                                  />
                                           </fieldset>
@@ -118,7 +122,7 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                         type="url"
                                                         tabIndex="4"
                                                         required
-                                                        value={hotelData.cheapestPrice || data.cheapestPrice}
+                                                        value={hotelData?.cheapestPrice || data?.cheapestPrice}
                                                         onChange={getValue}
                                                  />
                                           </fieldset>
@@ -128,7 +132,7 @@ const ViewHotel = ({ hotelId, handleGoBack }) => {
                                                        name='description'
                                                         tabIndex="5"
                                                         required
-                                                        value={hotelData.description || data.description}
+                                                        value={hotelData?.description || data?.description}
                                                         onChange={getValue}
                                                  ></textarea>
                                           </fieldset>

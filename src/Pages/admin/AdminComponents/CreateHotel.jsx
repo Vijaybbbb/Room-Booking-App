@@ -71,21 +71,29 @@ const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
                                                         
                                                         onChange={getValue}
                                                  />
-                                          </fieldset>
-                                          <label htmlFor="" style={{marginBottom:'10px'}}>Hotel Type</label>
-                                          <fieldset>
-                                                 <input
-                                                        name='type'
-                                                        type="text"
-                                                        tabIndex="1"
-                                                        required
-                                                        autoFocus
-                                                        
-                                                        onChange={getValue}
-                                                 />
-                                          </fieldset>
-                                          <label htmlFor="">City</label>
-                                          <fieldset>
+                                                          </fieldset>
+                                                          <label htmlFor="" style={{ marginBottom: '10px' }}>Hotel Type</label>
+                                                          <fieldset>
+                                                                 <select
+                                                                        name='type'
+                                                                        tabIndex="1"
+                                                                        required
+                                                                        autoFocus
+                                                                        onChange={getValue}
+                                                                 >
+                                                                        <option value="">Select Hotel Type</option>
+                                                                        <option value="Hotel">Hotel</option>
+                                                                        <option value="Apartment">Apartment</option>
+                                                                        <option value="Resort">Resort</option>
+                                                                        <option value="Villa">Villa</option>
+                                                                        <option value="Cabin">Cabin</option>
+
+                                                                        {/* Add more options as needed */}
+                                                                 </select>
+                                                          </fieldset>
+
+                                                          <label htmlFor="">City</label>
+                                                          <fieldset>
                                                  <input
                                                         name='city'
                                                         type="email"

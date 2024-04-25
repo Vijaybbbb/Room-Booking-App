@@ -153,3 +153,176 @@
        border-radius: 5px;
      }
      
+     .myBookingsPage .receipt__container  label {
+     font-size: 13px;
+    }
+    .myBookingsPage .receipt__container  img {
+      height: 200px;
+      width: 200px;
+      border-radius: 5px;
+      margin-top: -10px;
+      margin-left: -6px;
+     }
+     .myBookingsPage .receipt__container  .btnContainer{
+      position: absolute;
+      margin-left: 600px; 
+      margin-top: 150px;
+     }
+     .myBookingsPage .receipt__container  .btnContainer  button{
+      border: none;
+      padding: 5px 20px;
+      background-color: #0071c2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100%;
+      position: relative;
+ 
+     }
+
+
+    .myBookingsPage .receipt__container  .roombox {
+     width: 30px;
+     height: 30px;
+     background: #003580;
+     justify-content: center; /* horizontally centers the content */
+     align-items: center;
+     display: flex;
+     border-radius: 3px;
+     }
+     
+
+     .myBookingsPage .detailsBoxView /* Our Font */ {
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+    }
+    
+    .myBookingsPage .detailsBoxView * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins';
+    }
+    
+    .myBookingsPage .detailsBoxView body {
+      height: 100vh;
+      background-color: #D3E1E1;
+    }
+    
+    .myBookingsPage .detailsBoxView .receipt {
+      width: 360px;
+      height: 720px;
+      background-color: white;
+      border-radius: 30px;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      margin-top: -360px; /* -half height and width to center */
+      margin-left: -180px;
+      box-shadow: 14px 14px 22px -18px;
+      padding: 20px;
+    }
+    
+    .myBookingsPage .detailsBoxView .name {
+      text-transform: uppercase;
+      text-align: center;
+      color: #6c8b8e;
+      letter-spacing: 10px;
+      font-size: 1.8em;
+      margin-top: 10px;
+    }
+    
+    .myBookingsPage .detailsBoxView .greeting {
+      font-size: 21px;
+      text-transform: capitalize;
+      text-align: center;
+      color: #6f8d90;
+      margin: 35px 0;
+      letter-spacing: 1.2px;
+    }
+    
+    .myBookingsPage .detailsBoxView .order p {
+      font-size: 13px;
+      color: #aaa;
+      padding-left: 10px;
+      letter-spacing: .7px;
+    }
+    
+    .myBookingsPage .detailsBoxView hr {
+      border: .7px solid #ddd;
+      margin: 15px 0;
+    }
+    
+    .myBookingsPage .detailsBoxView .details {
+      padding-left: 10px;
+      margin-bottom: 35px;
+      overflow: hidden;
+    }
+    
+    .myBookingsPage .detailsBoxView .details h3 {
+      font-weight: 400;
+      color: #6c8b8e;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+    
+    .myBookingsPage .detailsBoxView .product {
+      float: left;
+      width: 83%;
+    }
+    
+    .myBookingsPage .detailsBoxView .product img {
+      width: 65px;
+      float: left;
+    }
+    
+    .myBookingsPage .detailsBoxView .product .info {
+      float: left;
+      margin-left: 15px;
+    }
+    
+    .myBookingsPage .detailsBoxView .product .info h4 {
+      color: #6f8d90;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+    
+    .myBookingsPage .detailsBoxView .product .info p {
+      font-size: 12px;
+      color: #aaa;
+    }
+    
+    .myBookingsPage .detailsBoxView .details > p {
+      color: #6f8d90;
+      margin-top: 25px;
+      font-size: 15px;
+    }
+    
+    .myBookingsPage .detailsBoxView .totalprice p {
+      padding-left: 10px;
+    }
+    
+    .myBookingsPage .detailsBoxView .totalprice .sub,
+    .myBookingsPage .detailsBoxView .totalprice .del {
+      font-size: 13px;
+      color: #aaa;
+    }
+    
+    .myBookingsPage .detailsBoxView .totalprice span {
+      float: right;
+      margin-right: 17px;
+    }
+    
+    .myBookingsPage .detailsBoxView .totalprice .tot {
+      color: #6f8d90;
+      font-size: 15px;
+    }
+    
+    .myBookingsPage .detailsBoxView footer {
+      font-size: 10px;
+      text-align: center;
+      margin-top: 135px; /* You can make it with position try it */
+      color: #aaa;
+    }
+    

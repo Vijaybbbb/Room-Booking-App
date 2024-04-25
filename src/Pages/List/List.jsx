@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux'
 const List = () => {
    const userDetails = useSelector(state => state.userDetails)
    const location = useLocation()
+   console.log(location);
    const [destination,setDestination] = useState(location.state?.destination)
    const [date,setDate] = useState(location.state?.date)
    const [openDate,setOpenDate]   = useState(false)
@@ -34,12 +35,15 @@ const List = () => {
     }
 
 
-   const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`)
-
-   const handleClick = async() =>{
+   const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels?city=${destination || '' }&min=${min || 0 }&max=${max || 20000}`)
+    console.log(data);
+   const handleClick = async(e) =>{
+      e.preventDefault()
       refetchData()
    } 
-   
+   function setDestValue(e){
+      setDestination(e.target.value)
+   }
 
   return ( 
     <div>
@@ -51,7 +55,7 @@ const List = () => {
                   <h1 className="isTitle">Search</h1>
                   <div className="lsItem">
                       <label htmlFor="">Designation</label>
-                      <input type="text" placeholder={destination}/>
+                      <input type="text" onChange={setDestValue}  placeholder={destination}/>
                    </div>
                  <div className="lsItem">
                     <label htmlFor="">Check-in Date</label>

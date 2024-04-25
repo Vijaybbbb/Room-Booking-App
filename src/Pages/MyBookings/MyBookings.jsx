@@ -9,6 +9,9 @@ import Header from '../../Components/Header/Header';
 import { Center } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+
+
 
 const MyBookings = () => {
 
@@ -28,7 +31,8 @@ const MyBookings = () => {
 
 
        const [bookings] = useState(data.bookings);
-
+       const [selectedBooking,setSelectedBooking] = useState()
+       console.log(selectedBooking);
 
        const [companies, setCompanies] = useState([]); // Assuming you have a state for companies
        const [filterInUse, setFilterInUse] = useState(false); // Assuming you have a state for filterInUse
@@ -61,7 +65,8 @@ const MyBookings = () => {
          // You need to implement this function
        };
 
-       function handleClick(e){
+       function handleClick(e,order){
+        setSelectedBooking(order)
         e.preventDefault()
         setOpenDetails(true)
        }
@@ -69,6 +74,22 @@ const MyBookings = () => {
        function close(e){
         e.preventDefault()
         setOpenDetails(false)
+       }
+       
+       
+
+       async function cancelOrder(orderId){
+          await axios.post(`${baseUrl}/user/cancelOrder`,{
+            orderId:orderId,
+            userId:userId,
+            rooms:selectedBooking.rooms,
+            hotelId:selectedBooking.hotel,
+            allDates:selectedBooking.allDates
+          },{withCredentials:true}).then((res)=>{
+
+          }).catch((err)=>{
+            console.log(err);
+          })
        }
        
 
@@ -168,23 +189,23 @@ const MyBookings = () => {
             data.bookings.reverse().map((order, index) => (
               <div key={index} className="receipt__container">
                 <div>
-                <img src={`../../../src/images/${order.images[0]}`} style={{height:'200px',width:'200px',borderRadius:'5px'}}/>
+                <img src={`../../../src/images/${order.images[0]}`} />
                 </div>
                 <div style={{paddingLeft:'100px'}}>
                   <p className="receipt__client">{order.hotelName}</p>
                   <div style={{display:'flex',gap:'5px'}}>
                     {
                       order?.bookedNumbers?.map((no)=>(
-                        <div style={{width:"30px",height:'30px',background:'#003580'}}>
-                          <label htmlFor="" style={{fontSize:'13px',}}>{no}</label>
+                        <div className='roombox' >
+                          <label htmlFor="">{no}</label>
                         </div>
                       ))
                     }
                   </div>
                  <p className="receipt__days">{order.status}</p>
                 </div>
-                <div style={{}}>
-                  <button onClick={handleClick}>Order Details</button>
+                <div className='btnContainer'>
+                  <button onClick={()=>{handleClick(event,order)}}>Order Details</button>
                 </div>
               </div>
               
@@ -200,33 +221,80 @@ const MyBookings = () => {
 
       {
         openDetails&&(
-          <div>
-             <div className="reserve">
-              <div className="rContainer"  style={{width:"750px",height:'500px',borderRadius:'10px',marginLeft:"350px"}}>
-                <FontAwesomeIcon icon={faCircleXmark} className="rClose" onClick={close} />
-                <span>Reservation Details</span>
-               
-                  <div className="rItem">
-                    <div className="rItemInfo">
-                     34wgrgerg
-                    </div>
-                    <div className="rSelectRooms">
-                      
-                        <div className="room" >
-                          <label htmlFor=""></label>
-                         
+            <div >
+              <div className="reserve">
+                <div className="rContainer" style={{ width: "750px", height: '500px', borderRadius: '10px', marginLeft: "350px" }}>
+                  <FontAwesomeIcon icon={faCircleXmark} className="rClose" onClick={close} />
+                 
+                  <div className='detailsBoxView'>
+                    <div className="">
+                      <h2 className="name">Details</h2>
+                     
+
+                      {/* Order info */}
+                      <div className="order">
+                        <p>Order No: 1234567890</p>
+                        <p>Date: 4/5/2020</p>
+                        <p>Shipping Address: My sweet home</p>
+                      </div>
+
+                      <hr />
+
+                      {/* Details */}
+                      <div className="details">
+                        <h3>Details</h3>
+
+                        <div className="product">
+
+
+                          <div className="info">
+                            <h4>{selectedBooking.hotelName}</h4>
+                            <p>
+                            {
+                             selectedBooking?.bookedNumbers.map((no)=>(
+                              <label htmlFor="">{no}{'  '}</label>
+                             )) 
+                            }
+                            </p>
+                            <p>Payment Method : Online Payment</p>
+                          </div>
                         </div>
-                    
+
+                        <p>128 $</p>
+                      </div>
+
+                      {/* Sub and total price */}
+                      <div className="totalprice">
+                        <p className="sub">Subtotal <span>{selectedBooking.totalPrice} $</span></p>
+                        <p className="del">Tax <span>0 $</span></p>
+                        <hr />
+                        <p className="tot">Total <span>{selectedBooking.totalPrice} $</span></p>
+                      </div>
+
+                      {/* Footer */}
+                      <footer>Lorem ipsum dolor sit amet consectetur adipisicing.</footer>
                     </div>
                   </div>
-            
-             {/* //<button  className='rButton'>Reserve Now</button> */}
-           </div>
-        </div>
-          </div>
+
+                  <div className="rSelectRooms">
+
+                    <button>View Invoice</button>
+
+                    <button onClick={() => {
+                      cancelOrder(selectedBooking._id)
+                    }}>Cancel Order</button>
+
+                  </div>
+                </div>
+
+                {/* //<button  className='rButton'>Reserve Now</button> */}
+              </div>
+            </div>
+      
         )
       }
     </div>
+
     </div>
     
    

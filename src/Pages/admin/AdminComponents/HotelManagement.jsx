@@ -8,8 +8,10 @@ import ViewHotel from './ViewHotel'
 
 const HotelManagement = ({compClick,showHotels}) => {
 
-  const [openWindow,setOpenWindow] = useState(false)
-  const {data,error,loading} = useFetch(`${baseUrl}/admin/hotels`)
+
+
+  const [openWindow,setOpenWindow] = useState()
+  const {data,error,loading,refetchData} = useFetch(`${baseUrl}/admin/hotels`)
   const [page, setPage] = useState(1)
   const [viewHotel,setViewHotel] = useState(false) 
   const [hotelId, setHotelId] = useState() 
@@ -34,9 +36,10 @@ const HotelManagement = ({compClick,showHotels}) => {
 
   
   function handleGoBack() {
-    console.log('back');
     setViewHotel(false)
+    refetchData()
   }
+
 
 
   function handleViewHotel(id) {
