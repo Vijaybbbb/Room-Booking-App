@@ -29,34 +29,6 @@ console.log(checkoutDetails);
       }
     }
 
-    // async function getRoomNames() {
-    //   try {
-    //     const responses = await Promise.all(rooms.map(async roomId => {
-    //       try {
-    //         const res = await axios.get(`${baseUrl}/rooms/singleRoom/${roomId}`);
-    //         console.log(res);
-    //         return res.data.title; // Assuming 'title' is the property containing the room name
-    //       } catch (error) {
-    //         console.error('Error fetching room data for room:', roomId, error);
-    //         return null; // Or handle error as needed
-    //       }
-    //     }));
-    
-    //     const names = {};
-    //     responses.forEach((title, index) => {
-    //       const roomId = rooms[index];
-    //       if (title !== null) {
-    //         names[roomId] = title;
-    //       }
-    //     });
-    
-    //     setRoomNames(names);
-    //   } catch (error) {
-    //     console.error('Error fetching room data:', error);
-    //   }
-    // }
-    
-
     fetchData();
  
     
