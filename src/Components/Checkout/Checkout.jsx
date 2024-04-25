@@ -152,7 +152,7 @@ async function createOrder(){
             <div className='items'>
               <div>
                 <label htmlFor="">Hotel Name</label>
-                <input type="text" name="cvc" id="cvc" />
+                <input type="text" name="cvc" id="cvc" value={hotelName} />
               </div>
               <div>
                 <label htmlFor="">User Name</label>
