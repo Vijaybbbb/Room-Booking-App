@@ -14,6 +14,7 @@ import AdminLogin from './Pages/admin/adminLogin/AdminLogin'
 import AdminHome from './Pages/admin/adminHome/AdminHome'
 import MyBookings from './Pages/MyBookings/MyBookings'
 import Profile from './Pages/Profile/Profile'
+import OrderPlaced from './Pages/Animation/OrderPlaced'
 
 
 function App() {
@@ -70,6 +71,10 @@ function App() {
     {
       path:"/profile",
       element:<Profile/>
+    },
+    {
+      path:"/successAnimation",
+      element:<OrderPlaced/>
     }
   ])
 
