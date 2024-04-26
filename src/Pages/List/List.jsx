@@ -19,6 +19,7 @@ const List = () => {
    console.log(location);
    const [destination,setDestination] = useState(location.state?.destination)
    const [date,setDate] = useState(location.state?.date)
+  
    const [openDate,setOpenDate]   = useState(false)
    const [options,setOptions] = useState(location.state?.options)
    const [access,setAccess]  = useState(false)
@@ -38,7 +39,7 @@ const List = () => {
 
 
    const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels?city=${destination || '' }&min=${min || 0 }&max=${max || 20000}`)
-    console.log(data);
+   
    const handleClick = async(e) =>{
       e.preventDefault()
       refetchData()

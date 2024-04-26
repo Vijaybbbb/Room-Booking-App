@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './PropertyList.css'
 import img1 from '../../assets/ByTypeImages/hamburg-2976711_1280.jpg'
 import img2 from '../../assets/ByTypeImages/hamburg-3071437_1280.jpg'
@@ -13,11 +13,29 @@ import { useNavigate } from 'react-router-dom'
 const PropertyList = () => {
 
        const {data,loading,error} = useFetch('http://localhost:3000/hotels/countByType')
+       console.log(data);
        const navigate = useNavigate()
        const images  = [img1,img2,img3,img4,img5] 
+       
+       const tomorrowDate = new Date();
+       tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+
+       const [date, setDate] = useState([
+              {
+                startDate: new Date(),
+                endDate:tomorrowDate,
+                key: 'selection'
+              }
+            ]);
+            
+            const [options,setOptions] = useState({
+              adults:1,
+              children:0,
+              room:1
+            })
 
        function handleClick(){
-              navigate('/hotels')
+              navigate('/hotels',{state:{date,options}})
        }
     
   return (

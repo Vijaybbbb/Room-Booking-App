@@ -11,6 +11,11 @@ import { SearchContext } from '../../context/SearchContext';
 
 const Header = ({type,access}) => {
 
+//set initial dates 
+  const tomorrowDate = new Date();
+  tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+
+
   const [destinationFilled, setDestinationFilled] = useState(false);
   const [openDate,setOpenDate] =  useState(false)
   const [destination,setDestination]  = useState('')
@@ -20,7 +25,7 @@ const Header = ({type,access}) => {
   const [date, setDate] = useState([
     {
       startDate: new Date(),
-      endDate: new Date(),
+      endDate:tomorrowDate,
       key: 'selection'
     }
   ]);
@@ -52,6 +57,11 @@ const Header = ({type,access}) => {
     setDestination(e.target.value)
   }
    
+
+  //set deafult dates  const tomorrowDate = new Date();
+  
+
+
 
   return (
     <div className='header'>

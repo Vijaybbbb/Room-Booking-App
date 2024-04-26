@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './FeaturedProperties.css'
 import useFetch from '../../hooks/useFetch'
 import img from '../../../src/images/1713957176605pexels-photo-219692.jpeg'
@@ -9,8 +9,27 @@ const FeaturedProperties = () => {
   const {data,loading,error} = useFetch('http://localhost:3000/hotels/featured')
  const navigate = useNavigate()
 
+ const tomorrowDate = new Date();
+ tomorrowDate.setDate(tomorrowDate.getDate() + 1);
+ 
+
+
+ const [date, setDate] = useState([
+  {
+    startDate: new Date(),
+    endDate:tomorrowDate,
+    key: 'selection'
+  }
+]);
+
+const [options,setOptions] = useState({
+  adults:1,
+  children:0,
+  room:1
+})
+
   function handleClick(data){
-      navigate(`/hotels/${data._id}`)
+      navigate(`/hotels/${data._id}`,{state:{date,options}})
   }
 
   return (
