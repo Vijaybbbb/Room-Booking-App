@@ -105,7 +105,7 @@ const handleMove=(direction)=>{
           <FontAwesomeIcon icon={faCircleXmark} className='close' onClick={()=>{setOpen(false)}}/>
           <FontAwesomeIcon icon={faArrowLeft} className='arrow' onClick={()=>{handleMove('l')}}/>
           <div className="sliderWrapper">
-            <img className='sliderImg' src={photos[slideNumber].src} alt="" />
+            <img className='sliderImg' src={`../../../src/images/${data?.images[slideNumber]}`} alt="" />
           </div>
           <FontAwesomeIcon icon={faArrowRight}  className='arrow'  onClick={()=>{handleMove('r')}}/>
 

@@ -236,11 +236,29 @@
 
 .userCheckoutWindow .userCheckoutWindowContainer .form-wrapper .items div{
     display: flex;
-    gap: 5px;
-    padding-top: 5px;
+    gap: 10px;
+    padding-top: 10px;
 }
+
+.userCheckoutWindow .userCheckoutWindowContainer .form-wrapper .items input{
+ margin-left: 100px;
+ position: absolute;
+ width: 400px;
+ gap: 10px; 
+ margin-top: -11px;
+}
+.userCheckoutWindow .userCheckoutWindowContainer .form-wrapper .items label{
+    gap: 10px; 
+
+   }
+
 .userCheckoutWindow .userCheckoutWindowContainer .form-wrapper .items {
    margin-top: 40px;
+}
+
+.userCheckoutWindow .userCheckoutWindowContainer .form-wrapper .coupenBox{
+    position: absolute;
+    top: 359px;
 }
 
 .userCheckoutWindow .userCheckoutWindowContainer .closebuttoncheckout {
@@ -252,4 +270,25 @@
     width: 92px;
     border-radius: 7px;
     
+}
+
+.userCheckoutWindow .userCheckoutWindowContainer .coupenBox .cpnbtn{
+    position: absolute;
+    border: none;
+    background-color: #0071c2;
+    color: #ffffff;
+    text-transform: uppercase;
+    width: 88px;
+    height: 42px;
+}
+.userCheckoutWindow .userCheckoutWindowContainer .coupenBox .sucess{
+    position: absolute;
+    color: #0071c2;
+    margin-top: 5px;
+  
+}
+.userCheckoutWindow .userCheckoutWindowContainer .coupenBox .error{
+    position: absolute;
+    color: red;
+    margin-top: 5px;
 }

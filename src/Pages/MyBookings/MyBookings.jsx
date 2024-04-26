@@ -296,7 +296,7 @@ const MyBookings = () => {
                           </div>
                         </div>
 
-                        <p>128 $</p>
+                        <p style={{position:'absolute',left:'734px'}}>{selectedBooking.totalPrice} $</p>
                       </div>
 
                       {/* Sub and total price */}

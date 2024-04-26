@@ -10,7 +10,7 @@ import img4 from '../../assets/TopCitiesImages/pexels-photo-773471.jpeg'
 const Featured = () => {
 
  
-  const {data,loading,error} = useFetch('http://localhost:3000/hotels/countByCity?cities=berlin,madrid,london')
+  const {data,loading,error} = useFetch('http://localhost:3000/hotels/countByCity?cities=Mumbai,Chennai,Banglore,Delhi')
   const images  = [img1,img2,img3,img4]
   const places  = ['Mumbai','Chennai','Banglore','Delhi'] 
   return (

@@ -13,6 +13,7 @@ import ResetOtpPage from './Pages/ForgetPassword/ResetOtpPage'
 import AdminLogin from './Pages/admin/adminLogin/AdminLogin'
 import AdminHome from './Pages/admin/adminHome/AdminHome'
 import MyBookings from './Pages/MyBookings/MyBookings'
+import Profile from './Pages/Profile/Profile'
 
 
 function App() {
@@ -65,6 +66,10 @@ function App() {
     {
       path:"/adminHome",
       element:<AdminHome/>
+    },
+    {
+      path:"/profile",
+      element:<Profile/>
     }
   ])
 
