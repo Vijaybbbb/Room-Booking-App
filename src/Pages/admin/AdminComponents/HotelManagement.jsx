@@ -4,6 +4,8 @@ import { baseUrl } from '../../../utils'
 import useFetch from '../../../hooks/useFetch'
 import '../AdminComponents/css/HotelManagement.css'
 import ViewHotel from './ViewHotel'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed, faCalendarDays, faCar, faHotel, faPerson, faPlane, faTaxi, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 
 const HotelManagement = ({compClick,showHotels}) => {
@@ -114,6 +116,8 @@ const HotelManagement = ({compClick,showHotels}) => {
                 <div className="row">
                   <div className="left card-title">
                     <b>HotelManagement</b>
+                    <FontAwesomeIcon icon={faHotel} style={{color:'black',fontSize:'40px'}}/> 
+
                   </div>
                 </div>
                 

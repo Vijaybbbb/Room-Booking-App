@@ -3,6 +3,8 @@ import '../AdminComponents/css/UserManagement.css'
 import '../AdminComponents/css/createUser.css'
 import axios from 'axios'
 import { baseUrl } from '../../../utils'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 const CreateUser = ({compClick,showUserCreation,setShow}) => {
 
@@ -65,6 +67,8 @@ const CreateUser = ({compClick,showUserCreation,setShow}) => {
                                             <div className="row">
                                                    <div className="left card-title">
                                                           <b>Create User</b>
+                    <FontAwesomeIcon icon={faUser} style={{color:'black',fontSize:'40px'}}/> 
+
                                                    </div>
                                             </div>
                                      </div>

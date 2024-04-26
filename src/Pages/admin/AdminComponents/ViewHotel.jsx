@@ -3,6 +3,8 @@ import '../AdminComponents/css/viewHotel.css'
 import useFetch from '../../../hooks/useFetch'
 import { baseUrl } from '../../../utils'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 
 

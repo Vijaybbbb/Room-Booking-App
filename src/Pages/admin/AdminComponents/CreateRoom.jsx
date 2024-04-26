@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import useFetch from '../../../hooks/useFetch'
 import { baseUrl } from '../../../utils'
 import CreateNewRoom from './CreateNewRoom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 const CreateRoom = ({compClick,showRoomCreation,setShow}) => {
 
@@ -110,6 +112,8 @@ const CreateRoom = ({compClick,showRoomCreation,setShow}) => {
                      <div className="row">
                             <div className="left card-title">
                                    <b>Create Room</b>
+                                <FontAwesomeIcon icon={faBed} style={{color:'black',fontSize:'40px'}}/> 
+
                             </div>
                      </div>
               </div>

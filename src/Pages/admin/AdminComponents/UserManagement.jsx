@@ -5,6 +5,8 @@ import axios from 'axios'
 import useFetch from '../../../hooks/useFetch'
 import {baseUrl} from '../../../utils'
 import ViewUser from './ViewUser'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 const UserManagement = ({compClick,showUsers}) => {
 
@@ -118,6 +120,8 @@ const UserManagement = ({compClick,showUsers}) => {
                 <div className="row">
                   <div className="left card-title">
                     <b>User management</b>
+                    <FontAwesomeIcon icon={faUsers} style={{color:'black',fontSize:'40px'}}/> 
+
                   </div>
                 </div>
             

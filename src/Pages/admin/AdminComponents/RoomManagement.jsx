@@ -4,6 +4,8 @@ import '../AdminComponents/css/RoomManagement.css'
 import useFetch from '../../../hooks/useFetch'
 import { baseUrl } from '../../../utils'
 import ViewRoom from './ViewRoom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed, faCalendarDays, faCar, faPerson, faPlane, faRestroom, faTaxi, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 
 const RoomManagement = ({compClick,showRooms}) => {
@@ -109,6 +111,8 @@ const RoomManagement = ({compClick,showRooms}) => {
                 <div className="row">
                   <div className="left card-title">
                     <b>RoomManagement</b>
+                    <FontAwesomeIcon icon={faRestroom} style={{color:'black',fontSize:'40px'}}/> 
+
                   </div>
                 </div>
                 

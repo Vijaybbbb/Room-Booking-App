@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import '../AdminComponents/css/createHotel.css'
 import axios from 'axios'
 import { baseUrl } from '../../../utils'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed, faCalendarDays, faCar, faHome, faPerson, faPlane, faTaxi, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
        const [hotelData,setHotelData]  = useState()
@@ -174,6 +176,8 @@ const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
                      <div className="row">
                             <div className="left card-title">
                                    <b>Create Hotel</b>
+                               <FontAwesomeIcon icon={faHome} style={{color:'black',fontSize:'40px'}}/> 
+
                             </div>
                      </div>
               </div>

@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { baseUrl } from '../../../utils'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBed, faCalendarDays, faCar, faIdCard, faPerson, faPlane, faTaxi, faTicket, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 const CreateCoupen = ({compClick,showCoupenCreation,setShow}) => {
 
@@ -76,6 +78,8 @@ const CreateCoupen = ({compClick,showCoupenCreation,setShow}) => {
                                    <div className="row">
                                           <div className="left card-title">
                                                  <b>Create Coupen</b>
+                    <FontAwesomeIcon icon={faTicket} style={{color:'grey',fontSize:'40px'}}/> 
+
                                           </div>
                                    </div>
                             </div>
