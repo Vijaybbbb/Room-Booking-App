@@ -1,22 +1,22 @@
 .footer{
-       width: 100%;
-       width: 1024px;
-       font-size: 12px;
+       width: 100% !important; 
+       width: 1024px !important;
+       font-size: 12px !important;
 }
 
 .flists{
-       width: 100%;
-       display: flex;
-       justify-content: space-between;
-       margin-bottom: 50px;
+       width: 100% !important;
+       display: flex !important;
+       justify-content: space-between !important;
+       margin-bottom: 50px !important;
 }
 .flist{
-       list-style: none;
-       padding: 0;
+       list-style: none !important;
+       padding: 0 !important;
 }
 
 .fListItem{
-       margin-bottom: 10px;
-       color: #003580;
-       cursor: pointer;
+       margin-bottom: 10px !important;
+       color: #003580 !important; 
+       cursor: pointer!important;
 }

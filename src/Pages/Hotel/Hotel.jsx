@@ -118,16 +118,16 @@ const handleMove=(direction)=>{
                     }}>Reserve or Book Now </button>
 
                     
-                  <h1 className='hotelTitle'>{data.name}</h1>
+                  <h1 className='hotelTitle'>{data?.name}</h1>
                   <div className="hotelAddress">
                     <FontAwesomeIcon icon={faLocationDot}/>
-                    <span>{data.address}</span>
+                    <span>{data?.address}</span>
                   </div>
                   <span className='hotelDistance'>
-                    Excellent location - {data.distance} from center
+                    Excellent location - {data?.distance} from center
                   </span>
                   <span className='hotelPriceHighlight'>
-                    Book a stay over ${data.cheapestPrice} at this prperty and get a free airport taxi
+                    Book a stay over ${data?.cheapestPrice} at this prperty and get a free airport taxi
                   </span>
                   <div className="hotelImages">
                     {
@@ -165,8 +165,8 @@ const handleMove=(direction)=>{
                       handleOpenCheckout={handleOpenCheckout}
                        setOpen={setOpenModel}
                         hotelId={id} 
-                        price={days * data.cheapestPrice * options.room}
-                        images = {data.images}
+                        price={days * data?.cheapestPrice * options?.room}
+                        images = {data?.images}
                         />}
                 
                  

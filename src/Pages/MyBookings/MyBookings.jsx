@@ -19,7 +19,7 @@ const MyBookings = () => {
 
    const [access,setAccess]  = useState(false)
        const {userId}  = useSelector(state => state.userDetails)
-       const { data, loading, error } = useFetch(`${baseUrl}/user/getAllBookings/${userId}`);
+       const { data, loading, error,refetchData } = useFetch(`${baseUrl}/user/getAllBookings/${userId}`);
        const [openDetails,setOpenDetails] = useState(false)
        const datas = data.bookings
        const [showConfirmBox, setShowConfirmBox] = useState(false);
@@ -36,7 +36,7 @@ const MyBookings = () => {
        const today = new Date();
        const [page, setPage] = useState(1)
        const [selectedBooking,setSelectedBooking] = useState() 
-       console.log(selectedBooking);
+       
 
        const [companies, setCompanies] = useState([]); // Assuming you have a state for companies
        const [filterInUse, setFilterInUse] = useState(false); // Assuming you have a state for filterInUse
@@ -105,6 +105,8 @@ const MyBookings = () => {
             allDates:selectedBooking.allDates
           },{withCredentials:true}).then((res)=>{
 
+              refetchData()
+              
           }).catch((err)=>{
             console.log(err);
           })

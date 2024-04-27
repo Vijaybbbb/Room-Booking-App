@@ -13,6 +13,7 @@ import {addCheckout} from '../../Redux/checkoutSlice.js'
 
 const Reserve = ({ setOpen, hotelId, price,handleOpenCheckout,images}) => {
   const { data, loading, error } = useFetch(`${baseUrl}/hotels/room/${hotelId}`);
+  console.log(data);
   const [selectedRooms,setSelectedRooms] = useState([])
   const {date} = useContext(SearchContext)
   const {userId}  = useSelector(state => state.userDetails)
@@ -102,37 +103,52 @@ const isAvailable = (roomNumber) =>{
         openCheckout ?(
           <Checkout handleClose={handleClose} reserve={reserve} setOpen={setOpen}/>
         ):(
-            <div className="reserve">
-              <div className="rContainer">
+             
+              
+                <div className="reserve">
+                <div className="rContainer">
                 <FontAwesomeIcon icon={faCircleXmark} className="rClose" onClick={() => setOpen(false)} />
-                <span>Select Your Rooms : </span>
-                {data.map((item) => (
-                  <div className="rItem" key={item.id}>
-                    <div className="rItemInfo">
-                      <div className="rTitle">{item.title}</div>
-                      <div className="rDesc">{item.desc}</div>
-                      <div className="rMax">Max People : {item.maxPeople}</div>
-                      <div className="rPrice">{item.price}</div>
-                    </div>
-                    <div className="rSelectRooms">
-                      {item.roomNumbers.map((roomNumber) => (
-                        <div className="room" key={roomNumber._id}>
-                          <label htmlFor="">{roomNumber.number}</label>
-                          <input
-                            type="checkbox"
-                            value={roomNumber._id}
-                            //onChange={handleSelect}
-                            onChange={() => { handleSelect(event, roomNumber.number) }}
-                            disabled={isAvailable(roomNumber)}
-                          />
-                        </div>
-                      ))}
-                    </div>
+
+              {
+                data.length > 0 ? (
+                  <div>
+                  <span>Select Your Rooms : </span>
+                    {data?.map((item) => (
+                     <div className="rItem" key={item?.id}>
+                       <div className="rItemInfo">
+                         <div className="rTitle">{item?.title}</div>
+                         <div className="rDesc">{item?.desc}</div>
+                         <div className="rMax">Max People : {item?.maxPeople}</div>
+                         <div className="rPrice">{item?.price}</div>
+                       </div>
+                       <div className="rSelectRooms">
+                         {item?.roomNumbers?.map((roomNumber) => (
+                           <div className="room" key={roomNumber?._id}>
+                             <label htmlFor="">{roomNumber?.number}</label>
+                             <input
+                               type="checkbox"
+                               value={roomNumber?._id}
+                               //onChange={handleSelect}
+                               onChange={() => { handleSelect(event, roomNumber?.number) }}
+                               disabled={isAvailable(roomNumber)}
+                             />
+                           </div>
+                         ))}
+                       </div>
+                     </div>
+                   ))}
+                  <button onClick={handleClick} className='rButton'>Reserve Now</button>
                   </div>
-                ))}
-             <button onClick={handleClick} className='rButton'>Reserve Now</button>
-           </div>
-        </div>
+                ):(
+                  <div>No Rooms</div>
+                )
+              
+              }
+
+               </div>
+             </div>
+            
+             
         )
       }
     </div>
