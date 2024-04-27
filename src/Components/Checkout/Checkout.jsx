@@ -6,6 +6,7 @@ import { baseUrl } from '../../utils'
 import axios from 'axios'
 import useRazorpay from "react-razorpay";
 import { addCheckout } from '../../Redux/checkoutSlice'
+import { useNavigate } from 'react-router-dom'
 
 const Checkout = ({handleClose,reserve,setOpen}) => {
 
@@ -16,7 +17,9 @@ const Checkout = ({handleClose,reserve,setOpen}) => {
   const rooms = checkoutDetails.rooms
   const [coupenInput, setCoupenInput] = useState('');
   const [successMessage,setSuccessMessage]  = useState()
-    const [errorMessage,setErrorMessage] = useState()
+  const [errorMessage,setErrorMessage] = useState()
+  const navigate = useNavigate()
+
  
   const [hotelName, setHotelName] = useState('');
   const [roomNames, setRoomNames] = useState([]);
@@ -87,6 +90,8 @@ const Checkout = ({handleClose,reserve,setOpen}) => {
       }, { withCredentials: true }).then((res) => {
         console.log(res);
         reserve()
+        navigate('/successAnimation')
+        
 
     }).catch((err) => {
 
@@ -134,13 +139,14 @@ async function createOrder(){
         const rzp1 = new Razorpay(options);
       
         rzp1.on("payment.failed", function (response) {
-          alert(response.error.code);
-          alert(response.error.description);
-          alert(response.error.source);
-          alert(response.error.step);
-          alert(response.error.reason);
-          alert(response.error.metadata.order_id);
-          alert(response.error.metadata.payment_id);
+          // alert(response.error.code);
+          // alert(response.error.description);
+          // alert(response.error.source);
+          // alert(response.error.step);
+          // alert(response.error.reason);
+          // alert(response.error.metadata.order_id);
+          // alert(response.error.metadata.payment_id);
+          navigate('/failedAnimation')
         });
       
         rzp1.open();

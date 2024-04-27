@@ -86,6 +86,60 @@
      .myBookingsPage {
        position: relative;
      }
+     .myBookingsPage .orderCancelConfirmBox .reserve {
+      
+    } 
+    
+    .myBookingsPage .orderCancelConfirmBox .rContainer {
+      height: 200px;
+    }
+
+    .myBookingsPage .orderCancelConfirmBox .reserve {
+      
+    } 
+    
+    .myBookingsPage .orderCancelConfirmBox .rContainer .labelContainer label{
+      font-size: larger;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    }
+
+    .myBookingsPage .orderCancelConfirmBox .rContainer .btnContainer button{
+      height: 34px;
+      width: 69px;
+      border-radius: 8px;
+      outline: none;
+      border: none;
+      background: #0071c2;
+      color: white;
+    }
+
+    .myBookingsPage .orderCancelConfirmBox .rContainer .labelContainer {
+      position: absolute;
+      margin-left: 51px;
+      margin-top: 44px;
+      gap: 29px;
+    }
+
+    .myBookingsPage .orderCancelConfirmBox .rContainer .btnContainer {
+      position: relative;
+      margin-left: 93px;
+      margin-top: 132px;
+      gap: 29px;
+      display: flex;
+    }
+
+
+    .myBookingsPage  .rContainer .rSelectRooms button{
+      border: none;
+      height: 30px;
+      background: #0071c2;
+      color: white;
+    }
+
+
+
+
 
 
 

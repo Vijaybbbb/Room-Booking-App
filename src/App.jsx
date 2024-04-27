@@ -15,6 +15,8 @@ import AdminHome from './Pages/admin/adminHome/AdminHome'
 import MyBookings from './Pages/MyBookings/MyBookings'
 import Profile from './Pages/Profile/Profile'
 import OrderPlaced from './Pages/Animation/OrderPlaced'
+import OrderFailed from './Pages/Animation/OrderFailed'
+
 
 
 function App() {
@@ -75,6 +77,10 @@ function App() {
     {
       path:"/successAnimation",
       element:<OrderPlaced/>
+    },
+    {
+      path:"/failedAnimation",
+      element:<OrderFailed/>
     }
   ])
 

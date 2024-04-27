@@ -113,7 +113,11 @@ const handleMove=(direction)=>{
           </div>}
 
             <div className="hotelWrapper">
-              <button className="bookNow" onClick={handleReserve}>Reserve or Book Now </button>
+              <button className="bookNow" onClick={(e)=>{
+                      access ? handleReserve(e) : navigate('/login')
+                    }}>Reserve or Book Now </button>
+
+                    
                   <h1 className='hotelTitle'>{data.name}</h1>
                   <div className="hotelAddress">
                     <FontAwesomeIcon icon={faLocationDot}/>
@@ -149,7 +153,9 @@ const handleMove=(direction)=>{
                     <h2>
                       <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
                     </h2>
-                    <button  onClick={handleReserve}>Reserve or Book Now</button>
+                    <button  onClick={(e)=>{
+                      access ? handleReserve(e) : navigate('/login')
+                    }}>Reserve or Book Now</button>
 
                 </div>
 
