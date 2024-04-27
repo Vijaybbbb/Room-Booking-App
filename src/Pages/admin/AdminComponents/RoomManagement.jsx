@@ -75,7 +75,7 @@ const RoomManagement = ({compClick,showRooms}) => {
                   <TableCell>
                     <div className="buttons">
                       <button className="button button--outline buttons__venta" onClick={()=>{handleViewRoom(room?._id)}}>View Room</button>
-                      <button className="button button--primary buttons__comprar">Edit Room</button>
+                     
                     </div>
                   </TableCell>
                 </TableRow>
@@ -111,7 +111,7 @@ const RoomManagement = ({compClick,showRooms}) => {
                 <div className="row">
                   <div className="left card-title">
                     <b>RoomManagement</b>
-                    <FontAwesomeIcon icon={faRestroom} style={{color:'black',fontSize:'40px'}}/> 
+                    <FontAwesomeIcon icon={faRestroom}  className='adminPanelIcons'/> 
 
                   </div>
                 </div>

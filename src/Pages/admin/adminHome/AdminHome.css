@@ -510,3 +510,32 @@ body {
       width: 130px;
       height: 150px;
      }
+
+
+     .admindashboard .adminPanelIcons{
+      color: #9a9a9a;
+    font-size: 59px;
+    position: relative;
+    margin-top: 46px;
+     }
+
+     .detailsshowinput1 {
+      border: none;
+      background-color: transparent;
+      outline: none;
+      color: #ff0000;
+    }
+
+    .detailsshowinput2 {
+      border: none;
+      background-color: transparent;
+      outline: none;
+      color: #17982e;
+    }
+
+    .detailsshowinput3 {
+      border: none;
+      background-color: transparent;
+      outline: none;
+      color: #2632fe;
+    }

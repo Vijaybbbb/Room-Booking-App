@@ -82,7 +82,7 @@ const UserManagement = ({compClick,showUsers}) => {
                   <TableCell>
                     <div className="buttons">
                       <button className="button button--outline buttons__venta" onClick={()=>{handleViewUser(user?._id)}}>View User</button>
-                      <button className="button button--primary buttons__comprar">Edit User</button>
+                     
                     </div>
                   </TableCell>
                 </TableRow>
@@ -120,7 +120,7 @@ const UserManagement = ({compClick,showUsers}) => {
                 <div className="row">
                   <div className="left card-title">
                     <b>User management</b>
-                    <FontAwesomeIcon icon={faUsers} style={{color:'black',fontSize:'40px'}}/> 
+                    <FontAwesomeIcon icon={faUsers} className='adminPanelIcons'/> 
 
                   </div>
                 </div>

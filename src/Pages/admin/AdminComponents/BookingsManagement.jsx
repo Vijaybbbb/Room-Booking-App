@@ -8,7 +8,7 @@ import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi, faUser, faUser
 const BookingsManagement = ({compClick,showBookings}) => {
 
   const {data,error,loading} = useFetch(`${baseUrl}/admin/allBookings`)
-
+  console.log(data); 
   const [page, setPage] = useState(1)
   const [viewRoom,setViewRoom] = useState(false) 
 
@@ -49,28 +49,29 @@ const BookingsManagement = ({compClick,showBookings}) => {
             <div className="table">
               <div className="table__body" >
                 <TableRow>  
-                  <TableCell>Name</TableCell>
+                  <TableCell>Hotel </TableCell>
+                  <TableCell>Payer </TableCell>
+                  <TableCell>Status</TableCell>
                   <TableCell>Price</TableCell>
-                  <TableCell>RoomID</TableCell>
-                  <TableCell></TableCell>
                   <TableCell>Action</TableCell>
                 </TableRow>
                 {/* Repeat TableRow and TableCell components for each row */}
                 {/* Example of a row */}
                 {
-                  data && data.slice((page - 1) * 5, page * 5).map(room=>(
+                  data && data.slice((page - 1) * 5, page * 5).map(booking=>(
                     <TableRow key={data._id}>
                     <TableCell>
-                    <h3 className="table__crypto-name">{room?.title}</h3>
+                    <h3 className="table__crypto-name">{booking?.hotelName}</h3>
                   </TableCell>
-                  <TableCell><input type="text" value={room?.price} className='detailsshowinput' readOnly /></TableCell>
+                  <TableCell><input type="text" value={booking?.user} className='detailsshowinput' readOnly /></TableCell>
                     
-                  <TableCell><input type="text" value={room?._id} className='detailsshowinput' readOnly /></TableCell>
-                  <TableCell></TableCell>
+                  <TableCell><input type="text" value={booking?.status} className={booking?.status == 'Canceled' ? 'detailsshowinput1' : booking?.status == 'Processing' ? 'detailsshowinput3' : 'detailsshowinput2'} readOnly /></TableCell>
+                  <TableCell><input type="text" value={booking?.price} className='detailsshowinput' readOnly /></TableCell>
+
                   <TableCell>
                     <div className="buttons">
-                      <button className="button button--outline buttons__venta" onClick={()=>{handleViewRoom(room?._id)}}>View Room</button>
-                      <button className="button button--primary buttons__comprar">Edit Room</button>
+                      <button className="button button--outline buttons__venta" onClick={()=>{handleViewRoom(room?._id)}}>View Order</button>
+                      
                     </div>
                   </TableCell>
                 </TableRow>
@@ -107,7 +108,7 @@ const BookingsManagement = ({compClick,showBookings}) => {
                 <div className="row">
                   <div className="left card-title">
                     <b>BookingsManagement</b>
-                    <FontAwesomeIcon icon={faUser} style={{color:'black',fontSize:'40px'}}/> 
+                    <FontAwesomeIcon icon={faUser} className='adminPanelIcons'/> 
                     
 
                   </div>

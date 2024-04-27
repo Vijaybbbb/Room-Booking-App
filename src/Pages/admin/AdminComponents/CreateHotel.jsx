@@ -176,7 +176,7 @@ const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
                      <div className="row">
                             <div className="left card-title">
                                    <b>Create Hotel</b>
-                               <FontAwesomeIcon icon={faHome} style={{color:'black',fontSize:'40px'}}/> 
+                               <FontAwesomeIcon icon={faHome}  className='adminPanelIcons'/> 
 
                             </div>
                      </div>

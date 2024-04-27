@@ -17,7 +17,7 @@ const SearchItem = ({item}) => {
             {item.description} in {item.city}
           </span>
           <span className="siFeatures">
-            Entire studio 1 bathroom 21m 1 full bed
+           {item.type}
           </span>
           <span className="siCancelOp">Free Cancelation</span>
     <span className="siCanceledOpSubtitle">

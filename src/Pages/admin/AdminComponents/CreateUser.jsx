@@ -67,7 +67,7 @@ const CreateUser = ({compClick,showUserCreation,setShow}) => {
                                             <div className="row">
                                                    <div className="left card-title">
                                                           <b>Create User</b>
-                    <FontAwesomeIcon icon={faUser} style={{color:'black',fontSize:'40px'}}/> 
+                    <FontAwesomeIcon icon={faUser}  className='adminPanelIcons'/> 
 
                                                    </div>
                                             </div>

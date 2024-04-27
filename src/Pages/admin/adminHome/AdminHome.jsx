@@ -12,6 +12,7 @@ import CreateUser from '../AdminComponents/CreateUser'
 import CreateHotel from '../AdminComponents/CreateHotel'
 import CreateRoom from '../AdminComponents/CreateRoom'
 import CreateCoupen from '../AdminComponents/CreateCoupen'
+import ViewCoupens from '../AdminComponents/ViewCoupens'
 
 
 
@@ -61,6 +62,8 @@ const AdminHome = () => {
         return <CreateRoom showRoomCreation={true} setShow={setShow} />;
         case 'CreateCoupen':
         return <CreateCoupen showCoupenCreation={true} setShow={setShow} />;
+        case 'ViewCoupen':
+          return <ViewCoupens showViewCoupen={true} setShow={setShow} />;
       default:
         return null;
     }
@@ -93,7 +96,7 @@ const AdminHome = () => {
               <div className="icon1">
                 <img src="https://i.ibb.co/qdgf3TJ/envelope.png" alt="Inbox" />
               </div>
-              <div className="icon-name1">Inbox
+              <div className="icon-name1">inbox
                 <button className="buton-span"> 20 </button>
               </div>
             </div>
@@ -105,11 +108,11 @@ const AdminHome = () => {
         <div className="right-header">
           <div className="top-bar">
             <div className="top-bar-justify">
-              <div className="big-inbox">Inbox</div>
+              <div className="big-inbox">Get Your Room </div>
             </div>
             <div className="profile2">
-              <img src="https://www.seekclipart.com/clipng/middle/103-1032140_graphic-transparent-1-vector-flat-small-user-icon.png" alt="Profile" />
-              <div className="icon-name5">Larry Nunez</div>
+              {/* <img src="https://www.seekclipart.com/clipng/middle/103-1032140_graphic-transparent-1-vector-flat-small-user-icon.png" alt="Profile" /> */}
+              <div className="icon-name5">Profile</div>
             </div>
           </div>
           <hr className="new-hr" />
@@ -166,6 +169,11 @@ const AdminHome = () => {
                           <CreateHotel compClick={compClick}/> 
                           <CreateRoom compClick={compClick}/>
                           <CreateCoupen compClick={compClick}/>
+                
+                        </div>
+                        <div className="columnContainer" >
+                         
+                          <ViewCoupens compClick={compClick} />
                         </div>
                         <div className="fixed-action-btn click-to-toggle" style={{ bottom: '45px', right: '24px' }}>
                           <ul>

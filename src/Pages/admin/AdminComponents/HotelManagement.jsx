@@ -80,7 +80,7 @@ const HotelManagement = ({compClick,showHotels}) => {
                   <TableCell>
                     <div className="buttons">
                       <button className="button button--outline buttons__venta" onClick={()=>{handleViewHotel(hotel?._id)}}>View Hotel</button>
-                      <button className="button button--primary buttons__comprar">Edit Hotel</button>
+                    
                     </div>
                   </TableCell>
                 </TableRow>
@@ -116,7 +116,7 @@ const HotelManagement = ({compClick,showHotels}) => {
                 <div className="row">
                   <div className="left card-title">
                     <b>HotelManagement</b>
-                    <FontAwesomeIcon icon={faHotel} style={{color:'black',fontSize:'40px'}}/> 
+                    <FontAwesomeIcon icon={faHotel}  className='adminPanelIcons'/> 
 
                   </div>
                 </div>

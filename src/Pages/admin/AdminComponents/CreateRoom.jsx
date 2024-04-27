@@ -112,7 +112,7 @@ const CreateRoom = ({compClick,showRoomCreation,setShow}) => {
                      <div className="row">
                             <div className="left card-title">
                                    <b>Create Room</b>
-                                <FontAwesomeIcon icon={faBed} style={{color:'black',fontSize:'40px'}}/> 
+                                <FontAwesomeIcon icon={faBed}  className='adminPanelIcons'/> 
 
                             </div>
                      </div>

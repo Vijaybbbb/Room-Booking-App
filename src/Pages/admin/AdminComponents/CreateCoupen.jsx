@@ -78,7 +78,7 @@ const CreateCoupen = ({compClick,showCoupenCreation,setShow}) => {
                                    <div className="row">
                                           <div className="left card-title">
                                                  <b>Create Coupen</b>
-                    <FontAwesomeIcon icon={faTicket} style={{color:'grey',fontSize:'40px'}}/> 
+                    <FontAwesomeIcon icon={faTicket} className='adminPanelIcons'/> 
 
                                           </div>
                                    </div>

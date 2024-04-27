@@ -13,10 +13,9 @@ import { useNavigate } from 'react-router-dom'
 const PropertyList = () => {
 
        const {data,loading,error} = useFetch('http://localhost:3000/hotels/countByType')
-       console.log(data);
        const navigate = useNavigate()
        const images  = [img1,img2,img3,img4,img5] 
-       
+       const [type,setType] = useState() 
        const tomorrowDate = new Date();
        tomorrowDate.setDate(tomorrowDate.getDate() + 1);
 
@@ -34,7 +33,8 @@ const PropertyList = () => {
               room:1
             })
 
-       function handleClick(){
+       function handleClick(type){
+              setType(type)
               navigate('/hotels',{state:{date,options}})
        }
     
@@ -45,7 +45,7 @@ const PropertyList = () => {
        {data && images.map((image,index)=>
         <div className="pListItem" key={index}>
                <img src={image} alt="" className="pListImg" onClick={()=>{
-                     handleClick()
+                     handleClick(data[index]?.type)
                }}/>
                <div className="pListTitles">
                       <h1 id='headdingTypeh1'>{data[index]?.type}</h1>
