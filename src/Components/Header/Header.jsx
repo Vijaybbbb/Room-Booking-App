@@ -98,7 +98,7 @@ const Header = ({type,access}) => {
       access ? (
         <h1 style={{marginBottom:'0px',fontFamily:' var(--bui_font_display_3_font-family)',fontSize:'40px'}}>find your next stay ...</h1>
       ):(
-        <button className='headerBtn'>Sign in / Register</button>
+        <button className='headerBtn' onClick={()=>{navigate('/login')}}>Sign in / Register</button>
       )
      }
      <div className="headerSearch">

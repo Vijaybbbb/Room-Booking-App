@@ -14,7 +14,7 @@ const Navbar = ({access}) => {
     <div className='navbar'>
       <div className="navContainer">
         <Link to='/' >
-        <span className='logo'> Get Your <br /><span>Room</span> </span>
+        <span className='logo'> Get Your Room</span>
         </Link>
         <div className="navItems">
               <button className="navButton" onClick={()=>{navigate('/signup')}}>Register</button>
