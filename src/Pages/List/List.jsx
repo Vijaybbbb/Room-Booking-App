@@ -16,10 +16,11 @@ import MailList from '../../Components/MailList/MailList'
 const List = () => {
    const userDetails = useSelector(state => state.userDetails)
    const location = useLocation()
-   console.log(location);
+  
    const [destination,setDestination] = useState(location.state?.destination)
    const [date,setDate] = useState(location.state?.date)
-  
+   const [type,setType] = useState(location.state?.typCode)
+   
    const [openDate,setOpenDate]   = useState(false)
    const [options,setOptions] = useState(location.state?.options)
    const [access,setAccess]  = useState(false)
@@ -34,11 +35,11 @@ const List = () => {
     async function fetchHome(){
       await axios.get(`http://localhost:3000?userId=${userDetails?.userId}`,{withCredentials:true}).then((res)=>{
           setAccess(true)
-      }).catch(err=>setError(err))
+      }).catch(err=>console.log(err))
     }
 
 
-   const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels?city=${destination || '' }&min=${min || 0 }&max=${max || 20000}`)
+   const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels?city=${destination || '' }&min=${min || 0 }&max=${max || 20000}&type=${location.state?.typCode || ''}`)
    
    const handleClick = async(e) =>{
       e.preventDefault()

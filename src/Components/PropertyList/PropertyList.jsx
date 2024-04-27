@@ -33,9 +33,10 @@ const PropertyList = () => {
               room:1
             })
 
-       function handleClick(type){
-              setType(type)
-              navigate('/hotels',{state:{date,options}})
+       function handleClick(typCode){
+              
+           
+              navigate('/hotels',{state:{date,options,typCode:typCode}})
        }
     
   return (

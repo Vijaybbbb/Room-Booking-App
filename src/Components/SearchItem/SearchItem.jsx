@@ -4,7 +4,7 @@ import room from '../../assets/room.webp'
 import { useNavigate } from 'react-router-dom'
 
 const SearchItem = ({item}) => {
-  console.log(item);
+
   const navigate = useNavigate()
   return (
     <div className='searchItem'>

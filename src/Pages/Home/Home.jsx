@@ -24,7 +24,7 @@ const Home = () => {
 
   async function fetchHome(){
     await axios.get(`http://localhost:3000?userId=${userDetails?.userId}`,{withCredentials:true}).then((res)=>{
-      console.log(res);
+     
         setAccess(true)
     }).catch(err=>setError(err))
   }
