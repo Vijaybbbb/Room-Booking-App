@@ -175,8 +175,9 @@ const handleMove=(direction)=>{
             
       </div> 
       <MailList/>
-      <Footer/>
-      
+      <div style={{marginLeft:'300px',marginTop:'20px'}}>
+       <Footer/>
+       </div>      
     </div>
   )
 }

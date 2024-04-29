@@ -140,7 +140,9 @@ console.log(date);
                   </div>
        </div>
        <MailList/>
+       <div style={{marginLeft:'300px',marginTop:'20px'}}>
        <Footer/>
+       </div>
     </div>
   )
 }

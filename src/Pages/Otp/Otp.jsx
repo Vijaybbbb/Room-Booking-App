@@ -29,7 +29,7 @@ const Otp = () => {
     e.preventDefault();
     await axios.post('http://localhost:3000/auth/otpVerify',{email:email,userOtp:otp}).then((response)=>{
       setSuccessMessage(response.data.message)
-      navigate('/')
+      navigate('/login')
     }).catch((error)=>{
       setErrorMessage(error.response.data.message)
     })

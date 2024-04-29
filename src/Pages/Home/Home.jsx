@@ -26,7 +26,7 @@ const Home = () => {
     await axios.get(`http://localhost:3000?userId=${userDetails?.userId}`,{withCredentials:true}).then((res)=>{
      
         setAccess(true)
-    }).catch(err=>setError(err))
+    }).catch(err=>setError(err)) 
   }
 
 

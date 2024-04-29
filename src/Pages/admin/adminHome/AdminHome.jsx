@@ -70,6 +70,14 @@ const AdminHome = () => {
   };
 
 
+  async function handlelogout(){
+    await axios.post('http://localhost:3000/clearCookie','',{withCredentials:true}).then(()=>{
+                localStorage.clear()
+                navigate('/adminLogin')
+               }).catch(err=>console.log(err))
+  }
+
+
 
   return (
     <div>
@@ -112,7 +120,8 @@ const AdminHome = () => {
             </div>
             <div className="profile2">
               {/* <img src="https://www.seekclipart.com/clipng/middle/103-1032140_graphic-transparent-1-vector-flat-small-user-icon.png" alt="Profile" /> */}
-              <div className="icon-name5">Profile</div>
+             
+              <div className="icon-name5" style={{cursor:'pointer'}} onClick={handlelogout}>log out</div>
             </div>
           </div>
           <hr className="new-hr" />

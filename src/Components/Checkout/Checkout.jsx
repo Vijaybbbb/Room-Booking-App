@@ -12,7 +12,7 @@ const Checkout = ({handleClose,reserve,setOpen}) => {
 
   const checkoutDetails  = useSelector(state => state.checkoutDetails)
   const userDetails = useSelector(state => state.userDetails)
-  console.log(checkoutDetails);
+  //console.log(checkoutDetails);
   const hotelId = checkoutDetails.hotelId
   const rooms = checkoutDetails.rooms
   const [coupenInput, setCoupenInput] = useState('');
@@ -22,7 +22,7 @@ const Checkout = ({handleClose,reserve,setOpen}) => {
 
  
   const [hotelName, setHotelName] = useState('');
-  const [roomNames, setRoomNames] = useState([]);
+  const [coupenCode, setCoupenCode] = useState();
   const [Razorpay] = useRazorpay();
   const [priceAfterCoupen,setPriceAfterCoupen] =  useState()
   const [userFullDetails,setUserFullDetails] = useState()
@@ -85,8 +85,9 @@ const Checkout = ({handleClose,reserve,setOpen}) => {
     await axios.post(`${baseUrl}/user/verifyPayment`,
      { response: response,
        bookingId: bookingId ,
-      userId:userDetails.userId
-      
+      userId:userDetails.userId,
+      coupenCode:coupenCode
+    
       }, { withCredentials: true }).then((res) => {
         console.log(res);
         reserve()
@@ -165,13 +166,15 @@ function getCoupenInput(e){
 async function handleCoupen(e){
   e.preventDefault()
 
-  await axios.post(`${baseUrl}/user/checkCoupenValid/${userDetails.userId}`,{coupenCode:coupenInput,price:checkoutDetails.price},{withCredentials:true}).then((res)=>{
+  await axios.post(`${baseUrl}/user/checkCoupenValid/${userDetails.userId}`,{coupenCode:coupenInput,price:checkoutDetails.price},{withCredentials:true}).then((response)=>{
+      console.log(response.data);  
       setSuccessMessage(response.data.message)
-      setPriceAfterCoupen(res.data.finalPrice)
+      setPriceAfterCoupen(response.data.finalPrice)
+      setCoupenCode(response.data.code)
 
   }).catch((err)=>{
     setErrorMessage(err.response.data.message)
-    console.log(err);
+    //console.log(err);
   })
 
 }

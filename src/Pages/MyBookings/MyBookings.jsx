@@ -85,6 +85,7 @@ const MyBookings = () => {
 
        function handleClick(e,order){
         setSelectedBooking(order)
+        console.log(selectedBooking);
         e.preventDefault()
         setOpenDetails(true)
        }
@@ -277,9 +278,11 @@ const MyBookings = () => {
 
                         {/* Order info */}
                         <div className="order">
-                          <p>Order No: {selectedBooking._id}</p>
-                          <p>Booking Date: </p>
-                          <p>Shipping Address: My sweet home</p>
+                          <p>Order No: {selectedBooking?._id}</p>
+                          <p> check in Date:{selectedBooking?.checkInDate} </p>
+                          <p> check in Date:{selectedBooking?.checkOutDate} </p>
+                         
+                          <p>Payment : Online</p>
                         </div>
 
                         <hr />
@@ -386,8 +389,9 @@ const MyBookings = () => {
        </div>
     </div>
     <MailList/>
-      <Footer/>
-    </div>
+    <div style={{marginLeft:'300px',marginTop:'20px'}}>
+       <Footer/>
+       </div>    </div>
     
    
   )
