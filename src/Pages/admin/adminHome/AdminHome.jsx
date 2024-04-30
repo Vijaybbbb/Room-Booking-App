@@ -126,25 +126,18 @@ const AdminHome = () => {
           </div>
           <hr className="new-hr" />
           <div className="right-bottom">
-            <div className="check">
-              <label className="checkbox">
-                <input type="checkbox" />
-              </label>
-              <div className="down-arrow">
-                <img src="https://i.ibb.co/WDqrXj6/drop-down-arrow.png" alt="Arrow" />
-              </div>
-            </div>
+           
             <div className="middle-buttons">
               <div className="buttons">
                 <button className="new button" onClick={()=>{setShow(false)}}> 
-                  <img src="https://i.ibb.co/X4j3TZR/reload.png" alt="Reload" />
+                 Back
                 </button>
-                <button className="new button"> 
+                {/* <button className="new button"> 
                   <img src="https://i.ibb.co/L60Yr87/eye.png" alt="Eye" />
                 </button>
                 <button className="new button"> 
                   <img src="https://i.ibb.co/Lv6TqBG/waste-bin.png" alt="Waste Bin" />
-                </button>
+                </button> */}
               </div>
               <div className="form has-search">
                 <input className="text" type="search" placeholder="Search here..." name="search" />
@@ -153,9 +146,7 @@ const AdminHome = () => {
                 </span>
               </div>
             </div>
-            <div className="search-arrow">
-              <img src="https://i.ibb.co/cx2t05H/scroll-arrows.png" alt="Scroll Arrows" />
-            </div>
+            
           </div>
         </div>
         {/* Content of the right-body */}

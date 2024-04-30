@@ -299,6 +299,7 @@ body {
      }
      .admindashboard .buttons {
        display: flex;
+       
      }
      .admindashboard .middle-buttons {
        display: flex;
