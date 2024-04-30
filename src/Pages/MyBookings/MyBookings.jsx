@@ -143,46 +143,7 @@ const MyBookings = () => {
        <Navbar access={access}/>
        <Header type='list'/>
        <div id="app">
-              {/* <div>
-              <div className="listSearch">
-                  <h1 className="isTitle">Search</h1>
-                  <div className="lsItem">
-                      <label htmlFor="">Designation</label>
-                      <input type="text" />
-                   </div>
-                 <div className="lsItem">
-                    <label htmlFor="">Check-in Date</label>
-                  
-                 </div>
-                 <div className="lsItem">
-                      <label htmlFor="">Options</label>
-                      <div className="lsOptions">
-                      <div className="lsOptionItem">
-                        <span className="lsOptionText">Min price <small> per night</small></span>
-                        <input type="text" className='lsOptionInput'/>
-                      </div>
-                      <div className="lsOptionItem">
-                        <span className="lsOptionText">Max price <small> per night</small></span>
-                        <input type="text" className='lsOptionInput'/>
-                      </div>
-                      <div className="lsOptionItem">
-                        <span className="lsOptionText">Adults</span>
-                        <input type="number" className='lsOptionInput' />
-                      </div>
-                      <div className="lsOptionItem">
-                        <span className="lsOptionText" >Children</span>
-                        <input type="number" className='lsOptionInput'  />
-                      </div>
-                      <div className="lsOptionItem">
-                        <span className="lsOptionText" >Room</span>
-                        <input type="number" className='lsOptionInput'  />
-                      </div>
-                      </div>
-
-                   </div>
-                   <button >Search</button>
-             </div>
-              </div> */}
+           
         <div>
       
         <h1>YOUR ORDERS</h1>
