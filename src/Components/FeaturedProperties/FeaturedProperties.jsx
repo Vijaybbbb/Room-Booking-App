@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './FeaturedProperties.css'
 import useFetch from '../../hooks/useFetch'
-import img from '../../../src/images/1713957176605pexels-photo-219692.jpeg'
+
 import { useNavigate } from 'react-router-dom'
 
 const FeaturedProperties = () => {
