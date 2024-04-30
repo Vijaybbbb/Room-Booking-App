@@ -16,10 +16,14 @@ import MyBookings from './Pages/MyBookings/MyBookings'
 import Profile from './Pages/Profile/Profile'
 import OrderPlaced from './Pages/Animation/OrderPlaced'
 import OrderFailed from './Pages/Animation/OrderFailed'
+import { useState } from 'react'
+import PageNotFound from './Pages/PageNotFound/PageNotFound'
 
 
 
 function App() {
+
+  const [isAuthenticated,setIsAuthenticated]  = useState(false)
 
   const router = createBrowserRouter([
     {
@@ -36,7 +40,7 @@ function App() {
     },
     {
       path:'/login',
-      element:<Login/>
+      element:<Login setIsAuthenticated={setIsAuthenticated}/>
     }, 
     {
       path:'/signup',
@@ -60,7 +64,7 @@ function App() {
     },
     {
       path:'/myBookings',
-      element:<MyBookings/>
+      element: isAuthenticated ? <MyBookings/> : <PageNotFound/>
     },
     {
       path:"/adminLogin",
@@ -72,15 +76,15 @@ function App() {
     },
     {
       path:"/profile",
-      element:<Profile/>
+      element: isAuthenticated ? <Profile/>  : <PageNotFound/>
     },
     {
       path:"/successAnimation",
-      element:<OrderPlaced/>
+      element:isAuthenticated ? <OrderPlaced/>  : <PageNotFound/>
     },
     {
       path:"/failedAnimation",
-      element:<OrderFailed/>
+      element:isAuthenticated ? <OrderFailed/>  : <PageNotFound/>
     }
   ])
 

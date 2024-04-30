@@ -8,7 +8,7 @@ import {storeUser} from '../../Redux/loginSlice.js'
 
 
 
-const Login = () => {
+const Login = ({setIsAuthenticated}) => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [successMessage,setSuccessMessage]  = useState()
@@ -34,6 +34,7 @@ const Login = () => {
             setSuccessMessage(response.data.message)
             dispatch(storeUser(response.data._id))
             navigate('/')
+            setIsAuthenticated(true)
         }).catch(err => setErrorMessage(err.response.data.message))
     }
 
