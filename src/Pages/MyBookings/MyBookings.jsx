@@ -42,6 +42,7 @@ const MyBookings = () => {
        const [filterInUse, setFilterInUse] = useState(false); // Assuming you have a state for filterInUse
      
        useEffect(()=>{
+        window.scrollTo(0, 0);
         fetchHome()
       },[])
     
@@ -121,6 +122,7 @@ const MyBookings = () => {
           selectedPage !== page
         )
           setPage(selectedPage)
+          window.scrollTo(0, 0);
       }
   
       

@@ -29,6 +29,7 @@ console.log(date);
    const [max,setMax]   = useState(undefined)
 
    useEffect(()=>{
+      window.scrollTo(0, 0);
       fetchHome()
     },[])
   
@@ -58,6 +59,7 @@ console.log(date);
      selectedPage !== page
    )
      setPage(selectedPage)
+     window.scrollTo(0, 0);
  }
 
 

@@ -12,6 +12,7 @@ const Profile = () => {
        const userDetails = useSelector(state => state.userDetails)
        const {data,loading,error,refetchData} = useFetch(`${baseUrl}/user/singleUser?id=${userDetails?.userId}`)
        useEffect(() => {
+              window.scrollTo(0, 0);
               fetchHome()
        }, [])
 
