@@ -20,8 +20,9 @@ const MyBookings = () => {
    const [access,setAccess]  = useState(false)
        const {userId}  = useSelector(state => state.userDetails)
        const { data, loading, error,refetchData } = useFetch(`${baseUrl}/user/getAllBookings/${userId}`);
+       console.log(data);
        const [openDetails,setOpenDetails] = useState(false)
-       const datas = data.bookings
+       const datas = data
        const [showConfirmBox, setShowConfirmBox] = useState(false);
        const [showFilter, setShowFilter] = useState(false);
        const [filter, setFilter] = useState({
@@ -33,7 +34,7 @@ const MyBookings = () => {
        });
 
 
-       const today = new Date();
+       
        const [page, setPage] = useState(1)
        const [selectedBooking,setSelectedBooking] = useState() 
        
@@ -79,10 +80,7 @@ const MyBookings = () => {
          // You might want to reset filteredReceipts state as well
        };
      
-       const findCompanyName = (receipt) => {
-         // Logic to find company name based on receipt
-         // You need to implement this function
-       };
+      
 
        function handleClick(e,order){
         setSelectedBooking(order)
@@ -118,7 +116,7 @@ const MyBookings = () => {
        function selectedPage(selectedPage) {
         if (
           selectedPage >= 1 &&
-          selectedPage <= data.bookings.length &&
+          selectedPage <= data.length &&
           selectedPage !== page
         )
           setPage(selectedPage)
@@ -134,8 +132,7 @@ const MyBookings = () => {
       }
 
 
-      const handleViewInvoice = () => {
-     }
+  
      
 
   return (
@@ -190,10 +187,10 @@ const MyBookings = () => {
           </div>
         )}
       </div>
-      {data.bookings && (
+      {data && (
         <div>
-          {data.bookings !== 0 ? (
-            data.bookings.slice((page - 1) * 4, page * 4).map((order, index) => (
+          {data !== 0 ? (
+            data.slice((page - 1) * 4, page * 4).map((order, index) => (
               <div key={index} className="receipt__container">
                 <div>
                 <img src={`../../../src/images/${order.images[0]}`} />
@@ -335,21 +332,28 @@ const MyBookings = () => {
       
     </div>
     <div>
-    <div className='bookingsPagePagination'>
-           <div style={{alignItems:'center'}}>
-                  <div className="page-btn">
-                    <span onClick={() => selectedPage(page - 1)}>{'<'}</span>
-                    {datas && [...Array(Math.ceil(datas.length / 4))].map((_, i) => (
-                      <span
-                        key={i + 1}
-                        onClick={() => selectedPage(i + 1)}
-                        className={page === i + 1 ? 'pagination_selected' : ''}
-                      >{i + 1}</span>
-                    ))}
-                    <span onClick={() => selectedPage(page + 1)}>{'>'}</span>
-                  </div>
-                  </div>
-       </div>
+      {
+        data.length > 4 ? (
+          <div className='bookingsPagePagination'>
+          <div style={{alignItems:'center'}}>
+                 <div className="page-btn">
+                   <span onClick={() => selectedPage(page - 1)}>{'<'}</span>
+                   {datas && [...Array(Math.ceil(datas.length / 4))].map((_, i) => (
+                     <span
+                       key={i + 1}
+                       onClick={() => selectedPage(i + 1)}
+                       className={page === i + 1 ? 'pagination_selected' : ''}
+                     >{i + 1}</span>
+                   ))}
+                   <span onClick={() => selectedPage(page + 1)}>{'>'}</span>
+                 </div>
+                 </div>
+      </div>
+        ):(
+          <div></div>
+        )
+      }
+     
     </div>
     <MailList/>
     <div style={{marginLeft:'300px',marginTop:'20px'}}>

@@ -64,7 +64,7 @@ function App() {
     },
     {
       path:'/myBookings',
-      element: isAuthenticated ? <MyBookings/> : <PageNotFound/>
+      element:  <MyBookings/> 
     },
     {
       path:"/adminLogin",
@@ -76,15 +76,15 @@ function App() {
     },
     {
       path:"/profile",
-      element: isAuthenticated ? <Profile/>  : <PageNotFound/>
+      element: <Profile/>  
     },
     {
       path:"/successAnimation",
-      element:isAuthenticated ? <OrderPlaced/>  : <PageNotFound/>
+      element: <OrderPlaced/> 
     },
     {
       path:"/failedAnimation",
-      element:isAuthenticated ? <OrderFailed/>  : <PageNotFound/>
+      element:<OrderFailed/>
     }
   ])
 
