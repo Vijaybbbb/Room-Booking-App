@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useFetch from '../../../hooks/useFetch'
 import { baseUrl } from '../../../utils'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,39 +8,48 @@ import EditCoupen from './EditCoupen';
 
 const ViewCoupens = ({compClick,showViewCoupen}) => {
 
-       const {data,error,loading} = useFetch(`${baseUrl}/admin/allCoupens`)
-      
+  const { data, error, loading ,refetchData } = useFetch(`${baseUrl}/admin/allCoupens`)
 
-       console.log(data);
-       const [page, setPage] = useState(1)
-       const [viewCoupenId,setViewCoupenId] = useState() 
-       const [viewCoupen,setViewCoupen] = useState(false) 
-        
-     
-       const TableRow = ({ children }) => {
-         return <div className="table__row">{children}</div>;
-       };
-       const TableCell = ({ children }) => {
-         return <div className="table__cell">{children}</div>;
-       };
-     
-     
-       //function for indicate pagination
-       function selectedPage(selectedPage) {
-         if (
-           selectedPage >= 1 &&
-           selectedPage <= data.length &&
-           selectedPage !== page
-         )
-           setPage(selectedPage)
-       }
-     
-     
-       function handleGoBack() {
-        setViewCoupen(false)
-        refetchData()
-      }
-    
+
+  console.log(data);
+  const [page, setPage] = useState(1)
+  const [viewCoupenId, setViewCoupenId] = useState()
+  const [viewCoupen, setViewCoupen] = useState(false)
+
+
+  const TableRow = ({ children }) => {
+    return <div className="table__row">{children}</div>;
+  };
+  const TableCell = ({ children }) => {
+    return <div className="table__cell">{children}</div>;
+  };
+
+
+  //function for indicate pagination
+  function selectedPage(selectedPage) {
+    if (
+      selectedPage >= 1 &&
+      selectedPage <= data.length &&
+      selectedPage !== page
+    )
+      setPage(selectedPage)
+  }
+
+
+  function handleGoBack() {
+    setViewCoupen(false)
+    refetchData()
+  }
+
+
+    async function deleteCoupen(e,id){
+        e.preventDefault()
+        axios.delete(`${baseUrl}/admin/deleteCoupen/${id}`,{},{withCredentials: true}).then((res)=>{
+          refetchData()
+        }).catch((error)=>{
+          console.log(error);
+        })
+    }
 
 
       
@@ -84,7 +93,9 @@ const ViewCoupens = ({compClick,showViewCoupen}) => {
                             setViewCoupen(true)
                             setViewCoupenId(coupen?._id)
                             }}>View Coupen</button>
-                      
+                       <button className="button button--outline buttons__venta" onClick={(e)=>{
+                            deleteCoupen(e,coupen?._id)
+                            }}>Delete</button>
                        </div>
                      </TableCell>
                    </TableRow>
