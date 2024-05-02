@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import useFetch from '../../../hooks/useFetch'
 import { baseUrl } from '../../../utils'
 import '../AdminComponents/css/viewProfilePage.css'
@@ -14,6 +14,9 @@ const ViewUser = ({userId,handleGoBack}) => {
        })
        
 
+       useEffect(()=>{
+          refetchData()
+       },[data])
 
 
       async function handleEdit(){
@@ -23,10 +26,13 @@ const ViewUser = ({userId,handleGoBack}) => {
               }).catch(err => console.log(err))
        }
        
-       async function handleDelete(){
-              await axios.delete(`${baseUrl}/user/deleteUser?id=${data._id}`,{},{withCredentials:true}).then((res)=>{
+       async function handleBlock(e,blocked){
+                e.preventDefault()
+               console.log(blocked);
+              await axios.post(`${baseUrl}/user/blockUser?id=${data._id}`,{blocked:blocked},{withCredentials:true}).then((res)=>{
                   console.log(res);
-                  handleGoBack()
+              
+                 // handleGoBack()
               }).catch(err => console.log(err))
        }
        
@@ -56,8 +62,8 @@ const ViewUser = ({userId,handleGoBack}) => {
            
             <span>Update User</span>
           </button>
-          <button className="btn btn-more" style={{backgroundColor:'#cb2005'}} onClick={()=>{handleDelete()}}>
-            <span>Delete</span>
+          <button className="btn btn-more" style={{backgroundColor:'#cb2005'}} onClick={(e)=>{handleBlock(e,data?.isBlocked)}}>
+            <span>{data?.isBlocked ? "UnBlock" : "Block"}</span>
           </button>
         </div>
         

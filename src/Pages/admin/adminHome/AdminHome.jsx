@@ -54,8 +54,6 @@ const AdminHome = () => {
         return <RoomManagement showRooms={true} />;
       case 'BookingsManagement':
         return <BookingsManagement showBookings={true} />;
-      case 'CreateUser':
-        return <CreateUser showUserCreation={true} setShow={setShow} />;
       case 'CreateHotel':
         return <CreateHotel showHotelCreation={true} setShow={setShow} />;
       case 'CreateRoom':
@@ -165,16 +163,14 @@ const AdminHome = () => {
                           <BookingsManagement  compClick={compClick}/>
                         </div>
                         <div className="columnContainer" >
-                          <CreateUser compClick={compClick}/>
+                         
                           <CreateHotel compClick={compClick}/> 
                           <CreateRoom compClick={compClick}/>
                           <CreateCoupen compClick={compClick}/>
+                          <ViewCoupens compClick={compClick} />
                 
                         </div>
-                        <div className="columnContainer" >
-                         
-                          <ViewCoupens compClick={compClick} />
-                        </div>
+                      
                         <div className="fixed-action-btn click-to-toggle" style={{ bottom: '45px', right: '24px' }}>
                           <ul>
                             {/* Repeat the rest of the list items here */}

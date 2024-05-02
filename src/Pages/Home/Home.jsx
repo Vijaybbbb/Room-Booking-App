@@ -9,6 +9,7 @@ import MailList from '../../Components/MailList/MailList'
 import Footer from '../../Components/Footer/Footer'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
   const userDetails = useSelector(state => state.userDetails)
   const [access,setAccess]  = useState(false)
   const [error,setError]  = useState()
+  const navigate = useNavigate()
 
 
   useEffect(()=>{
@@ -27,7 +29,10 @@ const Home = () => {
     await axios.get(`http://localhost:3000?userId=${userDetails?.userId}`,{withCredentials:true}).then((res)=>{
      
         setAccess(true)
-    }).catch(err=>setError(err)) 
+    }).catch((err)=>{
+      setError(err)
+      navigate('/login')
+    }) 
   }
 
 
