@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { baseUrl } from '../../../utils'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './AdminHome.css'
 import UserManagement from '../AdminComponents/UserManagement'
 import HotelManagement from '../AdminComponents/HotelManagement'
@@ -13,14 +13,16 @@ import CreateHotel from '../AdminComponents/CreateHotel'
 import CreateRoom from '../AdminComponents/CreateRoom'
 import CreateCoupen from '../AdminComponents/CreateCoupen'
 import ViewCoupens from '../AdminComponents/ViewCoupens'
+import { storeAdmin } from '../../../Redux/adminLoginSlice'
 
 
 
 const AdminHome = () => {
 
+  const dispatch = useDispatch()
   const adminDetails = useSelector(state => state.adminDetails)
+  console.log(adminDetails?.userId);
   const [access,setAccess]  = useState(false)
-  const [error,setError]  = useState()
   const navigate = useNavigate()
   const [show,setShow]  = useState(false)
   const [openWindow,setOpenWindow]  = useState()
@@ -68,10 +70,12 @@ const AdminHome = () => {
   };
 
 
-  async function handlelogout(){
-    await axios.post('http://localhost:3000/clearCookie','',{withCredentials:true}).then(()=>{
+ function handlelogout(e){
+     e.preventDefault()
+     axios.post(`http://localhost:3000/clearCookie?userId=${adminDetails?.userId}`,'',{withCredentials:true}).then(()=>{
                 localStorage.clear()
                 navigate('/adminLogin')
+                dispatch(storeAdmin(null))
                }).catch(err=>console.log(err))
   }
 

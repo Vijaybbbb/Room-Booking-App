@@ -80,9 +80,9 @@ const Checkout = ({handleClose,reserve,setOpen}) => {
   }, [hotelId,checkoutDetails]);
 
   //function verify payment 
-  async function verifyPaymentSucess(response, bookingId) {
+function verifyPaymentSucess(response, bookingId) {
    
-    await axios.post(`${baseUrl}/user/verifyPayment`,
+    axios.post(`${baseUrl}/user/verifyPayment`,
      { response: response,
        bookingId: bookingId ,
       userId:userDetails.userId,
@@ -101,12 +101,12 @@ const Checkout = ({handleClose,reserve,setOpen}) => {
   }
 
 
-async function createOrder(){
+function createOrder(){
 
     //close checkout page 
      handleClose()
 
-     await axios.post(`${baseUrl}/user/createOrder`,{checkoutDetails,priceAfterCoupen},{withCredentials:true}).then((res)=>{
+     axios.post(`${baseUrl}/user/createOrder`,{checkoutDetails,priceAfterCoupen},{withCredentials:true}).then((res)=>{
       setOpen(false)
       console.log(res)
       
@@ -163,10 +163,10 @@ function getCoupenInput(e){
   setCoupenInput(e.target.value)
 }
 
-async function handleCoupen(e){
+function handleCoupen(e){
   e.preventDefault()
 
-  await axios.post(`${baseUrl}/user/checkCoupenValid/${userDetails.userId}`,{coupenCode:coupenInput,price:checkoutDetails.price},{withCredentials:true}).then((response)=>{
+  axios.post(`${baseUrl}/user/checkCoupenValid/${userDetails.userId}`,{coupenCode:coupenInput,price:checkoutDetails.price},{withCredentials:true}).then((response)=>{
       console.log(response.data);  
       setSuccessMessage(response.data.message)
       setPriceAfterCoupen(response.data.finalPrice)

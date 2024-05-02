@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../Login/Login.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { tokenRequest } from '../../token'
 import {storeAdmin} from '../../../Redux/adminLoginSlice'
@@ -11,10 +11,22 @@ const AdminLogin = () => {
     const navigate = useNavigate()
     const [successMessage,setSuccessMessage]  = useState()
     const [errorMessage,setErrorMessage] = useState() 
+    const adminDetail = useSelector(state => state.adminDetails)
+    console.log(adminDetail);
     const  [adminDetails,setAdminDetails] = useState({
        email:null,
        password:null
     }) 
+
+
+    useEffect(()=>{
+        if(adminDetail?.userId){
+            navigate('/adminHome')
+        }
+     
+    },[])
+
+
 
 
     async function handleLogin(e){

@@ -26,7 +26,7 @@ const CreateCoupen = ({compClick,showCoupenCreation,setShow}) => {
                      [e.target.name]: e.target.value
                  })
        }
-       console.log(coupenData);
+      
 
 
   return (

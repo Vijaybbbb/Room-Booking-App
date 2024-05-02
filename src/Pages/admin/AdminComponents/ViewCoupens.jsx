@@ -9,9 +9,6 @@ import EditCoupen from './EditCoupen';
 const ViewCoupens = ({compClick,showViewCoupen}) => {
 
   const { data, error, loading ,refetchData } = useFetch(`${baseUrl}/admin/allCoupens`)
-
-
-  console.log(data);
   const [page, setPage] = useState(1)
   const [viewCoupenId, setViewCoupenId] = useState()
   const [viewCoupen, setViewCoupen] = useState(false)

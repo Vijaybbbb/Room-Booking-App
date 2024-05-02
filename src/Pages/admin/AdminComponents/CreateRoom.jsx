@@ -3,7 +3,7 @@ import useFetch from '../../../hooks/useFetch'
 import { baseUrl } from '../../../utils'
 import CreateNewRoom from './CreateNewRoom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faBed} from '@fortawesome/free-solid-svg-icons';
 
 const CreateRoom = ({compClick,showRoomCreation,setShow}) => {
 
@@ -49,7 +49,7 @@ const CreateRoom = ({compClick,showRoomCreation,setShow}) => {
       ):
        showRoomCreation ? (
              <div>
-              <button onClick={handleGoBack} >Back</button>
+             
               <div className='allHotelsTable'>
              <div className="table">
               <div className="table__body" >

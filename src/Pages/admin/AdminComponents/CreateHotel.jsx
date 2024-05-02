@@ -3,7 +3,7 @@ import '../AdminComponents/css/createHotel.css'
 import axios from 'axios'
 import { baseUrl } from '../../../utils'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBed, faCalendarDays, faCar, faHome, faPerson, faPlane, faTaxi, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
+import {  faHome } from '@fortawesome/free-solid-svg-icons';
 
 const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
        const [hotelData,setHotelData]  = useState()
@@ -58,7 +58,7 @@ const CreateHotel = ({compClick,showHotelCreation,setShow}) => {
        showHotelCreation ? (
               <div>
                       <div className='createHotelPage'>
-                            <button onClick={()=>{setShow(false)}}>back</button>
+                          
                             <div className="container">
                                    <form id="contact">
                                           <h3>Hotel information</h3><br />
