@@ -20,7 +20,6 @@ const MyBookings = () => {
    const [access,setAccess]  = useState(false)
        const {userId}  = useSelector(state => state.userDetails)
        const { data, loading, error,refetchData } = useFetch(`${baseUrl}/user/getAllBookings/${userId}`);
-       console.log(data);
        const [openDetails,setOpenDetails] = useState(false)
        const datas = data
        const [showConfirmBox, setShowConfirmBox] = useState(false);
@@ -84,7 +83,6 @@ const MyBookings = () => {
 
        function handleClick(e,order){
         setSelectedBooking(order)
-        console.log(selectedBooking);
         e.preventDefault()
         setOpenDetails(true)
        }

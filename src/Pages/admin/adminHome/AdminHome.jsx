@@ -21,11 +21,11 @@ const AdminHome = () => {
 
   const dispatch = useDispatch()
   const adminDetails = useSelector(state => state.adminDetails)
-  console.log(adminDetails?.userId);
   const [access,setAccess]  = useState(false)
   const navigate = useNavigate()
   const [show,setShow]  = useState(false)
   const [openWindow,setOpenWindow]  = useState()
+  const [searchQuery,setSearchQuery]  = useState()
 
 
   useEffect(()=>{
@@ -79,6 +79,10 @@ const AdminHome = () => {
                }).catch(err=>console.log(err))
   }
 
+  function getSearchInput(e) {
+    setSearchQuery(e.target.value);
+    console.log(searchQuery);
+  }
 
 
   return (
@@ -141,10 +145,10 @@ const AdminHome = () => {
                   <img src="https://i.ibb.co/Lv6TqBG/waste-bin.png" alt="Waste Bin" />
                 </button> */}
               </div>
-              <div className="form has-search">
-                <input className="text" type="search" placeholder="Search here..." name="search" />
+              <div className="form has-search" >
+                <input className="text" type="search" placeholder="Search here..." name="search" onChange={getSearchInput} />
                 <span className="searchIcon">
-                  <img src="https://i.ibb.co/sqFgRq8/search.png" alt="Search" />
+                  <img style={{marginLeft:'400px'}} src="https://i.ibb.co/sqFgRq8/search.png" alt="Search" />
                 </span>
               </div>
             </div>

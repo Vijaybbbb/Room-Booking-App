@@ -101,14 +101,14 @@ function verifyPaymentSucess(response, bookingId) {
   }
 
 
-function createOrder(){
-
+function createOrder(e){
+   e.preventDefault()
     //close checkout page 
      handleClose()
 
      axios.post(`${baseUrl}/user/createOrder`,{checkoutDetails,priceAfterCoupen},{withCredentials:true}).then((res)=>{
       setOpen(false)
-      console.log(res)
+     
       
       if(res){
         const options = {
@@ -120,7 +120,7 @@ function createOrder(){
           image: "https://example.com/your_logo",
           order_id: res.data.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of createOrder().
           handler: function (response) {
-
+            //success transaction
             verifyPaymentSucess(response,res.data.bookingId)
 
           },
@@ -138,16 +138,11 @@ function createOrder(){
         };
       
         const rzp1 = new Razorpay(options);
-      
+        //failed transaction
         rzp1.on("payment.failed", function (response) {
-          // alert(response.error.code);
-          // alert(response.error.description);
-          // alert(response.error.source);
-          // alert(response.error.step);
-          // alert(response.error.reason);
-          // alert(response.error.metadata.order_id);
-          // alert(response.error.metadata.payment_id);
+
           navigate('/failedAnimation')
+
         });
       
         rzp1.open();
@@ -167,14 +162,14 @@ function handleCoupen(e){
   e.preventDefault()
 
   axios.post(`${baseUrl}/user/checkCoupenValid/${userDetails.userId}`,{coupenCode:coupenInput,price:checkoutDetails.price},{withCredentials:true}).then((response)=>{
-      console.log(response.data);  
+   
       setSuccessMessage(response.data.message)
       setPriceAfterCoupen(response.data.finalPrice)
       setCoupenCode(response.data.code)
 
   }).catch((err)=>{
     setErrorMessage(err.response.data.message)
-    //console.log(err);
+   
   })
 
 }
@@ -243,7 +238,7 @@ function handleCoupen(e){
     
             <button className="btn-order" onClick={(e) => {
               e.preventDefault()
-              createOrder()
+              createOrder(e)
             }}
 
             >Proceed to Payment</button>

@@ -11,16 +11,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import Checkout from '../Checkout/Checkout.jsx';
 import {addCheckout} from '../../Redux/checkoutSlice.js'
 
-const Reserve = ({ setOpen, hotelId, price,handleOpenCheckout,images}) => {
+const Reserve = ({ setOpen, hotelId, price,images}) => {
   const { data, loading, error } = useFetch(`${baseUrl}/hotels/room/${hotelId}`);
   const [selectedRooms,setSelectedRooms] = useState([])
   const {date} = useContext(SearchContext)
-  console.log(date);
   const {userId}  = useSelector(state => state.userDetails)
   const [openCheckout,setOpenCheckout] = useState(false) 
   const [numbers,setNumbers] = useState([])
   const dispatch = useDispatch()
-  const [floorID,setFloor] = useState()
+
 
 //get all dates according to date
 const getDatesRange = (startDate,endDate) =>{
@@ -41,12 +40,12 @@ const allDates  = getDatesRange(date[0].startDate,date[0].endDate);
 
 //checking room availability
 const isAvailable = (roomNumber) =>{
-   console.log( roomNumber.unavailableDates);
+  
     const isFound  = roomNumber.unavailableDates.some((item) => {
     return allDates.includes(item);
 
 })
-console.log(isFound);
+
   return isFound
 }
 
