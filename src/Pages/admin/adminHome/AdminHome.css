@@ -540,3 +540,9 @@ body {
       outline: none;
       color: #2632fe;
     }
+
+    .helperButtons{
+      position: absolute;
+    top: 72px;
+    left: 360px;
+    }

@@ -49,7 +49,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
        return (
               <div>
                      <div className='singleHotelPage'>
-                            <button onClick={handleGoBack}>back</button>
+                            <button className='new button helperButtons' style={{width:'65px'}} onClick={handleGoBack}>Previous</button>
                             <div className="container">
                                    <form id="contact">
                                           <h3>Room information</h3><br />

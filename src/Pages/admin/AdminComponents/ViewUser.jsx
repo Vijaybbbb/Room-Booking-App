@@ -50,7 +50,7 @@ const ViewUser = ({userId,handleGoBack}) => {
 
   return (
     <div className='userProfilePage'>
-      <button onClick={handleGoBack}>back</button>
+      <button className='new button helperButtons' style={{width:'65px'}} onClick={handleGoBack}>Previous</button>
       <div className="card">
       <div className="container">
         <img src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="profile-img" />
