@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Login.css'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { tokenRequest } from '../token';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {storeUser} from '../../Redux/loginSlice.js'
 
 
 
 const Login = ({setIsAuthenticated}) => {
+
+    const userDetails = useSelector(state => state.userDetails)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [successMessage,setSuccessMessage]  = useState()
@@ -26,6 +28,11 @@ const Login = ({setIsAuthenticated}) => {
         })
 
     }
+    useEffect(()=>{
+        if(userDetails?.userId){
+            navigate('/')
+        }
+    })
 
     //handle signup function
     const handleLogin = async (e) => {
