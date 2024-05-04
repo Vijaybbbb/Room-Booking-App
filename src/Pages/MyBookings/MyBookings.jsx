@@ -82,7 +82,19 @@ const MyBookings = () => {
       
 
        function handleClick(e,order){
-        setSelectedBooking(order)
+     
+        const dateObject1 = new Date(order.checkInDate);
+        const dateObject2 = new Date(order.checkOutDate);
+        const formattedDate1 = dateObject1.toISOString().split('T')[0]; 
+        const formattedDate2 = dateObject2.toISOString().split('T')[0]; 
+        const newOrder = {
+          ...order,
+          checkInDate:formattedDate1,
+          checkOutDate:formattedDate2
+        }
+        
+
+        setSelectedBooking(newOrder)
         e.preventDefault()
         setOpenDetails(true)
        }

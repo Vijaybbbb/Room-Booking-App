@@ -18,6 +18,7 @@ import OrderPlaced from './Pages/Animation/OrderPlaced'
 import OrderFailed from './Pages/Animation/OrderFailed'
 import { useState } from 'react'
 import PageNotFound from './Pages/PageNotFound/PageNotFound'
+import Notification from './Components/Notifications/Notification'
 
 
 
@@ -85,13 +86,17 @@ function App() {
     {
       path:"/failedAnimation",
       element:<OrderFailed/>
+    },
+    {
+      path:"/notification",
+      element:<Notification/>
     }
   ])
 
   return (
     <RouterProvider router={router}>
 
-    </RouterProvider>
+    </RouterProvider> 
   )
 }
 

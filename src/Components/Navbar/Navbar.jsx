@@ -34,7 +34,7 @@ const Navbar = ({access}) => {
         <span className='logo' > Get Your Room </span>
         </Link>
         <div className="navItems">
-              <button className="navButton" onClick={()=>{navigate('/')}}>Notifications</button>
+              <button className="navButton" onClick={()=>{navigate('/notification')}}>Notifications</button>
               <button className="navButton" onClick={()=>{navigate('/myBookings')}}>My Bookings</button>
               <button className="navButton" onClick={()=>{navigate('/profile')}}>Profile</button>
               <button className="navButton" onClick={async()=>{
