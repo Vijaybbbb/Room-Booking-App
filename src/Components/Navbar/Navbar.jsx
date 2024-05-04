@@ -3,12 +3,14 @@ import './Navbar.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { storeUser } from '../../Redux/loginSlice';
 
 const Navbar = ({access}) => {
 
   const navigate = useNavigate()
   const userDetails = useSelector(state => state.userDetails)
+  const dispatch = useDispatch()
 
   return (
     <div>
@@ -38,6 +40,7 @@ const Navbar = ({access}) => {
               <button className="navButton" onClick={async()=>{
                await axios.post(`http://localhost:3000/clearCookie?userId=${userDetails?.userId}`,'',{withCredentials:true}).then(()=>{
                 localStorage.clear()
+                dispatch(storeUser(null))
                 navigate('/login')
                }).catch(err=>console.log(err))
                

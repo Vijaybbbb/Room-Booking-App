@@ -39,8 +39,7 @@ const ProfileDeails = ({userId,email,username}) => {
               pincode:''
 
        })
-       //const [details,setDetails]  = useState(predetails)
-      
+             
        function getValue(e){
               setDetails({
                      ...details,

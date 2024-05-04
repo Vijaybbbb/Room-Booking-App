@@ -29,7 +29,7 @@ const Login = ({setIsAuthenticated}) => {
 
     }
     useEffect(()=>{
-        if(userDetails?.userId){
+        if(userDetails?.userId && userDetails?.userId !== null ){
             navigate('/')
         }
     })
