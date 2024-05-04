@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Reserve.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +17,8 @@ const Reserve = ({ setOpen, hotelId, price,images}) => {
   const {date} = useContext(SearchContext)
   const {userId}  = useSelector(state => state.userDetails)
   const [openCheckout,setOpenCheckout] = useState(false) 
+  const [reserveBtn,setReserveBtn] = useState(true) 
+  
   const [numbers,setNumbers] = useState([])
   const dispatch = useDispatch()
 
@@ -60,7 +62,7 @@ const isAvailable = (roomNumber) =>{
     setSelectedRooms(checked ? [...selectedRooms,value]  :
        selectedRooms.filter((item)=>item !== value)) 
        setNumbers(checked ? [...numbers, roomNumber] : numbers.filter((item) => item !== roomNumber));
-    
+
   };
 
 
@@ -99,6 +101,11 @@ const isAvailable = (roomNumber) =>{
  }
 
 
+ useEffect(() => {
+  // Check if selectedRooms is empty or not to enable/disable reserveBtn
+  setReserveBtn(selectedRooms.length === 0);
+}, [selectedRooms]);
+
   return (
     <div>
       {
@@ -114,7 +121,10 @@ const isAvailable = (roomNumber) =>{
               {
                 data.length > 0 ? (
                   <div>
-                  <span>Select Your Rooms : </span>
+                  <span>Select Your Rooms :
+                     <span style={{fontSize:'13px',color:'grey',marginLeft:'50px'}}>available <input type="checkbox" /></span>
+                     <span style={{fontSize:'13px',color:'grey',marginLeft:'3px'}}>not available <input type="checkbox" disabled /></span>
+                   </span>
                     {data?.map((item) => (
                      <div className="rItem" key={item?.id}>
                        <div className="rItemInfo">
@@ -131,7 +141,16 @@ const isAvailable = (roomNumber) =>{
                                type="checkbox"
                                value={roomNumber?._id}
                                //onChange={handleSelect}
-                               onChange={() => { handleSelect(event, roomNumber?.number) }}
+                               onChange={() => { 
+                               // setReserveBtn(false)
+                               if (selectedRooms.length == 0) {
+                                setReserveBtn(true)
+                              }else{
+                                setReserveBtn(false)
+                              }
+                                handleSelect(event, roomNumber?.number)
+                              
+                              }}
                                disabled={isAvailable(roomNumber)}
                              />
                            </div>
@@ -139,7 +158,7 @@ const isAvailable = (roomNumber) =>{
                        </div>
                      </div>
                    ))}
-                  <button onClick={handleClick} className='rButton'>Reserve Now</button>
+                  <button onClick={handleClick} disabled={reserveBtn} className={reserveBtn ? 'rButtonDisabled' : 'rButton'}>Reserve Now</button>
                   </div>
                 ):(
                   <div>No Rooms</div>
