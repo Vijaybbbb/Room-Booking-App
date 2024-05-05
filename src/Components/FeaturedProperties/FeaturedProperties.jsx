@@ -3,6 +3,7 @@ import './FeaturedProperties.css'
 import useFetch from '../../hooks/useFetch'
 
 import { useNavigate } from 'react-router-dom'
+import SkeletonCard from '../Skeleton/SkeletonCard'
 
 const FeaturedProperties = () => {
 
@@ -34,7 +35,14 @@ const [options,setOptions] = useState({
 
   return (
     <div className="fp">
-      {loading ? ('Loading') : (
+      {loading ? (
+       data?.map((data)=>
+        <div className="fpItem" key={data._id} onClick={()=>{handleClick(data)}}>
+           <SkeletonCard/>
+        </div>
+       )
+      
+      ) : (
       data?.map((data)=>
        <div className="fpItem" key={data._id} onClick={()=>{handleClick(data)}}>
           <img className='fpImg' src={`../../../src/images/${data.images[0]}`} alt="" />

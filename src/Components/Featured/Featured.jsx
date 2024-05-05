@@ -5,6 +5,9 @@ import img1 from '../../assets/TopCitiesImages/pexels-photo-169677.jpeg'
 import img2 from '../../assets/TopCitiesImages/pexels-photo-219692.jpeg'
 import img3 from '../../assets/TopCitiesImages/pexels-photo-421927.jpeg'
 import img4 from '../../assets/TopCitiesImages/pexels-photo-773471.jpeg'
+import { Skeleton } from '@chakra-ui/react'
+import SkeletonCard from '../Skeleton/SkeletonCard'
+
 
 
 const Featured = () => {
@@ -16,7 +19,13 @@ const Featured = () => {
   return (
     <div>
       {loading ? (
-      'Loading'
+      <div className="featured">
+      {images && images.map((img,index)=>
+     <div className="featuredItem" key={index}>
+            <SkeletonCard/>
+     </div>
+        )}
+    </div>
       ):(
       <div className="featured">
         {images && images.map((img,index)=>
@@ -27,7 +36,7 @@ const Featured = () => {
                 <h2 style={{position:'relative',marginBottom:'33px'}}>{data[index]} Properties</h2>
               </div>
        </div>
-      )}
+          )}
       </div>
 )} 
   </div>

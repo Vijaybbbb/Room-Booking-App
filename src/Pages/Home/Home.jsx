@@ -31,7 +31,7 @@ const Home = () => {
         setAccess(true)
     }).catch((err)=>{
       setError(err)
-      //navigate('/login')
+      
     }) 
   }
 

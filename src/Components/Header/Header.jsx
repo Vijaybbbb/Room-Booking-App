@@ -64,7 +64,7 @@ const Header = ({type,access}) => {
 
 
   return (
-    <div className='header'>
+    <div className='header1'>
        <div className={type == 'list' ? 'headerContainer listMode' : 'headerContainer'}>
      <div className="headerList">
        <div className="headerListItem active">

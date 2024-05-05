@@ -8,6 +8,7 @@ import img5 from '../../assets/ByTypeImages/warehouse-8589487_1280.webp'
 import { SearchContext } from '../../context/SearchContext';
 import useFetch from '../../hooks/useFetch'
 import { useNavigate } from 'react-router-dom'
+import SkeletonCard from '../Skeleton/SkeletonCard'
 
 
 const PropertyList = () => {
@@ -43,7 +44,15 @@ const PropertyList = () => {
     
   return (
    <>
-   {loading ? ("laoding"):(
+   {loading ? (
+     <div className="pList">
+     {data && images.map((image,index)=>
+      <div className="pListItem" key={index}>
+             <SkeletonCard/>
+      </div>
+     )}
+   </div>
+  ):(
         <div className="pList">
        {data && images.map((image,index)=>
         <div className="pListItem" key={index}>

@@ -1,0 +1,137 @@
+/* Add .skeletonCard to all CSS selectors */
+.skeletonCard * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+     }
+     
+     .skeletonCard body {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       min-height: 100vh;
+     }
+     
+     .skeletonCard .card {
+       max-width: 350px;
+       width: 100%;
+       background: #fff;
+       padding: 30px;
+       border-radius: 10px;
+       border: 1px solid #d9d9d9;
+     }
+     
+     .skeletonCard .card .header {
+       display: flex;
+       align-items: center;
+     }
+     
+     .skeletonCard .header .img {
+       height: 75px;
+       width: 75px;
+       background: #d9d9d9;
+       border-radius: 50%;
+       position: relative;
+       overflow: hidden;
+     }
+     
+     .skeletonCard .header .details {
+       margin-left: 20px;
+     }
+     
+     .skeletonCard .details span {
+       display: block;
+       background: #d9d9d9;
+       border-radius: 10px;
+       overflow: hidden;
+       position: relative;
+     }
+     
+     .skeletonCard .details .name {
+       height: 15px;
+       width: 100px;
+     }
+     
+     .skeletonCard .details .about {
+       height: 13px;
+       width: 150px;
+       margin-top: 10px;
+     }
+     
+     .skeletonCard .card .description {
+       margin: 25px 0;
+     }
+     
+     .skeletonCard .description .line {
+       background: #d9d9d9;
+       border-radius: 10px;
+       height: 13px;
+       margin: 10px 0;
+       overflow: hidden;
+       position: relative;
+     }
+     
+     .skeletonCard .description .line-1 {
+       width: calc(100% - 15%);
+     }
+     
+     .skeletonCard .description .line-3 {
+       width: calc(100% - 40%);
+     }
+     
+     .skeletonCard .card .btns {
+       display: flex;
+     }
+     
+     .skeletonCard .card .btns .btn {
+       height: 45px;
+       width: 100%;
+       background: #d9d9d9;
+       border-radius: 25px;
+       position: relative;
+       overflow: hidden;
+     }
+     
+     .skeletonCard .btns .btn-1 {
+       margin-right: 8px;
+     }
+     
+     .skeletonCard .btns .btn-2 {
+       margin-left: 8px;
+     }
+     
+     .skeletonCard .header .img::before,
+     .skeletonCard .details span::before,
+     .skeletonCard .description .line::before,
+     .skeletonCard .btns .btn::before {
+       position: absolute;
+       content: "";
+       height: 100%;
+       width: 100%;
+       background-image: linear-gradient(to right, #a6a5a5 0%, rgba(208, 208, 208, 0.05) 20%, #d9d9d9 40%, #d9d9d9 100%);
+       background-repeat: no-repeat;
+       background-size: 450px 400px;
+       animation: shimmer 1s linear infinite;
+     }
+     
+     .skeletonCard .header .img::before {
+       background-size: 650px 600px;
+     }
+     
+     .skeletonCard .details span::before {
+       animation-delay: 0.2s;
+     }
+     
+     .skeletonCard .btns .btn-2::before {
+       animation-delay: 0.22s;
+     }
+     
+     @keyframes shimmer {
+       0% {
+         background-position: -450px 0;
+       }
+       100% {
+         background-position: 450px 0;
+       }
+     }
+     

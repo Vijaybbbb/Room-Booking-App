@@ -28,11 +28,11 @@ const Login = ({setIsAuthenticated}) => {
         })
 
     }
-    useEffect(()=>{
-        if(userDetails?.userId && userDetails?.userId !== null ){
-            navigate('/')
-        }
-    })
+    // useEffect(()=>{
+    //     // if(userDetails?.userId && userDetails?.userId !== null ){
+    //     //     navigate('/')
+    //     // }
+    // })
 
     //handle signup function
     const handleLogin = async (e) => {
