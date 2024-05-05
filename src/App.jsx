@@ -19,17 +19,18 @@ import OrderFailed from './Pages/Animation/OrderFailed'
 import { useState } from 'react'
 import PageNotFound from './Pages/PageNotFound/PageNotFound'
 import Notification from './Components/Notifications/Notification'
+import PrivateRoute from './Components/PrivateRoutes/PrivateRoute'
 
 
 
 function App() {
 
-  const [isAuthenticated,setIsAuthenticated]  = useState(false)
+  const [isAuthenticated,setIsAuthenticated]  = useState(localStorage.getItem('isAuthenticated'))
 
   const router = createBrowserRouter([
     {
       path:'/',
-      element:<Home/>
+      element:<Home  isAuthenticated={isAuthenticated} />
     },
     {
       path:'/hotels',
@@ -41,7 +42,7 @@ function App() {
     },
     {
       path:'/login',
-      element:<Login setIsAuthenticated={setIsAuthenticated}/>
+      element:<Login setIsAuthenticated={setIsAuthenticated} isAuthenticated={isAuthenticated}/>
     }, 
     {
       path:'/signup',
@@ -64,8 +65,8 @@ function App() {
       element:<ResetOtpPage/>
     },
     {
-      path:'/myBookings',
-      element:  <MyBookings/> 
+      path: '/myBookings',
+      element: <MyBookings isAuthenticated={isAuthenticated}/>
     },
     {
       path:"/adminLogin",
@@ -77,7 +78,7 @@ function App() {
     },
     {
       path:"/profile",
-      element: <Profile/>  
+      element: <Profile isAuthenticated={isAuthenticated}/>  
     },
     {
       path:"/successAnimation",
@@ -90,7 +91,8 @@ function App() {
     {
       path:"/notification",
       element:<Notification/>
-    }
+    },
+    
   ])
 
   return (

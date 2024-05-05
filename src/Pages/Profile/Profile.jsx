@@ -8,12 +8,20 @@ import useFetch from '../../hooks/useFetch';
 import { baseUrl } from '../../utils';
 import MailList from '../../Components/MailList/MailList';
 import Footer from '../../Components/Footer/Footer';
+import { useNavigate } from 'react-router-dom';
 
-const Profile = () => {
+const Profile = ({isAuthenticated}) => {
        const [access, setAccess] = useState(false)
        const userDetails = useSelector(state => state.userDetails)
        const {data} = useFetch(`${baseUrl}/user/singleUser?id=${userDetails?.userId}`)
+       const navigate = useNavigate()
+
+
+
        useEffect(() => {
+              if(!isAuthenticated){
+                     navigate('/login')
+                   }
               window.scrollTo(0, 0);
               fetchHome()
        }, [])

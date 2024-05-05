@@ -13,9 +13,10 @@ import axios from 'axios';
 import Footer from '../../Components/Footer/Footer'
 import MailList from '../../Components/MailList/MailList'
 import {genrateInvoice} from '../../Services/invoice.js'
+import { useNavigate } from 'react-router-dom';
 
 
-const MyBookings = () => {
+const MyBookings = ({isAuthenticated}) => {
 
    const [access,setAccess]  = useState(false)
        const {userId}  = useSelector(state => state.userDetails)
@@ -36,12 +37,16 @@ const MyBookings = () => {
        
        const [page, setPage] = useState(1)
        const [selectedBooking,setSelectedBooking] = useState() 
+       const navigate = useNavigate()
        
 
        const [companies, setCompanies] = useState([]); // Assuming you have a state for companies
        const [filterInUse, setFilterInUse] = useState(false); // Assuming you have a state for filterInUse
      
        useEffect(()=>{
+        if(!isAuthenticated){
+          navigate('/login')
+        }
         window.scrollTo(0, 0);
         fetchHome()
       },[])

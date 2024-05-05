@@ -8,7 +8,7 @@ import {storeUser} from '../../Redux/loginSlice.js'
 
 
 
-const Login = ({setIsAuthenticated}) => {
+const Login = ({setIsAuthenticated,isAuthenticated}) => {
 
     const userDetails = useSelector(state => state.userDetails)
     const dispatch = useDispatch()
@@ -29,9 +29,10 @@ const Login = ({setIsAuthenticated}) => {
 
     }
     // useEffect(()=>{
-    //     // if(userDetails?.userId && userDetails?.userId !== null ){
-    //     //     navigate('/')
-    //     // }
+    //     console.log(isAuthenticated);
+    //     if(isAuthenticated){
+    //         navigate('/')
+    //     }
     // })
 
     //handle signup function
@@ -42,6 +43,7 @@ const Login = ({setIsAuthenticated}) => {
             dispatch(storeUser(response.data._id))
             navigate('/')
             setIsAuthenticated(true)
+            localStorage.setItem('isAuthenticated',true);
         }).catch(err => setErrorMessage(err.response.data.message))
     }
 
