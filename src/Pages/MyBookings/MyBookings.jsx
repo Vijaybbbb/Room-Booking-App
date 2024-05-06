@@ -14,6 +14,7 @@ import Footer from '../../Components/Footer/Footer'
 import MailList from '../../Components/MailList/MailList'
 import {genrateInvoice} from '../../Services/invoice.js'
 import { useNavigate } from 'react-router-dom';
+import SkeletonCard from '../../Components/Skeleton/SkeletonCard.jsx';
 
 
 const MyBookings = ({isAuthenticated}) => {
@@ -202,34 +203,43 @@ const MyBookings = ({isAuthenticated}) => {
           </div>
         )}
       </div>
-      {data && (
+      {
+      
+      data && (
         <div>
-          {data !== 0 ? (
-            data.slice((page - 1) * 4, page * 4).map((order, index) => (
-              <div key={index} className="receipt__container">
-                <div>
-                <img src={`../../../src/images/${order.images[0]}`} />
-                </div>
-                <div style={{paddingLeft:'100px'}}>
-                  <p className="receipt__client">{order.hotelName}</p>
-                  <p style={{fontSize:15}}>Booked Numbers</p>
-                  <div style={{display:'flex',gap:'5px'}}>
-                    {
-                      order?.bookedNumbers?.map((no)=>(
-                        <div className='roombox' >
-                          <label htmlFor="">{no}</label>
-                        </div>
-                      ))
-                    }
+                {data !== 0 ? (
+                  loading ? (
+                    data.slice((page - 1) * 4, page * 4).map((order, index) => (
+                      
+                      <SkeletonCard list={true}/>
+                    ))
+                  ) : (
+              data.slice((page - 1) * 4, page * 4).map((order, index) => (
+                <div key={index} className="receipt__container">
+                  <div>
+                  <img src={`../../../src/images/${order.images[0]}`} />
                   </div>
-                 <p className={order.status == 'Canceled' ? 'receipt__days' : "receipt__days2"}>{order.status}</p>
+                  <div style={{paddingLeft:'100px'}}>
+                    <p className="receipt__client">{order.hotelName}</p>
+                    <p style={{fontSize:15}}>Booked Numbers</p>
+                    <div style={{display:'flex',gap:'5px'}}>
+                      {
+                        order?.bookedNumbers?.map((no)=>(
+                          <div className='roombox' >
+                            <label htmlFor="">{no}</label>
+                          </div>
+                        ))
+                      }
+                    </div>
+                   <p className={order.status == 'Canceled' ? 'receipt__days' : "receipt__days2"}>{order.status}</p>
+                  </div>
+                  <div className='btnContainer'>
+                    <button onClick={()=>{handleClick(event,order)}}>Order Details</button> 
+                  </div>
                 </div>
-                <div className='btnContainer'>
-                  <button onClick={()=>{handleClick(event,order)}}>Order Details</button> 
-                </div>
-              </div>
-              
-            ))
+                
+              ))
+            )
           ) : (
             <div>
               <p>There are no matching orders</p>

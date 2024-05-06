@@ -12,6 +12,8 @@ import  axios  from 'axios'
 import { useSelector } from 'react-redux'
 import Footer from '../../Components/Footer/Footer'
 import MailList from '../../Components/MailList/MailList'
+import SkeletonCard from '../../Components/Skeleton/SkeletonCard'
+
 
 const List = () => {
    const userDetails = useSelector(state => state.userDetails)
@@ -117,7 +119,9 @@ console.log(date);
              
              <div className="listResult">
                  {loading ? (
-                    'Loading'
+                   data && data.slice((page - 1) * 5, page * 5).map((item) => (
+                     <SkeletonCard list={true}/>
+                  ))
                  ) : (
                   data && data.slice((page - 1) * 5, page * 5).map((item) => (
                        <SearchItem item={item} key={item._id}/>

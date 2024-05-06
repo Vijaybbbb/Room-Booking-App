@@ -1,10 +1,10 @@
 import React from 'react'
 import './Skeleton.css'
 
-const SkeletonCard = () => {
+const SkeletonCard = ({list}) => {
   return (
    <div className='skeletonCard'>
-     <div className="card">
+    <div className="card" style={{ maxWidth: list ? '950px' : '350px' }}>
       <div className="header">
         
         <div className="details">

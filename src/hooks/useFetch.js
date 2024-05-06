@@ -31,7 +31,7 @@ const useFetch = (url) =>{
               } catch (error) {
                      setError(error)
               }
-              setLoading(false)
+              setLoading(true)
        }
 
        return {data,loading,error,refetchData}
