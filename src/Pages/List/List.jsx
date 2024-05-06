@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import Header from '../../Components/Header/Header'
 import './List.css'
@@ -13,6 +13,7 @@ import { useSelector } from 'react-redux'
 import Footer from '../../Components/Footer/Footer'
 import MailList from '../../Components/MailList/MailList'
 import SkeletonCard from '../../Components/Skeleton/SkeletonCard'
+import { SearchContext } from '../../context/SearchContext'
 
 
 const List = () => {
@@ -21,7 +22,8 @@ const List = () => {
   
    const [destination,setDestination] = useState(location.state?.destination)
    const [date,setDate] = useState(location.state?.date)
-console.log(date);
+   const {dispatch}  = useContext(SearchContext)
+
    
    const [openDate,setOpenDate]   = useState(false)
    const [options,setOptions] = useState(location.state?.options)
@@ -45,6 +47,7 @@ console.log(date);
    const {data,loading,error,refetchData} = useFetch(`${baseUrl}/hotels?city=${destination || '' }&min=${min || 0 }&max=${max || 20000}&type=${location.state?.typCode || ''}`)
    
    const handleClick = async(e) =>{
+      dispatch({type:"NEW_SEARCH",payload:{destination,date,options}})
       e.preventDefault()
       refetchData()
    } 
@@ -82,9 +85,11 @@ console.log(date);
                     <span onClick={() => setOpenDate(!openDate)}> {`${format(date[0]?.startDate, 'MM/dd/yyyy')} to ${format(date[0]?.endDate, 'MM/dd/yyyy')} `}</span>
                     {openDate &&
                        <DateRange
-                          onChange={item => setDate([item.selection])}
-                          minDate={new Date()}
-                          ranges={date}
+                       editableDateInputs={true}
+                       onChange={item => setDate([item.selection])}
+                       moveRangeOnFirstSelection={false}
+                       ranges={date}
+                       minDate={new Date()}
                        />
                     }
                  </div>

@@ -40,7 +40,7 @@ const Hotel = () => {
   }
   const { date, options } = useContext(SearchContext)
 
-
+console.log(date);
   useEffect(() => {
 
   }, [data])
