@@ -12,7 +12,6 @@ const AdminLogin = () => {
     const [successMessage,setSuccessMessage]  = useState()
     const [errorMessage,setErrorMessage] = useState() 
     const adminDetail = useSelector(state => state.adminDetails)
-    console.log(adminDetail);
     const  [adminDetails,setAdminDetails] = useState({
        email:null,
        password:null

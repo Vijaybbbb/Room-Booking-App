@@ -259,7 +259,7 @@ const Product = ({checkoutDetails,priceAfterCoupen}) => (
        <div className="product">
          <div className="info">
            <p className="type">Grand Total</p>
-           <h2 className="price">${priceAfterCoupen && priceAfterCoupen  || checkoutDetails.price}</h2>
+           <h2 className="price">₹{priceAfterCoupen && priceAfterCoupen  || checkoutDetails.price}</h2>
          </div>
        </div>
      );

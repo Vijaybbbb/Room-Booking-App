@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import useFetch from '../../../hooks/useFetch'
 import { baseUrl } from '../../../utils' 
 import axios from 'axios';
-
+import '../AdminComponents/css/createUser.css'
 
 const EditCoupen = ({id,handleGoBack}) => {
 
@@ -52,7 +52,7 @@ const EditCoupen = ({id,handleGoBack}) => {
                                                           placeholder="Coupen Code" 
                                                           type="text" 
                                                            name="code" 
-                                                           value={coupenData?.code || data.code }
+                                                           value={coupenData?.code || '' }
                                                            onChange={getValue} />
                                                         
                                                  </div>
@@ -63,7 +63,7 @@ const EditCoupen = ({id,handleGoBack}) => {
                                                                         required
                                                                         autoFocus
                                                                         onChange={getValue}
-                                                                        value={coupenData?.discountType || data.discountType}
+                                                                        value={coupenData?.discountType || ''}
                                                                  >
                                                                         <option value="">Select Coupen Type</option>
                                                                         <option value="percentage">percentage</option>
@@ -76,7 +76,7 @@ const EditCoupen = ({id,handleGoBack}) => {
                                                          className="form-element input-field" 
                                                         placeholder="Value"
                                                          type="text"
-                                                         value={coupenData?.discountValue || data.discountValue}
+                                                         value={coupenData?.discountValue ||''}
                                                           name="discountValue"
                                                            onChange={getValue}/>
                                                         
@@ -85,7 +85,7 @@ const EditCoupen = ({id,handleGoBack}) => {
                                                         <input 
                                                         className="form-element input-field"
                                                          placeholder="minimum order" 
-                                                         value={coupenData?.minOrder || data.minOrder}
+                                                         value={coupenData?.minOrder ||''}
                                                          type="Number" 
                                                           name="minOrder"
                                                            onChange={getValue}/>

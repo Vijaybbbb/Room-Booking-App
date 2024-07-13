@@ -6,7 +6,7 @@ import axios from 'axios'
 
 
 
-const ViewRoom = ({ roomId, handleGoBack }) => {
+const ViewRoom = ({ roomId, handleGoBack,hotelId }) => {
      
        const { data, loading, error,  } = useFetch(`${baseUrl}/rooms/singleRoom/${roomId}`)
        const [showUpdate, setShowUpdate] = useState(true)
@@ -17,7 +17,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
                   setRoomData(data);
               }
           }, [data]);
-          console.log(data);
+       
 
        const [roomData, setRoomData] = useState(preData);
 
@@ -32,7 +32,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
        // Function to handle form submission
        const handleUpdate = async (e) => {
          e.preventDefault();
-        await axios.put(`${baseUrl}/hotels/find/${roomId}`,roomData,{withCredentials:true}).then((res)=>{
+         axios.put(`${baseUrl}/rooms/updateRoom/${roomId}/${hotelId}`,roomData,{withCredentials:true}).then((res)=>{
               handleGoBack()
         }).catch((err)=>{
               console.log(err);
@@ -41,8 +41,12 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
        };
 
        const handleDelete=(e)=>{
-              
               e.preventDefault();
+              axios.delete(`${baseUrl}/rooms/deleteRoom/${roomId}/${hotelId}`,{withCredentials:true}).then((res)=>{
+                     handleGoBack()
+               }).catch((err)=>{
+                     console.log(err);
+               })
 
        }
 
@@ -61,7 +65,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
                                                         tabIndex="1"
                                                         required
                                                         autoFocus
-                                                        value={roomData?.title || data.title}
+                                                        value={roomData?.title || ''}
                                                         onChange={getValue}
                                                  />
                                           </fieldset>
@@ -73,7 +77,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
                                                         tabIndex="1"
                                                         required
                                                         autoFocus
-                                                        value={roomData.price || data.price}
+                                                        value={roomData.price || ''}
                                                         onChange={getValue}
                                                  />
                                           </fieldset>
@@ -84,7 +88,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
                                                         type="email"
                                                         tabIndex="2"
                                                         required
-                                                        value={roomData.maxPeople || data.maxPeople}
+                                                        value={roomData.maxPeople || ''}
                                                         onChange={getValue}
                                                  />
                                           </fieldset>
@@ -106,7 +110,7 @@ const ViewRoom = ({ roomId, handleGoBack }) => {
                                                        name='desc'
                                                         tabIndex="5"
                                                         required
-                                                        value={roomData.desc || data.desc}
+                                                        value={roomData.desc || ''}
                                                         onChange={getValue}
                                                  ></textarea>
                                           </fieldset>

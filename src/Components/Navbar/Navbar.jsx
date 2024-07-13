@@ -40,7 +40,7 @@ const Navbar = ({access}) => {
               <button className="navButton" onClick={async()=>{
                await axios.post(`http://localhost:3000/clearCookie?userId=${userDetails?.userId}`,'',{withCredentials:true}).then(()=>{
                 localStorage.clear()
-                dispatch(storeUser(null))
+                //dispatch(storeUser(null))
                 navigate('/login')
                }).catch(err=>console.log(err))
                

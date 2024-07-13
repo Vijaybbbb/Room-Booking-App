@@ -103,8 +103,8 @@ const CreateRoom = ({compClick,showRoomCreation,setShow}) => {
               </TableRow>
                 {/* Repeat this structure for each row */}
               </div>
-            </div>
-          </div>
+                </div>
+               </div>
              </div>
        ):(
        <div className="col s6" onClick={() => { compClick(event, 'CreateRoom') }}>

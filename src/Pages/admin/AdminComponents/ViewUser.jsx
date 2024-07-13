@@ -54,8 +54,8 @@ const ViewUser = ({userId,handleGoBack}) => {
       <div className="card">
       <div className="container">
         <img src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" alt="profile-img" />
-        <h2>{data.username}</h2>
-        <small>{data.email}</small>
+        <h2>{data.username || ''}</h2>
+        <small>{data.email || ''}</small>
        
         <div className="bar">
           <button className="btn"  style={{backgroundColor:showEditBox ? '#8fc493' : '#39853f'}} disabled={showEditBox} onClick={()=>{handleEdit()}}>

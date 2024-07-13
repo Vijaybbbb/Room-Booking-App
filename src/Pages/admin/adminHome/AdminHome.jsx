@@ -96,22 +96,22 @@ const AdminHome = () => {
             <div className="abilan">
               <h1>ADMIN</h1> 
             </div>
-            <div className="folders">Folders</div>
+            <div className="folders"></div>
             <div className="folder-icons">
               <div className="icon1">
-                <img src="https://i.ibb.co/qdgf3TJ/envelope.png" alt="Inbox" />
+                {/* <img src="https://i.ibb.co/qdgf3TJ/envelope.png" alt="Inbox" /> */}
               </div>
-              <div className="icon-name1">Messages
+              {/* <div className="icon-name1">Messages
                 <button className="buton-span"> 20 </button>
-              </div>
+              </div> */}
             </div>
             <div className="folder-icons">
               <div className="icon1">
-                <img src="https://i.ibb.co/qdgf3TJ/envelope.png" alt="Inbox" />
+                {/* <img src="https://i.ibb.co/qdgf3TJ/envelope.png" alt="Inbox" /> */}
               </div>
-              <div className="icon-name1">inbox
+              {/* <div className="icon-name1">inbox
                 <button className="buton-span"> 20 </button>
-              </div>
+              </div> */}
             </div>
             {/* Repeat the rest of the folder-icons here */}
           </div>
@@ -145,9 +145,9 @@ const AdminHome = () => {
                 </button> */}
               </div>
               <div className="form has-search" >
-                <input className="text" type="search" placeholder="Search here..." name="search" onChange={getSearchInput} />
+                {/* <input className="text" type="search" placeholder="Search here..." name="search" onChange={getSearchInput} /> */}
                 <span className="searchIcon">
-                  <img style={{marginLeft:'400px'}} src="https://i.ibb.co/sqFgRq8/search.png" alt="Search" />
+                  {/* <img style={{marginLeft:'400px'}} src="https://i.ibb.co/sqFgRq8/search.png" alt="Search" /> */}
                 </span>
               </div>
             </div>

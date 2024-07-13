@@ -5,7 +5,7 @@ import useFetch from '../../../hooks/useFetch'
 import '../AdminComponents/css/HotelManagement.css'
 import ViewHotel from './ViewHotel'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBed, faCalendarDays, faCar, faHotel, faPerson, faPlane, faTaxi, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faBed, faCar, faHotel } from '@fortawesome/free-solid-svg-icons';
 
 
 const HotelManagement = ({compClick,showHotels}) => {
@@ -90,7 +90,11 @@ const HotelManagement = ({compClick,showHotels}) => {
                   <TableCell></TableCell>
                   <TableCell></TableCell>
 
-                <TableCell colSpan="5">
+                {
+                  data&& data.length == 0 ? (
+                        <div>No Hotels Found</div>
+                  ):(
+                    <TableCell colSpan="5">
                   <div style={{alignItems:'center'}}>
                   <div className="page-btn">
                     <span onClick={() => selectedPage(page - 1)}>{'<'}</span>
@@ -105,6 +109,8 @@ const HotelManagement = ({compClick,showHotels}) => {
                   </div>
                   </div>
                 </TableCell>
+                  )
+                }
               </TableRow>
                 {/* Repeat this structure for each row */}
               </div>

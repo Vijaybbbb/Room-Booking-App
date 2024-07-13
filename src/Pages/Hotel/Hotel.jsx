@@ -40,7 +40,7 @@ const Hotel = () => {
   }
   const { date, options } = useContext(SearchContext)
 
-console.log(date);
+
   useEffect(() => {
 
   }, [data])
@@ -131,7 +131,7 @@ console.log(date);
             Excellent location - {data?.distance} from center
           </span>
           <span className='hotelPriceHighlight'>
-            Book a stay over ${data?.cheapestPrice} at this prperty and get a free airport taxi
+            Book a stay over ₹{data?.cheapestPrice} at this prperty and get a free airport taxi
           </span>
           <div className="hotelImages">
             {
@@ -158,7 +158,7 @@ console.log(date);
                 Located in the heart of koaroe , this propty has an excelletn location score  of 9.7
               </span>
               <h2>
-                <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
+                <b>₹{days * data.cheapestPrice * options.room}</b> ({days} nights)
               </h2>
               <button onClick={(e) => {
                 access ? handleReserve(e) : navigate('/login')
@@ -210,7 +210,7 @@ console.log(date);
             Excellent location - {data?.distance} from center
           </span>
           <span className='hotelPriceHighlight'>
-            Book a stay over ${data?.cheapestPrice} at this prperty and get a free airport taxi
+            Book a stay over ₹{data?.cheapestPrice} at this prperty and get a free airport taxi
           </span>
           <div className="hotelImages">
             {
@@ -242,7 +242,7 @@ console.log(date);
                 Located in the heart of koaroe , this propty has an excelletn location score  of 9.7
               </span>
               <h2>
-                <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
+                <b>₹{days * data.cheapestPrice * options.room}</b> ({days} nights)
               </h2>
               <button onClick={(e) => {
                 access ? handleReserve(e) : navigate('/login')

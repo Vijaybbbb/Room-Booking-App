@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { tokenRequest } from '../token';
 import { useDispatch, useSelector } from 'react-redux';
 import {storeUser} from '../../Redux/loginSlice.js'
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -38,17 +39,21 @@ const Login = ({setIsAuthenticated,isAuthenticated}) => {
     //handle signup function
     const handleLogin = async (e) => {
         e.preventDefault(); // Prevent default form submission
-        await tokenRequest.post('/auth/login',userData,{withCredentials:true}).then((response) => {
+         tokenRequest.post('/auth/login',userData,{withCredentials:true}).then((response) => {
             setSuccessMessage(response.data.message)
             dispatch(storeUser(response.data._id))
-            navigate('/')
+            toast.success('Login Successfull')
             setIsAuthenticated(true)
             localStorage.setItem('isAuthenticated',true);
-        }).catch(err => setErrorMessage(err.response.data.message))
+            setTimeout(()=>{
+            navigate('/')
+            },2000)
+        }).catch(err =>{ setErrorMessage(err.response.data.message);toast.error("Login Failed")})
     }
 
     return (
         <main className="mainLogin">
+            <ToastContainer/>
             <div className="containerLogin">
                 <section className="wrapperLogin">
                     <div className="headingLogin">

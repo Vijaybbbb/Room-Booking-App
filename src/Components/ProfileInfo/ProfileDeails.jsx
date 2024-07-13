@@ -6,7 +6,7 @@ import axios from 'axios';
 const ProfileDeails = ({userId,email,username}) => {
 
 
-       const {data,loading} = useFetch(`${baseUrl}/user/singleUserDetails/${userId}`)
+       const {data,loading,refetchData} = useFetch(`${baseUrl}/user/singleUserDetails/${userId}`)
        const [predetails,setPrevDetails]  = useState(data)
        const [image,setImage]  = useState([])
 
@@ -64,6 +64,7 @@ const ProfileDeails = ({userId,email,username}) => {
                      'Content-Type': 'multipart/form-data'
               }}).then((res)=>{
                      console.log(res);
+                     refetchData()
               }).catch((err)=>{
                      console.log(err);
               })
@@ -78,7 +79,7 @@ const ProfileDeails = ({userId,email,username}) => {
        function onInputChange(e){
               const file = e.target.files[0]; // Take only the first file
               setImage(file);
-               console.log(file);
+              console.log(file);
         }
 
   return (

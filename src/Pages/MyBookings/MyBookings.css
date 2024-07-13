@@ -92,6 +92,8 @@
     
     .myBookingsPage .orderCancelConfirmBox .rContainer {
       height: 200px;
+      margin-top: 200px;
+      margin-left: 57-x0px;
     }
 
     .myBookingsPage .orderCancelConfirmBox .reserve {

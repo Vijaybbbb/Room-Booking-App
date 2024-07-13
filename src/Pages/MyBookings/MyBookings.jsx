@@ -162,9 +162,9 @@ const MyBookings = ({isAuthenticated}) => {
         <div>
       
         <h1>YOUR ORDERS</h1>
-        <button onClick={toggleFilter} className="receipt__filter--toggle btn">
+        {/* <button onClick={toggleFilter} className="receipt__filter--toggle btn">
           Filter
-        </button>
+        </button> */}
         {showFilter && (
           <div className="receipt__filter">
             <div>
@@ -292,15 +292,15 @@ const MyBookings = ({isAuthenticated}) => {
                             </div>
                           </div>
 
-                          <p style={{ position: 'absolute', left: '734px' }}>{selectedBooking.totalPrice} $</p>
+                          <p style={{ position: 'absolute', left: '734px' }}>{selectedBooking.totalPrice} Rs</p>
                         </div>
 
                         {/* Sub and total price */}
                         <div className="totalprice">
-                          <p className="sub">Subtotal <span>{selectedBooking.totalPrice} $</span></p>
-                          <p className="del">Tax <span>0 $</span></p>
+                          <p className="sub">Subtotal <span>{selectedBooking.totalPrice} Rs</span></p>
+                          <p className="del">Tax <span>0 Rs</span></p>
                           <hr />
-                          <p className="tot">Total <span>{selectedBooking.totalPrice} $</span></p>
+                          <p className="tot">Total <span>{selectedBooking.totalPrice} Rs</span></p>
                         </div>
 
                         {/* Footer */}
